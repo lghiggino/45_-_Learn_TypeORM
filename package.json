@@ -1,0 +1,30 @@
+{
+  "name": "45_-_learn_typeorm",
+  "version": "1.0.0",
+  "description": "learn typeORM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lghiggino/45_-_Learn_TypeORM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lghiggino/45_-_Learn_TypeORM/issues"
+  },
+  "homepage": "https://github.com/lghiggino/45_-_Learn_TypeORM#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "ts-node": "^10.3.0",
+    "typeorm": "^0.2.38",
+    "typescript": "^4.4.4"
+  }
+}
