@@ -1,7 +1,18 @@
-import { Entity, BaseEntity, Column } from "typeorm";
+import {
+    Entity,
+    BaseEntity,
+    Column,
+    PrimaryColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+    DeleteDateColumn
+} from "typeorm";
 
 @Entity("client")
 export class Client extends BaseEntity {
+    @PrimaryColumn({ type: "uuid" })
+    id: string
+
     @Column()
     firstName: string
 
@@ -24,7 +35,7 @@ export class Client extends BaseEntity {
         type: "simple-json",
         nullable: true
     })
-    additionalInfo:{
+    additionalInfo: {
         age: number
         familyMembersCount: number
     }
@@ -34,4 +45,13 @@ export class Client extends BaseEntity {
         default: []
     })
     familyMembers: string[]
+
+    @CreateDateColumn()
+    createdAt: Date
+
+    @UpdateDateColumn()
+    updateAt: Date
+
+    @DeleteDateColumn()
+    deletedAt: Date
 }

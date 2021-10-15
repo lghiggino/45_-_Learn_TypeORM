@@ -1,6 +1,9 @@
 import { createConnection } from "typeorm"
 require('dotenv').config()
 
+import { Client } from "./Entities/Client"
+import { Banker } from "./Entities/Banker"
+
 const main = async () => {
     try {
         const connection = await createConnection(
@@ -10,7 +13,12 @@ const main = async () => {
                 port: Number(process.env.DB_PORT),
                 username: process.env.DB_USERNAME,
                 password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME
+                database: process.env.DB_NAME,
+                entities: [
+                    Client,
+                    Banker
+                ],
+                synchronize: true
             }
         )
         console.log(`Connected to Postgress at database: ${connection.options.database}`)
