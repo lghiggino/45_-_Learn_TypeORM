@@ -1,30 +1,12 @@
 import {
     Entity,
-    BaseEntity,
-    Column,
-    PrimaryColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn
+    Column
 } from "typeorm";
 
+import { Person } from "./Utils/Person";
+
 @Entity("client")
-export class Client extends BaseEntity {
-    @PrimaryColumn({ type: "uuid" })
-    id: string
-
-    @Column()
-    firstName: string
-
-    @Column()
-    lastName: string
-
-    @Column({ unique: true })
-    email: string
-
-    @Column({ unique: true, length: 16 })
-    cardNumber: string
-
+export class Client extends Person {
     @Column({ type: "numeric" })
     balance: number
 
@@ -46,12 +28,5 @@ export class Client extends BaseEntity {
     })
     familyMembers: string[]
 
-    @CreateDateColumn()
-    createdAt: Date
-
-    @UpdateDateColumn()
-    updateAt: Date
-
-    @DeleteDateColumn()
-    deletedAt: Date
+   
 }
