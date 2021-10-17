@@ -2,7 +2,7 @@ import {
     Entity,
     BaseEntity,
     Column,
-    PrimaryColumn,
+    PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn
@@ -10,7 +10,7 @@ import {
 
 @Entity()
 export class Person extends BaseEntity {
-    @PrimaryColumn({ type: "uuid" })
+    @PrimaryGeneratedColumn()
     id: string
 
     @Column()
