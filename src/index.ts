@@ -3,6 +3,7 @@ require('dotenv').config()
 
 import { Client } from "./Entities/Client"
 import { Banker } from "./Entities/Banker"
+import { Transaction } from "./Entities/Transaction"
 
 const main = async () => {
     try {
@@ -16,7 +17,8 @@ const main = async () => {
                 database: process.env.DB_NAME,
                 entities: [
                     Client,
-                    Banker
+                    Banker,
+                    Transaction
                 ],
                 synchronize: true
             }

@@ -1,20 +1,41 @@
-import { BaseEntity, Entity, UpdateDateColumn, CreateDateColumn, Column, PrimaryGeneratedColumn } from "typeorm";
+import {
+    BaseEntity,
+    Entity,
+    UpdateDateColumn,
+    CreateDateColumn,
+    Column,
+    PrimaryGeneratedColumn,
+    ManyToOne,
+    JoinColumn
+} from "typeorm";
 
-export enum TransactionTypes{
+import { Client } from "./Client";
+
+export enum TransactionTypes {
     DEPOSIT = 'deposit',
     WITHDRAW = 'withdraw'
 }
 
 @Entity("transactions")
-export class Transactions extends BaseEntity{
+export class Transaction extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: string
 
     @Column({ type: "numeric" })
     amount: number
 
-    @Column({type: 'enum', enum: TransactionTypes})
+    @Column({ type: 'enum', enum: TransactionTypes })
     type: string
+
+    @ManyToOne(
+        () => Client,
+        client => client.transactions
+    )
+
+    @JoinColumn({
+        name: 'client_id'
+    })
+    client: Client
 
     @CreateDateColumn()
     createdAt: Date
