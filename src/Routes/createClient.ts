@@ -1,9 +1,12 @@
 import express from "express"
+import { getRepository } from "typeorm"
 import { Client } from "../Entities/Client"
 const router = express.Router()
 
 router.get("/api/client", async (req, res) => {
-    res.send("Hello, Im the response for /api/client GET route")
+    const clientRepository = getRepository(Client)
+    const client = await clientRepository.find({ where: { firstName: "Leonardo"}})
+    return res.json(client)
 })
 
 router.post("/api/client", async (req, res) => {

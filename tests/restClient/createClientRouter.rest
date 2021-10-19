@@ -8,3 +8,29 @@ content-type: application/json
     "cardNumber": "1234567890",
     "balance": 0
 }
+
+###
+
+POST http://localhost:8080/api/client HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Leonardo",
+    "lastName": "DaVinci",
+    "email": "leo@davinci.com",
+    "cardNumber": "0987654321",
+    "balance": 1
+}
+
+###
+
+POST http://localhost:8080/api/client HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Fabio",
+    "lastName": "Oshiro",
+    "email": "fabio.oshiro@davinci.com",
+    "cardNumber": "1234098765",
+    "balance": 2
+}
