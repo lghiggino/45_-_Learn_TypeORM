@@ -1,9 +1,12 @@
 import { createConnection } from "typeorm"
-require('dotenv').config()
-
+import express from "express"
+require("dotenv").config()
 import { Client } from "./Entities/Client"
 import { Banker } from "./Entities/Banker"
 import { Transaction } from "./Entities/Transaction"
+import { createClientRouter } from "./Routes/createClient"
+
+const app = express()
 
 const main = async () => {
     try {
@@ -24,6 +27,15 @@ const main = async () => {
             }
         )
         console.log(`Connected to Postgress at database: ${connection.options.database}`)
+        //middleware
+        app.use(express.json())
+        //routers
+        app.use(createClientRouter)
+
+        app.listen(8080, () => {
+            console.log(`Express running on port 8080`)
+        })
+
     } catch (error) {
         console.log(error)
         throw new Error("Unable to connect to DB")
