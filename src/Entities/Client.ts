@@ -28,7 +28,8 @@ export class Client extends Person {
 
     @Column({
         type: "simple-array",
-        default: []
+        default: [],
+        nullable: true
     })
     familyMembers: string[]
 
