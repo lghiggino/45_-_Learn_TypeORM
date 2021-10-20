@@ -1,10 +1,15 @@
 import { createConnection } from "typeorm"
 import express from "express"
 require("dotenv").config()
+
+//entities
 import { Client } from "./Entities/Client"
 import { Banker } from "./Entities/Banker"
 import { Transaction } from "./Entities/Transaction"
-import { createClientRouter } from "./Routes/createClient"
+//routers + controllers
+import { clientController } from "./Routes/clientController"
+import { bankerController } from "./Routes/bankerController"
+import { transacitionController } from "./Routes/transactionController"
 
 const app = express()
 
@@ -30,7 +35,9 @@ const main = async () => {
         //middleware
         app.use(express.json())
         //routers
-        app.use(createClientRouter)
+        app.use(clientController)
+        app.use(bankerController)
+        app.use(transacitionController)
 
         app.listen(8080, () => {
             console.log(`Express running on port 8080`)

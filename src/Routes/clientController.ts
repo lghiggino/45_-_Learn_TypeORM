@@ -32,4 +32,4 @@ router.post("/api/client", async (req, res) => {
 })
 
 
-export { router as createClientRouter }
+export { router as clientController }
