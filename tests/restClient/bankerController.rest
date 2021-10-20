@@ -1,0 +1,12 @@
+POST http://localhost:8080/api/banker HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Pedro",
+    "lastName": "Flor",
+    "email": "phf@bancodobrasil.com.br",
+    "cardNumber": "1234567890",
+    "employeeNumber": "ab12cd34ef",
+    "institutionName": "Banco do Brasil"
+}
+        

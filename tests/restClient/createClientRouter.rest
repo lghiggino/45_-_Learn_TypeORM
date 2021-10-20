@@ -2,10 +2,10 @@ POST http://localhost:8080/api/client HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Leonardo",
+    "firstName": "Joao",
     "lastName": "Ghiggino",
-    "email": "abc@def.com",
-    "cardNumber": "1234567890",
+    "email": "jfg@def.com",
+    "cardNumber": "abcdefghij",
     "balance": 0
 }
 
