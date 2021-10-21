@@ -1,4 +1,4 @@
-//The 1 on the route is the clientId
+//The 1 on the route is the clientId - will fail if !clientId
 POST http://localhost:8080/api/client/1/transaction HTTP/1.1
 content-type: application/json
 

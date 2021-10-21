@@ -20,8 +20,8 @@ router.post("/api/client/:clientId/transaction", async (req, res) => {
 
     const transaction = Transaction.create({
         amount,
-        type,
-        client
+        type, 
+        client //passes the whole client
     })
 
     await transaction.save()
