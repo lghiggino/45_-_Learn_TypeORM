@@ -1,4 +1,5 @@
-POST http://localhost:8080/api/transaction HTTP/1.1
+//The 1 on the route is the clientId
+POST http://localhost:8080/api/client/1/transaction HTTP/1.1
 content-type: application/json
 
 {
