@@ -1,6 +1,7 @@
 import express from "express"
 import { getRepository } from "typeorm"
 import { Client } from "../Entities/Client"
+import { Transaction } from "../Entities/Transaction"
 const router = express.Router()
 
 router.get("/api/client", async (req, res) => {
@@ -26,7 +27,13 @@ router.get("/api/client/:clientId/clientTransactions", async (req, res) => {
         res.json({message: "unable to find Client"})
         return
     }
-    
+
+    const clientTransactions = await Transaction.find({where: {client}})
+    if (!client){
+        res.json({message: "unable to find Transactions for this client"})
+        return
+    }
+    res.json(clientTransactions)
 })
 
 router.post("/api/client", async (req, res) => {
