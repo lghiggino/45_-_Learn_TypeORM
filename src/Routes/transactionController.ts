@@ -50,4 +50,4 @@ router.post("/api/client/:clientId/transaction", async (req, res) => {
     return res.json({ message: "Transaction concluded" })
 })
 
-export { router as transacitionController }
+export { router as transactionController }
