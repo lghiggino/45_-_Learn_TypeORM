@@ -9,7 +9,8 @@ import { Transaction } from "./Entities/Transaction"
 //routers + controllers
 import { clientController } from "./Routes/clientController"
 import { bankerController } from "./Routes/bankerController"
-import { transacitionController } from "./Routes/transactionController"
+import { transactionController } from "./Routes/transactionController"
+import { connectBankerToClientController } from "./Routes/connectBankerToClientController"
 
 const app = express()
 
@@ -37,7 +38,8 @@ const main = async () => {
         //routers
         app.use(clientController)
         app.use(bankerController)
-        app.use(transacitionController)
+        app.use(transactionController)
+        app.use(connectBankerToClientController)
 
         app.listen(8080, () => {
             console.log(`Express running on port 8080`)
