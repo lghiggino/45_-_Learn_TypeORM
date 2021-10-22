@@ -5,8 +5,28 @@ const router = express.Router()
 
 router.get("/api/client", async (req, res) => {
     const clientRepository = getRepository(Client)
-    const client = await clientRepository.find({ where: { firstName: "Leonardo"}})
+    const client = await clientRepository.find({ where: { firstName: "Leonardo" } })
     return res.json(client)
+})
+
+router.get("/api/client/:clientId/clientInfo", async (req, res) => { 
+    const {clientId} = req.params
+    const client = await Client.findOne(clientId)
+    if (!client){
+        res.json({message: "unable to find Client"})
+        return
+    }
+    res.json(client)
+})
+
+router.get("/api/client/:clientId/clientTransactions", async (req, res) => { 
+    const {clientId} = req.params
+    const client = await Client.findOne(clientId)
+    if (!client){
+        res.json({message: "unable to find Client"})
+        return
+    }
+    
 })
 
 router.post("/api/client", async (req, res) => {

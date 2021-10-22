@@ -20,7 +20,7 @@ content-type: application/json
 ###
 
 
-POST http://localhost:8080/api/client/1/transaction HTTP/1.1
+POST http://localhost:8080/api/client/2/transaction HTTP/1.1
 content-type: application/json
 
 {

@@ -4,7 +4,17 @@ import { TransactionTypes } from "../Entities/Transaction"
 import { Client } from "../Entities/Client"
 const router = express.Router()
 
-router.get("/api/transaction", async (req, res) => { })
+router.get("/api/client/:clientId/transaction", async (req, res) => {
+    const { clientId } = req.params
+    const client = await Client.findOne(parseInt(clientId))
+    if (!client) {
+        res.json({ message: "Client not found" })
+        return
+    }
+
+    const clientTransactions: Transaction[] = await Transaction.find({ where: { clientId: clientId } })
+    console.log(clientTransactions)
+})
 
 router.post("/api/client/:clientId/transaction", async (req, res) => {
     const {

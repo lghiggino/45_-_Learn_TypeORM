@@ -33,7 +33,7 @@ export class Transaction extends BaseEntity {
     )
 
     @JoinColumn({
-        name: 'client_id'
+        name: 'clientId'
     })
     client: Client
 
