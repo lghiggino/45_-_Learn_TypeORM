@@ -13,41 +13,41 @@ router.get("/api/client", async (req, res) => {
     return res.json(client)
 })
 
-router.get("/api/client/:clientId/clientInfo", async (req, res) => { 
-    const {clientId} = req.params
+router.get("/api/client/:clientId/clientInfo", async (req, res) => {
+    const { clientId } = req.params
     const client = await Client.findOne(clientId)
-    if (!client){
-        res.json({message: "unable to find Client"})
+    if (!client) {
+        res.json({ message: "unable to find Client" })
         return
     }
     res.json(client)
 })
 
-router.get("/api/client/:clientId/clientTransactions", async (req, res) => { 
-    const {clientId} = req.params
+router.get("/api/client/:clientId/clientTransactions", async (req, res) => {
+    const { clientId } = req.params
     const client = await Client.findOne(clientId)
-    if (!client){
-        res.json({message: "unable to find Client"})
+    if (!client) {
+        res.json({ message: "unable to find Client" })
         return
     }
 
-    const clientTransactions: Transaction[] = await Transaction.find({where: {client}})
-    if (clientTransactions.length === 0){
-        res.json({message: "unable to find Transactions for this client"})
+    const clientTransactions: Transaction[] = await Transaction.find({ where: { client } })
+    if (clientTransactions.length === 0) {
+        res.json({ message: "unable to find Transactions for this client" })
         return
     }
     res.json(clientTransactions)
 })
 
 router.get("/api/client/:clientId/clientBankers", async (req, res) => {
-    const {clientId} = req.params
+    const { clientId } = req.params
     const client = await Client.findOne(clientId)
-    if (!client){
-        res.json({message: "unable to find Client"})
+    if (!client) {
+        res.json({ message: "unable to find Client" })
         return
     }
 
-    const clientBankers: Banker[] = await Banker.find({where: {client}})
+    const clientBankers: Banker[] = await Banker.find({ where: { client } })
     console.log(clientBankers)
 })
 
@@ -70,6 +70,20 @@ router.post("/api/client", async (req, res) => {
 
     await client.save()
     return res.json(client)
+})
+
+router.delete("/api/client/:clientId/delete", async (req, res) => {
+    const { clientId } = req.params
+
+    const client = await Client.findOne(parseInt(clientId))
+    try {
+        await Client.delete(parseInt(clientId))
+        res.json({message: `Client ${clientId} deleted successfully`})
+    } catch (error) {
+        res.json({message: `Error deleting Client ${clientId}`})
+        throw new Error(error)
+    }
+    
 
 })
 
