@@ -74,8 +74,6 @@ router.post("/api/client", async (req, res) => {
 
 router.delete("/api/client/:clientId/delete", async (req, res) => {
     const { clientId } = req.params
-
-    const client = await Client.findOne(parseInt(clientId))
     try {
         await Client.delete(parseInt(clientId))
         res.json({message: `Client ${clientId} deleted successfully`})

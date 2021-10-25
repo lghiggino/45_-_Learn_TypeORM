@@ -29,7 +29,10 @@ export class Transaction extends BaseEntity {
 
     @ManyToOne(
         () => Client,
-        client => client.transactions
+        client => client.transactions, 
+        {
+            onDelete: "SET NULL"
+        }
     )
 
     @JoinColumn({
