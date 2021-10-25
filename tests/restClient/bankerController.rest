@@ -10,3 +10,17 @@ content-type: application/json
     "institutionName": "Banco do Brasil"
 }
         
+###
+
+POST http://localhost:8080/api/banker HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jackson",
+    "lastName": "Reyes",
+    "email": "jr@itau.com.br",
+    "cardNumber": "0987654321",
+    "employeeNumber": "12ab34cd56",
+    "institutionName": "Itau"
+}
+        

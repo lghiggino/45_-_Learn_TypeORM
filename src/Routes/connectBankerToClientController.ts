@@ -22,7 +22,6 @@ router.post("/api/banker/:bankerId/client/:clientId/connect", async (req, res) =
     //can only populate the column of the Entity that has the @JoinColumn() - in this case Banker
     banker.clients = [client]
 
-
     await banker.save()
     res.json({ message: `Connected banker ${bankerId} to client ${clientId}` })
 })
