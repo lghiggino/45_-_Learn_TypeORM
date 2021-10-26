@@ -1,5 +1,5 @@
 import express from "express"
-import { getRepository, RepositoryNotFoundError } from "typeorm"
+import { getRepository, RepositoryNotFoundError, createQueryBuilder } from "typeorm"
 //entities
 import { Client } from "../Entities/Client"
 import { Banker } from "../Entities/Banker"
@@ -51,6 +51,26 @@ router.get("/api/client/:clientId/clientBankers", async (req, res) => {
     console.log(clientBankers)
 })
 
+
+router.get("/api/client/:clientId/familyMembers", async (req, res) => {
+    try {
+        const { clientId } = req.params
+
+        const client = await createQueryBuilder('client')
+            .select('client.familyMembers')
+            .from(Client, 'client')
+            .where('client.id = :clientId', { clientId })
+            .getOne()
+
+        console.log(client)
+
+        return res.json(client)
+    } catch (error) {
+        return res.status(500).json({ message: "Something went wrong" })
+    }
+
+})
+
 router.post("/api/client", async (req, res) => {
     const {
         firstName,
@@ -76,12 +96,12 @@ router.delete("/api/client/:clientId/delete", async (req, res) => {
     const { clientId } = req.params
     try {
         await Client.delete(parseInt(clientId))
-        res.json({message: `Client ${clientId} deleted successfully`})
+        res.json({ message: `Client ${clientId} deleted successfully` })
     } catch (error) {
-        res.json({message: `Error deleting Client ${clientId}`})
+        res.json({ message: `Error deleting Client ${clientId}` })
         throw new Error(error)
     }
-    
+
 
 })
 

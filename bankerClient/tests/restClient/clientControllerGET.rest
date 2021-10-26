@@ -8,3 +8,6 @@ GET http://localhost:8080/api/client/1/clientTransactions HTTP/1.1
 content-type: application/json
 
 ###
+//get client familyMembers via queryBuilder
+GET http://localhost:8080/api/client/6/familyMembers HTTP/1.1
+content-type: application/json

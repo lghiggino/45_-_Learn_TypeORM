@@ -6,7 +6,8 @@ content-type: application/json
     "lastName": "Ghiggino",
     "email": "jfg@def.com",
     "cardNumber": "abcdefghij",
-    "balance": 0
+    "balance": 0,
+    "familyMembers": ["Leonardo", "Helaine"]
 }
 
 ###
