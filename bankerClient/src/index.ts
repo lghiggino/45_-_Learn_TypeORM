@@ -1,16 +1,18 @@
+import "reflect-metadata"
 import { createConnection } from "typeorm"
-import express from "express"
+import express, { application } from "express"
 require("dotenv").config()
 
-//entities
-import { Client } from "./Entities/Client"
-import { Banker } from "./Entities/Banker"
-import { Transaction } from "./Entities/Transaction"
-//routers + controllers
-import { clientController } from "./Routes/clientController"
-import { bankerController } from "./Routes/bankerController"
-import { transactionController } from "./Routes/transactionController"
-import { connectBankerToClientController } from "./Routes/connectBankerToClientController"
+import { Client } from "./entities/Client"
+import { Banker } from "./entities/Banker"
+import { Transaction } from "./entities/Transaction"
+import { Account } from "./entities/Account"
+
+//routers
+import { clientRouter } from "./routes/clientController"
+import { bankRouter } from "./routes/bankController"
+import { transactionRouter } from "./routes/transactionController"
+import { bankToClientController } from "./routes/bankToClientController"
 
 const app = express()
 
@@ -19,36 +21,37 @@ const main = async () => {
         const connection = await createConnection(
             {
                 type: "postgres",
-                host: process.env.DB_HOST,
+                host: `${process.env.DB_HOST}`,
                 port: Number(process.env.DB_PORT),
-                username: process.env.DB_USERNAME,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME,
+                username: `${process.env.DB_USERNAME}`,
+                password: `${process.env.DB_PASSWORD}`,
+                database: `${process.env.DB_NAME}`,
                 entities: [
                     Client,
                     Banker,
-                    Transaction
+                    Transaction,
+                    Account
                 ],
                 synchronize: true
             }
         )
-        console.log(`Connected to Postgress at database: ${connection.options.database}`)
-        //middleware
+        console.log("Connected to Postgres")
+
         app.use(express.json())
-        //routers
-        app.use(clientController)
-        app.use(bankerController)
-        app.use(transactionController)
-        app.use(connectBankerToClientController)
+        app.use(clientRouter)
+        app.use(bankRouter)
+        app.use(transactionRouter)
+        app.use(bankToClientController)
 
         app.listen(8080, () => {
-            console.log(`Express running on port 8080`)
+            console.log("API running on port 8080")
         })
 
+
     } catch (error) {
-        console.log(error)
-        throw new Error("Unable to connect to DB")
+        console.error(error.message)
+        throw new Error("Unable to connect to Postgres DB")
     }
 }
 
-main()
+main() 

@@ -1,34 +1,36 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, EntityRepository, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Client } from "./Client";
 import { Banker } from "./Banker";
 
 @Entity("account")
-export class Account extends BaseEntity {
+export class Account {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    bankId: number
+    accountNumber: number
 
     @Column()
-    clientId: number
-
-    // @Column({
-    //     type: "enum",
-    //     enum: TransactionStatus
-    // })
-    // status: string;
-
-    @ManyToOne(
-        () => Client,
-        client => client.transactions
-    )
-    @JoinColumn({
-        name: 'clientId'
-    })
-    client: Client
+    accountDigit: number
 
     @CreateDateColumn()
     createdAt: Date;
+
+    @ManyToOne(
+        () => Banker,
+        banker => banker.accounts
+    )
+    @JoinColumn({
+        name: 'bankerId'
+    })
+    banker: Banker
+
+    @ManyToOne(
+        () => Client
+    )
+    // @JoinColumn({
+    //     name: 'clientId'
+    // })
+    client: Client
 
 }
