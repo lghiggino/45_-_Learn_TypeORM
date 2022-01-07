@@ -12,7 +12,7 @@ import { Account } from "./entities/Account"
 import { clientRouter } from "./routes/clientController"
 import { bankRouter } from "./routes/bankController"
 import { transactionRouter } from "./routes/transactionController"
-import { bankToClientController } from "./routes/bankToClientController"
+import { bankToClientRouter } from "./routes/bankToClientController"
 
 const app = express()
 
@@ -41,7 +41,7 @@ const main = async () => {
         app.use(clientRouter)
         app.use(bankRouter)
         app.use(transactionRouter)
-        app.use(bankToClientController)
+        app.use(bankToClientRouter)
 
         app.listen(8080, () => {
             console.log("API running on port 8080")
