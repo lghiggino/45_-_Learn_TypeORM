@@ -2,8 +2,8 @@ import express from "express";
 import { getRepository, RepositoryNotFoundError, createQueryBuilder } from "typeorm"
 //entities
 import { Client } from "../entities/Client";
-import { Banker } from "src/entities/Banker";
-import { Transaction } from "src/entities/Transaction";
+import { Banker } from "../entities/Banker";
+import { Transaction } from "../entities/Transaction";
 
 const router = express.Router();
 
