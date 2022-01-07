@@ -1,7 +1,7 @@
 import express from "express"
-import { Transaction } from "../Entities/Transaction"
-import { TransactionTypes } from "../Entities/Transaction"
-import { Client } from "../Entities/Client"
+import { Client } from "../entities/Client";
+import { Transaction, TransactionTypes } from "../entities/Transaction"
+
 const router = express.Router()
 
 router.get("/api/client/:clientId/transaction", async (req, res) => {
@@ -17,37 +17,37 @@ router.get("/api/client/:clientId/transaction", async (req, res) => {
 })
 
 router.post("/api/client/:clientId/transaction", async (req, res) => {
-    const {
-        amount,
-        type
-    } = req.body
-
     const { clientId } = req.params
-
+    const { type, amount } = req.body;
 
     const client = await Client.findOne(parseInt(clientId))
+
     if (!client) {
-        res.json({ message: "Client not found" })
-        return
+        return res.json({ message: "client not found" })
     }
 
     const transaction = Transaction.create({
         amount,
         type,
-        client //passes the whole client
+        client
     })
 
     await transaction.save()
 
     if (type === TransactionTypes.DEPOSIT) {
-        client.balance = +client.balance + amount
-    } else if (type === TransactionTypes.WITHDRAW && client.balance >= amount) {
-        client.balance = +client.balance - amount
-    } else {
-        return res.json({ message: "Unable to complete the transaction - funds unavailable" })
+        client.balance = client.balance + amount
+    } else if (type === TransactionTypes.WITHDRAW) {
+        if (client.balance < amount) {
+            return res.json({ message: "Transaction funds unavailable" })
+        }
+        client.balance = client.balance - amount
     }
+
     await client.save()
-    return res.json({ message: "Transaction concluded" })
+
+    return res.json({ message: "transaction added" })
+
 })
 
-export { router as transactionController }
+
+export { router as transactionRouter }
