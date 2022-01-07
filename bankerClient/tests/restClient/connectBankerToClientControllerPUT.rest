@@ -1,2 +1,2 @@
-POST http://localhost:8080/api/banker/5/client/4/connect HTTP/1.1
+PUT http://localhost:8080/api/banker/2/client/1/transaction HTTP/1.1
 content-type: application/json
