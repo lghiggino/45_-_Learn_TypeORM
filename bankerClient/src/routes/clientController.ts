@@ -1,11 +1,11 @@
-import express from "express"
+import express from "express";
 import { getRepository, RepositoryNotFoundError, createQueryBuilder } from "typeorm"
 //entities
-import { Client } from "../Entities/Client"
-import { Banker } from "../Entities/Banker"
-import { Transaction } from "../Entities/Transaction"
+import { Client } from "../entities/Client";
+import { Banker } from "src/entities/Banker";
+import { Transaction } from "src/entities/Transaction";
 
-const router = express.Router()
+const router = express.Router();
 
 router.get("/api/client", async (req, res) => {
     const clientRepository = getRepository(Client)
@@ -17,40 +17,40 @@ router.get("/api/client/:clientId/clientInfo", async (req, res) => {
     const { clientId } = req.params
     const client = await Client.findOne(clientId)
     if (!client) {
-        res.json({ message: "unable to find Client" })
-        return
+        return res.json({ message: `Unable to find Client by id ${clientId}` })
     }
-    res.json(client)
-})
+    return res.json(client)
+});
 
 router.get("/api/client/:clientId/clientTransactions", async (req, res) => {
     const { clientId } = req.params
     const client = await Client.findOne(clientId)
     if (!client) {
-        res.json({ message: "unable to find Client" })
-        return
+        return res.json({ message: `Unable to find Client by id ${clientId}` })
     }
 
     const clientTransactions: Transaction[] = await Transaction.find({ where: { client } })
     if (clientTransactions.length === 0) {
-        res.json({ message: "unable to find Transactions for this client" })
+        res.json({ message: "Unable to find Transactions for this client" })
         return
     }
-    res.json(clientTransactions)
+    return res.json(clientTransactions)
 })
 
 router.get("/api/client/:clientId/clientBankers", async (req, res) => {
     const { clientId } = req.params
     const client = await Client.findOne(clientId)
     if (!client) {
-        res.json({ message: "unable to find Client" })
-        return
+        return res.json({ message: `Unable to find Client by id ${clientId}` })
     }
 
-    const clientBankers: Banker[] = await Banker.find({ where: { client } })
-    console.log(clientBankers)
+    const clientBankers: Banker[] = await Banker.find({where: {client}})
+    if (clientBankers.length === 0) {
+        res.json({ message: "Unable to find Bankers for this client" })
+        return
+    }
+    return res.json(clientBankers)
 })
-
 
 router.get("/api/client/:clientId/familyMembers", async (req, res) => {
     try {
@@ -71,6 +71,18 @@ router.get("/api/client/:clientId/familyMembers", async (req, res) => {
 
 })
 
+router.get("/api/client/:cardNumber", async (req, res) => {
+    const { cardNumber } = req.params
+    const client = Client.findOne(
+        {
+            where: {
+                cardNumber: cardNumber
+            }
+        }
+    )
+    return res.json(client)
+})
+
 router.post("/api/client", async (req, res) => {
     const {
         firstName,
@@ -89,8 +101,9 @@ router.post("/api/client", async (req, res) => {
     })
 
     await client.save()
+
     return res.json(client)
-})
+});
 
 router.delete("/api/client/:clientId/delete", async (req, res) => {
     const { clientId } = req.params
@@ -105,5 +118,4 @@ router.delete("/api/client/:clientId/delete", async (req, res) => {
 
 })
 
-
-export { router as clientController }
+export { router as clientRouter }
