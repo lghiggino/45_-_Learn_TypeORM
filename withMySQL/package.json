@@ -8,6 +8,8 @@
   "scripts": {
     "test": "",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "dev2": "nodemon --ignore src/routes.ts --ignore load-test/*.js --ext ts,js --exec 'yarn tsoa:routes && ts-node src/app.ts'",
+    "tsoa:routes": "yarn tsoa routes -c ./tsoa.json",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/app.js",
     "whileBuilding": "nodemon --watch './**/*.ts' --exec 'ts-node' src/app.ts"
