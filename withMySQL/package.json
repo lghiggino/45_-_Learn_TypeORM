@@ -9,7 +9,7 @@
     "test": "",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node build/src/server.js",
+    "start": "node build/src/app.js",
     "whileBuilding": "nodemon --watch './**/*.ts' --exec 'ts-node' src/app.ts"
   },
   "devDependencies": {

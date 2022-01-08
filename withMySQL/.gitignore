@@ -48,10 +48,9 @@ Thumbs.db
 
 # nao gravar chave privada no git!
 *.key
-.env
 
+#Environment files
+*.env
 
-
-#project specific
-bankerClient/.env
-bankerClient/notes.txt
+#Text files
+*.txt

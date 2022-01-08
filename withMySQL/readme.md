@@ -1,10 +1,9 @@
 #RCH-FLASH-API
 
 Passo a passo para criar a conexão
-- $ docker run --name rchmysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql:latest
--- localhost:3306
--- username: root
--- password: my-secret-pw
+- $ docker run --name withmysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql:latest
+
+
 -- No DBeaver: Aba SSL > Use SSL > deixar os campos em branco
 
 
