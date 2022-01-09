@@ -30,10 +30,9 @@ export class UsersController extends Controller {
     @Get("{userId}")
     public async getUser(
         @Path() userId: number,
-        @Query() name?: string
+        // @Query() name?: string
     ): Promise<User> {
-        console.log("bateu aqui dentro")
-        return usersService.get(userId, name)
+        return usersService.get(userId)
     }
 
     @Response<ValidateErrorJSON>(422, "Validation Failed")
