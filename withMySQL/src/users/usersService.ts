@@ -11,10 +11,22 @@ export class UsersService {
         return user
     }
 
-    public create(userCreationParams: UserCreationParams): User {
-        return {
-            id: Math.floor(Math.random() * 10000),
-            ...userCreationParams
-        }
+    public async create(userCreationParams: UserCreationParams): Promise<User> {
+        console.log("NA ROTA POST O QUE CHEGA É: ", userCreationParams)
+        const {
+            email,
+            name,
+            phoneNumbers
+        } = userCreationParams
+
+        const user = User.create({
+            email,
+            name,
+            phoneNumbers
+        })
+
+        await user.save()
+
+        return user
     }
 }
