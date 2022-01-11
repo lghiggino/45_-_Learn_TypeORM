@@ -1,32 +1,23 @@
-import { getRepository } from "typeorm";
 import { User } from "../entities/User";
+import { UsersRepository } from "./usersRepository";
 
 export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">
 
+const usersRepository = new UsersRepository
 
 export class UsersService {
+    public async getByName(username: string): Promise<User> {
+        const user = await usersRepository.findOne(username)
+        return user
+    }
+
     public async get(id: number): Promise<User> {
-        const userRepository = getRepository(User)
-        const user = await userRepository.findOneOrFail(id)
+        const user = await usersRepository.getById(id)
         return user
     }
 
     public async create(userCreationParams: UserCreationParams): Promise<User> {
-        console.log("NA ROTA POST O QUE CHEGA É: ", userCreationParams)
-        const {
-            email,
-            name,
-            phoneNumbers
-        } = userCreationParams
-
-        const user = User.create({
-            email,
-            name,
-            phoneNumbers
-        })
-
-        await user.save()
-
+        const user = await usersRepository.create(userCreationParams)
         return user
     }
 }
