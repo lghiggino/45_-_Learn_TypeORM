@@ -19,7 +19,7 @@ import { User } from "./entities/User";
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
         entities: [
-            User
+            "entities/*.js"
         ],
         synchronize: true
     }
@@ -73,7 +73,7 @@ import { User } from "./entities/User";
                 });
             }
 
-            next(); 
+            next();
         });
 
         const port = process.env.PORT || 3000;
