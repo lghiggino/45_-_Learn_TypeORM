@@ -13,3 +13,7 @@ Se o container já existir
 
 ###Rotas:
 - http://localhost:3000/docs
+
+
+####Continuar daqui:
+https://youtu.be/ZBlW5IBdhKk?t=785
