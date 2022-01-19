@@ -1,7 +1,7 @@
 import { User } from "../entities/User";
 import { UsersRepository } from "./usersRepository";
 
-export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">
+export type UserCreationParams = Pick<User, "email" | "firstName" | "lastName" | "phoneNumbers">
 
 const usersRepository = new UsersRepository
 
@@ -20,4 +20,6 @@ export class UsersService {
         const user = await usersRepository.create(userCreationParams)
         return user
     }
+
+    
 }

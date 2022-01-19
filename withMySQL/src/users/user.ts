@@ -10,6 +10,7 @@ export interface User {
     * The email the user used to register his account
     */
     email: string;
-    name: string;
+    firstName: string;
+    lastName: string;
     phoneNumbers: string[];
 }

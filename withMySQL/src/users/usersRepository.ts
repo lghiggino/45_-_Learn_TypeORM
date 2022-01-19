@@ -2,7 +2,7 @@ import { getRepository } from "typeorm";
 import { User } from "../entities/User";
 
 
-export type UserCreationParams = Pick<User, "email" | "name" | "phoneNumbers">
+export type UserCreationParams = Pick<User, "email" | "firstName" | "lastName" | "phoneNumbers">
 
 export class UsersRepository {
     public async findOne(username: string) {
@@ -20,13 +20,15 @@ export class UsersRepository {
     public async create(userCreationParams: UserCreationParams): Promise<User> {
         const {
             email,
-            name,
+            firstName,
+            lastName,
             phoneNumbers
         } = userCreationParams
 
         const user = User.create({
             email,
-            name,
+            firstName,
+            lastName,
             phoneNumbers
         })
 

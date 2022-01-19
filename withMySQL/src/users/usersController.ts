@@ -9,7 +9,8 @@ import {
     Response,
     SuccessResponse,
     ValidateError,
-    Example
+    Example,
+    Delete
 } from "tsoa"
 
 import { User } from "./user"
@@ -30,7 +31,8 @@ export class UsersController extends Controller {
     */
     @Example<User>({
         id: 1,
-        name: "tsoa user",
+        firstName: "tsoaUser",
+        lastName: "from example",
         email: "hello@tsoa.com",
         phoneNumbers: [],
     })
@@ -54,4 +56,6 @@ export class UsersController extends Controller {
     public async createUser(@Body() requestBody: UserCreationParams): Promise<User> {
         return await usersService.create(requestBody)
     }
+
+    
 }

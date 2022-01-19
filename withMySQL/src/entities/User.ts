@@ -10,7 +10,10 @@ export class User extends BaseEntity{
     email!: string;
 
     @Column({ type: "text" })
-    name!: string
+    firstName!: string
+
+    @Column({ type: "text" })
+    lastName!: string
 
     @Column("simple-array")
     phoneNumbers!: string[]
