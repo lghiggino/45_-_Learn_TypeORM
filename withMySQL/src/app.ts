@@ -19,7 +19,7 @@ import { User } from "./entities/User";
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
         entities: [
-            "entities/*.js"
+            User
         ],
         synchronize: true
     }
