@@ -1,4 +1,3 @@
-import { getConnection } from "typeorm";
 import { User } from "../entities/User";
 import { UsersRepository } from "./usersRepository";
 
@@ -24,12 +23,7 @@ export class UsersService {
     }
 
     public async deleteById(userId: number) {
-        await getConnection()
-        .createQueryBuilder()
-        .delete()
-        .from(User)
-        .where("id = :userId")
-        .execute();
-        return `deleted ${userId} from User`
+        const user = await usersRepository.deleteById(userId)
+        return user
     }
 }
