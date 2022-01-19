@@ -1,3 +1,4 @@
+import { getConnection } from "typeorm";
 import { User } from "../entities/User";
 import { UsersRepository } from "./usersRepository";
 
@@ -6,6 +7,7 @@ export type UserCreationParams = Pick<User, "email" | "firstName" | "lastName" |
 const usersRepository = new UsersRepository
 
 export class UsersService {
+    
     public async getByName(username: string): Promise<User> {
         const user = await usersRepository.findOne(username)
         return user
@@ -21,5 +23,13 @@ export class UsersService {
         return user
     }
 
-    
+    public async deleteById(userId: number) {
+        await getConnection()
+        .createQueryBuilder()
+        .delete()
+        .from(User)
+        .where("id = :userId")
+        .execute();
+        return `deleted ${userId} from User`
+    }
 }

@@ -57,5 +57,8 @@ export class UsersController extends Controller {
         return await usersService.create(requestBody)
     }
 
-    
+    @Delete("/id/{userId}")
+    public async deleteById(@Path() userId: number){
+        return await usersService.deleteById(userId)
+    }
 }
