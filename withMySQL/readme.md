@@ -16,4 +16,7 @@ Se o container já existir
 
 
 ####Continuar daqui:
-https://youtu.be/6o0Vw0665kw?t=880
+https://www.youtube.com/watch?v=f--l_P6pa44
+
+####Docs
+https://github.com/typeorm/typeorm/blob/master/docs/delete-query-builder.md
