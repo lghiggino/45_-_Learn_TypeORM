@@ -21,3 +21,6 @@
 
 ## Rodando query da CLI
 - $ npm run typeorm query "SELECT * from user"
+
+
+//https://www.youtube.com/watch?v=EHnTVyvr2nw
