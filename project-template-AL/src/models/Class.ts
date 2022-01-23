@@ -20,12 +20,12 @@ export default class Class {
   @Column()
   duration: number;
 
-  @CreateDateColumn('created_At')
+  @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  // @UpdateDateColumn('update_At')
-  // updatedAt: Date;
+  @UpdateDateColumn({ name: 'updated_At' })
+  updatedAt: Date;
 
-  // @DeleteDateColumn('deleted_At')
-  // deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_At' })
+  deletedAt: Date;
 }
