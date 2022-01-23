@@ -28,7 +28,7 @@ export default class CreateContent1642811861097 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'update_At',
+            name: 'updated_At',
             type: 'timestamp',
             default: 'now()',
           },
