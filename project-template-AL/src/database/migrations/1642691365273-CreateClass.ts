@@ -14,8 +14,6 @@ export default class CreateClass1642691365273 implements MigrationInterface {
             isPrimary: true,
             isUnique: true,
             generationStrategy: 'increment',
-            // generationStrategy: 'uuid',
-            // default: 'uuid_generate_v4()',
           },
           {
             name: 'name',
