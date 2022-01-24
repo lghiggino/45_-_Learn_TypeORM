@@ -3,5 +3,5 @@ import 'reflect-metadata';
 import './database';
 
 app.listen(3000, () => {
-  console.log('🏃 Running Server');
+  console.log('🏃 Running Server on port 3000');
 });
