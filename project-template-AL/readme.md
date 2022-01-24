@@ -1,6 +1,6 @@
 # From AL project
 - Link da playlist: https://www.youtube.com/watch?v=EHnTVyvr2nw&list=PLDqnSpzNKDvn-3cpMf3yPn7gTnb3ooy4b&index=4
-- Continuar os estudos daqui: https://youtu.be/EHnTVyvr2nw?t=798
+- Continuar os estudos daqui: https://youtu.be/FDnuLtSxEEQ?t=121
 
 ### Create a migration - gera uma class
 - $ npm run typeorm migration:create -- -n 'MigrationName' -d src/migrations

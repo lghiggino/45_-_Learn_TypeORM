@@ -15,7 +15,7 @@
   ],
   "cli": {
     "migrationsDir": [
-      "src/migrations/"
+      "src/databse/migrations/"
     ],
     "entitiesDir": "src/models"
   }
