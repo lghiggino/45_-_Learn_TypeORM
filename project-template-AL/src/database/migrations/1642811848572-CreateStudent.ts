@@ -13,6 +13,7 @@ export default class CreateStudent1642811848572 implements MigrationInterface {
             isNullable: false,
             isPrimary: true,
             isUnique: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {

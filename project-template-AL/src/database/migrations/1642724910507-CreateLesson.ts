@@ -12,6 +12,7 @@ export default class CreateLesson1642724910507 implements MigrationInterface {
             isNullable: false,
             isPrimary: true,
             isUnique: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {

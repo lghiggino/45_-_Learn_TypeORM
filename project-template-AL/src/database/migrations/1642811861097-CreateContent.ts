@@ -12,6 +12,7 @@ export default class CreateContent1642811861097 implements MigrationInterface {
             isNullable: false,
             isPrimary: true,
             isUnique: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {
