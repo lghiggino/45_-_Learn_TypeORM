@@ -23,9 +23,9 @@ export default class Class {
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_At' })
+  @UpdateDateColumn({ name: 'updated_At', nullable: true })
   updatedAt: Date;
 
-  @DeleteDateColumn({ name: 'deleted_At' })
+  @DeleteDateColumn({ name: 'deleted_At', nullable: true })
   deletedAt: Date;
 }
