@@ -12,11 +12,7 @@ POST http://localhost:3000/class HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Jackson",
-    "lastName": "Reyes",
-    "email": "jr@itau.com.br",
-    "cardNumber": "0987654321",
-    "employeeNumber": "12ab34cd56",
-    "institutionName": "Itau"
+    "name": "TypeOrm Migrations and Models",
+    "duration": "60"
 }
         

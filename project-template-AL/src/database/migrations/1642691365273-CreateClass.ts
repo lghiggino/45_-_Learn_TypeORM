@@ -32,12 +32,14 @@ export default class CreateClass1642691365273 implements MigrationInterface {
           {
             name: 'updated_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
           {
             name: 'deleted_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
         ],
       })

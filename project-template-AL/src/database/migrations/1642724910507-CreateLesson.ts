@@ -27,12 +27,14 @@ export default class CreateLesson1642724910507 implements MigrationInterface {
           {
             name: 'updated_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
           {
             name: 'deleted_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
         ],
       })

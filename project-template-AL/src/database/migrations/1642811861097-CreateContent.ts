@@ -16,7 +16,7 @@ export default class CreateContent1642811861097 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'descriptiom',
+            name: 'description',
             type: 'varchar',
           },
           {
@@ -31,12 +31,14 @@ export default class CreateContent1642811861097 implements MigrationInterface {
           {
             name: 'updated_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
           {
             name: 'deleted_At',
             type: 'timestamp',
-            default: 'now()',
+            default: 'null',
+            isNullable: true,
           },
         ],
       })
