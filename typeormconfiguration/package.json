@@ -1,0 +1,22 @@
+{
+  "name": "typeormdocumentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lghiggino/45_-_Learn_TypeORM.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lghiggino/45_-_Learn_TypeORM/issues"
+  },
+  "homepage": "https://github.com/lghiggino/45_-_Learn_TypeORM#readme",
+  "dependencies": {
+    "puppeteer": "^13.1.2"
+  }
+}
