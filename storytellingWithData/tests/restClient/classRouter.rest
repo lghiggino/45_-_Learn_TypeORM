@@ -1,0 +1,28 @@
+POST http://localhost:3000/class HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Data Structures And Algorithms",
+    "duration": "200"
+}
+        
+###
+POST http://localhost:3000/class HTTP/1.1
+content-type: application/json
+
+{
+    "name": "TypeOrm Migrations and Models",
+    "duration": "60"
+}
+
+###
+GET http://localhost:3000/class/1 HTTP/1.1
+
+###
+DELETE http://localhost:8080/api/client/1/delete HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:8080/api/banker/2/client/1/transaction HTTP/1.1
+content-type: application/json
+        
