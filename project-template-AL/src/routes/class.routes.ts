@@ -11,14 +11,14 @@ classRouter.post('/', async (req, res) => {
     return res.status(201).json(savedClass);
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error?.message);
+      console.error('error >>', error?.message);
     } else {
-      console.log(error);
+      console.log('error >>', error);
     }
   }
 });
 
-classRouter.get('/:id', async (req, res) => {
+classRouter.get('/byId/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const repo = getRepository(Class);
@@ -26,9 +26,23 @@ classRouter.get('/:id', async (req, res) => {
     return res.status(200).json(classById);
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error?.message);
+      console.error('error >>', error?.message);
     } else {
-      console.log(error);
+      console.log('error >>', error);
+    }
+  }
+});
+
+classRouter.get('/listAll', async (req, res) => {
+  try {
+    const repo = getRepository(Class);
+    const list = await repo.find();
+    return res.status(200).json(list);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('error >>', error?.message);
+    } else {
+      console.log('error >>', error);
     }
   }
 });

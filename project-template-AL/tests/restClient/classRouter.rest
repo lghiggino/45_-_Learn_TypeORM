@@ -16,7 +16,11 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/class/1 HTTP/1.1
+GET http://localhost:3000/class/byId/2 HTTP/1.1
+
+###
+
+GET http://localhost:3000/class/listAll HTTP/1.1
 
 ###
 DELETE http://localhost:8080/api/client/1/delete HTTP/1.1

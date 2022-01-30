@@ -11,9 +11,9 @@ contentRouter.post('/', async (req, res) => {
     return res.status(201).json(savedContent);
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error?.message)
+      console.error('error >>', error?.message);
     } else {
-      console.log(error)
+      console.log('error >>', error);
     }
   }
 
