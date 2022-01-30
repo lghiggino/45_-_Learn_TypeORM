@@ -22,6 +22,8 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "consistent-return": "off",
+    "no-console": "off",
     "prettier/prettier": "error",
     "class-methods-use-this":"off",
     "import/extensions": [
