@@ -33,6 +33,23 @@ classRouter.get('/byId/:id', async (req, res) => {
   }
 });
 
+classRouter.get('/byName/:name', async (req, res) => {
+  try {
+    const { name } = req.params;
+    const listByName = await getRepository(Class)
+      .createQueryBuilder('class')
+      .where('class.name like :name', { name: `%${name}%` })
+      .getMany();
+    return res.status(200).json(listByName);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('error >>', error?.message);
+    } else {
+      console.log('error >>', error);
+    }
+  }
+});
+
 classRouter.get('/listAll', async (req, res) => {
   try {
     const repo = getRepository(Class);
