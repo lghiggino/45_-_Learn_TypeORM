@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { getRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import Class from '../models/Class';
+import ClassRepository from '../repositories/ClassRepository';
 
 const classRouter = Router();
 
@@ -36,10 +37,8 @@ classRouter.get('/byId/:id', async (req, res) => {
 classRouter.get('/byName/:name', async (req, res) => {
   try {
     const { name } = req.params;
-    const listByName = await getRepository(Class)
-      .createQueryBuilder('class')
-      .where('class.name like :name', { name: `%${name}%` })
-      .getMany();
+    const repository = getCustomRepository(ClassRepository);
+    const listByName = await repository.findByNameKeyword(name);
     return res.status(200).json(listByName);
   } catch (error) {
     if (error instanceof Error) {
