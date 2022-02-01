@@ -8,17 +8,17 @@ import {
 } from 'typeorm';
 
 @Entity()
-export default class Teste {
+export default class Banana {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({
     length: 100,
   })
-  testName: string;
+  bananaName: string;
 
   @Column()
-  testDuration: number;
+  bananSpecies: string;
 
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;

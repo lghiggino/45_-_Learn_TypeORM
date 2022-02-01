@@ -20,6 +20,10 @@
 ### Execute a migration
 - $ npm run typeorm migration:run
 
+### Generate a migration
+- $ npm run typeorm migration:generate -- -n 'GeneratedMigrationName' -d src/migrations
+- - Vai gerar uma migration baseada no model de mesmo nome
+
 ### Ver detalhes de migração
 - $ npm run typeorm migration:show
 
