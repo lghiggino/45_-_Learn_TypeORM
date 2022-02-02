@@ -12,7 +12,8 @@ content-type: application/json
 
 {
     "name": "TypeOrm Migrations and Models",
-    "duration": "60"
+    "duration": "60",
+    "credits": 12
 }
 
 ###

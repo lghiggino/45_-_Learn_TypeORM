@@ -17,6 +17,11 @@ export default class Class {
   })
   name: string;
 
+  @Column({
+    length: 500,
+  })
+  description: string;
+
   @Column()
   duration: number;
 
