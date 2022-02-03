@@ -94,5 +94,5 @@ export class ClassTableAddCredits2Column1643822159149 implements MigrationInterf
         await queryRunner.query(`CREATE UNIQUE INDEX \`UQ_6a2083913f3647b44f205204e36\` ON \`content\` (\`id\`)`);
         await queryRunner.query(`CREATE UNIQUE INDEX \`UQ_0b9024d21bdfba8b1bd1c300eae\` ON \`class\` (\`id\`)`);
     }
-
+  }
 }
