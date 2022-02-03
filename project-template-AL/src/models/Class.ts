@@ -15,7 +15,7 @@ export default class Class {
   @Column({
     length: 100,
   })
-  name: string;
+  discipline: string;
 
   @Column({
     length: 500,
