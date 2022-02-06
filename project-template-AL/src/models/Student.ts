@@ -25,9 +25,9 @@ export default class Student {
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_At' })
+  @UpdateDateColumn({ name: 'updated_At', nullable: true, default: null })
   updatedAt: Date;
 
-  @DeleteDateColumn({ name: 'deleted_At' })
+  @DeleteDateColumn({ name: 'deleted_At', nullable: true, default: null })
   deletedAt: Date;
 }
