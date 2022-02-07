@@ -34,4 +34,20 @@ homeRouter.get('/', async (req, res) => {
   }
 });
 
+homeRouter.get('/health', async (req, res) => {
+  try {
+    // const { id } = req.params;
+    // const repo = getRepository(Class);
+    // const classById = await repo.findOneOrFail(id);
+    // eslint-disable-next-line prettier/prettier
+    return res.status(200).json(`I'm Healthy at ${new Date().toLocaleDateString()}`);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('error >>', error?.message);
+    } else {
+      console.log('error >>', error);
+    }
+  }
+});
+
 export default homeRouter;
