@@ -6,7 +6,6 @@ import contentRouter from './content.routes';
 const routes = Router();
 
 routes.use('/', homeRouter);
-
 routes.use('/class', classRouter);
 routes.use('/content', contentRouter);
 
