@@ -11,9 +11,10 @@ POST http://localhost:3000/class HTTP/1.1
 content-type: application/json
 
 {
-    "name": "TypeOrm Migrations and Models",
+    "discipline": "TypeOrm Migrations and Models",
     "duration": "60",
-    "credits": 12
+    "credits": 12,
+    "description": "course foo bar"
 }
 
 ###

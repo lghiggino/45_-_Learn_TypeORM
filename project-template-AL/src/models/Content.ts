@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('Content')
 export default class Content {
   @PrimaryGeneratedColumn('increment')
   id: number;
