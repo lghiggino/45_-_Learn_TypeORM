@@ -9,16 +9,15 @@ module.exports = {
   "synchronize": false,
   "logging": false,
   "entities": [
-    "src/models/**/*.ts",
-    "src/models/**/*.js"
+    process.env.ENTITIES,
   ],
   "migrations": [
-    "src/database/migrations/**/*.ts"
+    process.env.MIGRATIONS
   ],
   "cli": {
     "migrationsDir": [
-      "src/databse/migrations/"
+      process.env.CLI
     ],
-    "entitiesDir": "src/models"
+    "entitiesDir": process.env.ENTITIES_DIR
   }
 }
