@@ -2,7 +2,7 @@ module.exports = {
   "type": "mysql",
   "url": process.env.CLEARDB_DATABASE_URL || process.env.DATABASE_URL,
   "host": "localhost",
-  "port": process.env.PORT || 3306,
+  "port": process.env.PORT || 3000,
   "username": "root",
   "password": "my-secret-pw",
   "database": "withmysql",

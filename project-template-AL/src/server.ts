@@ -5,6 +5,6 @@ import './database';
 
 dotenv.config();
 
-app.listen(3000, () => {
-  console.log('🏃 Running Server on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`🏃 Running Server on port ${process.env.PORT}`);
 });
