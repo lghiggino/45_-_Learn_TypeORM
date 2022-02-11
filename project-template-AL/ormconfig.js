@@ -19,5 +19,8 @@ module.exports = {
       process.env.CLI
     ],
     "entitiesDir": process.env.ENTITIES_DIR
+  },
+  extra: {
+    ssl: true
   }
 }
