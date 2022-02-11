@@ -1,6 +1,6 @@
 module.exports = {
   "type": "postgres",
-  "url": "postgres://postgres:docker@localhost:5433/mussum",
+  "url": process.env.DATABASE_URL,
   "entities": [
     process.env.ENTITIES
   ],
@@ -12,5 +12,8 @@ module.exports = {
       process.env.CLI
     ],
     "entitiesDir": process.env.ENTITIES_DIR
+  },
+  extra: {
+    ssl: true
   }
 }

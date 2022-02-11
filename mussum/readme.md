@@ -3,3 +3,12 @@
 
 ## Rodando o container
 - $ docker start postgresMussum
+
+## Conectando com o banco de dados no Heroku
+- $ heroku pg:psql
+
+## Conectando com o servidor no Heroku
+- $ heroku run bash
+
+## Rodando as Migrations dentro do servidor da Heroku
+- $ npx typeorm migration:run
