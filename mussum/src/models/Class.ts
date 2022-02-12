@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 
 @Entity('class')
@@ -12,7 +13,7 @@ export default class Class {
   id: string;
 
   @Column({
-    length: 100,
+    length: 60,
     unique: true,
   })
   name: string;
@@ -20,9 +21,19 @@ export default class Class {
   @Column()
   duration: number;
 
+  @Column({
+    length: 200,
+    nullable: true,
+    default: null,
+  })
+  description: string;
+
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'update_At' })
+  @UpdateDateColumn({ name: 'update_At', nullable: true, default: null })
   updatedAt: Date;
+
+  @DeleteDateColumn({ name: 'update_At', nullable: true, default: null })
+  deletedAt: Date;
 }
