@@ -1,14 +1,12 @@
 const dotenv = require("dotenv")
 dotenv.config()
 
-console.log("DATABASE_URL ", process.env.DATABASE_URL)
+console.log("DATABASE_URL ", process.env.DATABASE_URL )
 console.log("PORT", process.env.PORT)
-console.log("ENTITIES ", process.env.ENTITIES)
-console.log("MIGRATIONS ", process.env.MIGRATIONS)
-console.log("CLI ", process.env.CLI)
+console.log("ENTITIES ", process.env.ENTITIES )
+console.log("MIGRATIONS ", process.env.MIGRATIONS )
+console.log("CLI ", process.env.CLI )
 console.log("ENTITIES_DIR", process.env.ENTITIES_DIR)
-console.log("SSL", process.env.SSL)
-console.log("EXTRA", process.env.EXTRA)
 
 module.exports = {
   "type": "postgres",
@@ -25,6 +23,6 @@ module.exports = {
     ],
     "entitiesDir": process.env.ENTITIES_DIR
   },
-  "ssl": true,
-  "extra": process.env.EXTRA
+  "ssl": true, 
+  "extra": { "ssl": { "rejectUnauthorized": false }}
 }
