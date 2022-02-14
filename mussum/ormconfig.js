@@ -1,6 +1,8 @@
 const dotenv = require("dotenv")
 dotenv.config()
 
+const Class = require("./dist/models/Class")
+
 console.log("DATABASE_URL ", process.env.DATABASE_URL )
 console.log("PORT", process.env.PORT)
 console.log("ENTITIES ", process.env.ENTITIES )
@@ -12,7 +14,7 @@ module.exports = {
   "type": "postgres",
   "url": process.env.DATABASE_URL,
   "entities": [
-    process.env.ENTITIES
+    Class
   ],
   "migrations": [
     process.env.MIGRATIONS
