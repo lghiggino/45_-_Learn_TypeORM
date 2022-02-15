@@ -14,7 +14,7 @@ module.exports = {
   "type": "postgres",
   "url": process.env.DATABASE_URL,
   "entities": [
-    Class
+    process.env.ENTITIES
   ],
   "migrations": [
     process.env.MIGRATIONS
