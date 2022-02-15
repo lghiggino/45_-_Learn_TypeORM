@@ -7,6 +7,9 @@
 ## Conectando com o banco de dados no Heroku
 - $ heroku pg:psql
 
+### Lendo os dados do banco
+- $ \dt+
+
 ## Conectando com o servidor no Heroku
 - $ heroku run bash
 
