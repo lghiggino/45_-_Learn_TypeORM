@@ -21,6 +21,6 @@ module.exports = {
     ],
     "entitiesDir": "src/models"
   },
-  // "ssl": true,
-  // "extra": { "ssl": { "rejectUnauthorized": false } }
+  "ssl": true,
+  "extra": { "ssl": { "rejectUnauthorized": false } }
 }
