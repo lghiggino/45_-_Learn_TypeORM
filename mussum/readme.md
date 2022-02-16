@@ -7,6 +7,9 @@
 ## Conectando com o banco de dados no Heroku
 - $ heroku pg:psql
 
+## Conectando localhost 
+- $ psql -h localhost -p 5433 -U postgres
+
 ### Lendo os dados do banco
 - $ \dt+
 

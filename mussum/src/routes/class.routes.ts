@@ -11,7 +11,7 @@ classRouter.post('/', async (request, response) => {
     const res = await repo.save(request.body);
     return response.status(201).json(res);
   } catch (err) {
-    console.log('err.message :>> ', err);
+    console.log('err.message :>> ', err.message);
   }
 });
 

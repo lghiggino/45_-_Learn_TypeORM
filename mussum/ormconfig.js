@@ -1,30 +1,26 @@
-const dotenv = require("dotenv")
-dotenv.config()
-
-const Class = require("./dist/models/Class")
-
-console.log("DATABASE_URL ", process.env.DATABASE_URL )
+console.log('process.env.DATABASE_URL :>> ', process.env.DATABASE_URL);
+console.log("DATABASE_URL ", process.env.DATABASE_URL)
 console.log("PORT", process.env.PORT)
-console.log("ENTITIES ", process.env.ENTITIES )
-console.log("MIGRATIONS ", process.env.MIGRATIONS )
-console.log("CLI ", process.env.CLI )
+console.log("ENTITIES ", process.env.ENTITIES)
+console.log("MIGRATIONS ", process.env.MIGRATIONS)
+console.log("CLI ", process.env.CLI)
 console.log("ENTITIES_DIR", process.env.ENTITIES_DIR)
 
 module.exports = {
   "type": "postgres",
   "url": process.env.DATABASE_URL,
   "entities": [
-    process.env.ENTITIES
+    "dist/models/**/*.js"
   ],
   "migrations": [
-    process.env.MIGRATIONS
+    "dist/database/migrations/**/*.js"
   ],
   "cli": {
     "migrationsDir": [
-      process.env.CLI
+      "src/database/migrations/"
     ],
-    "entitiesDir": process.env.ENTITIES_DIR
+    "entitiesDir": "src/models"
   },
-  "ssl": true, 
-  "extra": { "ssl": { "rejectUnauthorized": false }}
+  // "ssl": true,
+  // "extra": { "ssl": { "rejectUnauthorized": false } }
 }
