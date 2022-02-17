@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 console.log('process.env.DATABASE_URL :>> ', process.env.DATABASE_URL);
 console.log("DATABASE_URL ", process.env.DATABASE_URL)
 console.log("PORT", process.env.PORT)
@@ -6,7 +9,7 @@ console.log("MIGRATIONS ", process.env.MIGRATIONS)
 console.log("CLI ", process.env.CLI)
 console.log("ENTITIES_DIR", process.env.ENTITIES_DIR)
 
-module.exports = {
+const ormconfig = {
   "type": "postgres",
   "url": process.env.DATABASE_URL,
   "entities": [
@@ -21,6 +24,10 @@ module.exports = {
     ],
     "entitiesDir": "src/models"
   },
-  "ssl": true,
-  "extra": { "ssl": { "rejectUnauthorized": false } }
+  // "ssl": true,
+  // "extra": { "ssl": { "rejectUnauthorized": false } },
+  // synchronyze: true,
+  // logging: false
 }
+
+module.exports = ormconfig
