@@ -1,6 +1,6 @@
 # From AL project
 - Link da playlist: https://www.youtube.com/watch?v=EHnTVyvr2nw&list=PLDqnSpzNKDvn-3cpMf3yPn7gTnb3ooy4b&index=4
-- Continuar os estudos daqui: https://youtu.be/DVTceFeaAdc?t=1860
+- Continuar os estudos daqui: https://youtu.be/DVTceFeaAdc?t=1920
 - alt: https://www.youtube.com/watch?v=57E8LcqisbQ&list=PLDqnSpzNKDvn-3cpMf3yPn7gTnb3ooy4b&index=7
 
 ## Gerando o projeto no Docker, e depois rodando a imaga
