@@ -1,0 +1,11 @@
+POST http://localhost:3000/teacher HTTP/1.1
+content-type: application/json
+
+{
+    "name": "TypeOrm Migrations and Models",
+    "banana": "banana",
+    "duration": "60"
+}
+
+###
+GET http://localhost:3000/teacher/1 HTTP/1.1

@@ -8,7 +8,7 @@ module.exports = {
   database: 'analysis',
   dropSchema: false,
   logging: false,
-  synchroize: false,
+  synchroize: true,
   migrationsRun: true,
   "entities": [
     "src/models/**/*.ts"
