@@ -29,9 +29,10 @@
 - Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 - SELECT DISTINCT school FROM teachers;
 
-      school        
----------------------
- Myers Middle School
- F.D. Roosevelt HS
+
+| school  |
+|---|
+| Myers Middle School  |
+| F.D. Roosevelt HS  |
 
 
