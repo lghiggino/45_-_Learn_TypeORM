@@ -21,18 +21,23 @@
 #### ALTER TABLE Rename Column Name
 - ALTER TABLE species RENAME COLUMN common_species_name TO common_name;
 
-#### SELECT
-- Select All: SELECT * FROM teachers;
-- Select Some Column(s): SELECT first_name, last_name FROM teachers;
+#### SELECT ALL
+- SELECT * FROM teachers;
+
+#### SELECT COLUMN
+- SELECT first_name, last_name FROM teachers;
 
 #### SELECT DISTINCT
 - Distinct elimina dados duplicados e nos mostra apenas valores unicos.
-- SELECT DISTINCT school FROM teachers;
-| school  |
-|---|
-| Myers Middle School  |
-| F.D. Roosevelt HS  |
 
+- SELECT DISTINCT school FROM teachers;
+|        school        |
+|----------------------|
+|  Myers Middle School |
+|  F.D. Roosevelt HS   |
+
+
+##### SELECT DISTINCT de Multiplas Colunas
 - SELECT DISTINCT school, salary FROM teachers;
 |       school        | salary |
 |---------------------|--------|
@@ -63,7 +68,17 @@ Para cada casa de shows, quais são os artistas que se apresentarão?
 
 	O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string podem ter ordenamento estranho devido ao charCode.
 
-- SELECT 
+##### Multiplos ORDER BY
+- SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
+
+| last_name |       school        | hire_date  |
+|-----------|---------------------|------------|
+| Smith     | F.D. Roosevelt HS   | 2011-10-30 |
+| Roush     | F.D. Roosevelt HS   | 2010-10-22 |
+| Reynolds  | F.D. Roosevelt HS   | 1993-05-22 |
+| Bush      | Myers Middle School | 2011-10-30 |
+| Diaz      | Myers Middle School | 2005-08-30 |
+| Cole      | Myers Middle School | 2005-08-01 |
 
 
 
