@@ -9,30 +9,64 @@
 - psql -h localhost -p 5433 -U postgres
 
 ## COMANDOS DE SQL
-#### Create a new Table
+#### CREATE a new TABLE
 - CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
 
-#### Single Insert
+#### Single INSERT
 - INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Janet', 'Smith', 'F.D. Roosevelt HS', '2011-10-30', 36200);
 
 #### Multiple Inserts
 - INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Lee', 'Reynolds', 'F.D. Roosevelt HS', '1993-05-22', 65000), ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43500), ('Samantha', 'Bush', 'Myers Middle School', '2011-10-30', 36200), ('Betty', 'Diaz', 'Myers Middle School', '2005-08-30', 43500), ('Kathleen', 'Roush', 'F.D. Roosevelt HS', '2010-10-22', 38500);
 
-#### Alter Column Name
+#### ALTER TABLE Rename Column Name
 - ALTER TABLE species RENAME COLUMN common_species_name TO common_name;
 
-#### Select
+#### SELECT
 - Select All: SELECT * FROM teachers;
 - Select Some Column(s): SELECT first_name, last_name FROM teachers;
 
-#### Distinct
+#### SELECT DISTINCT
 - Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 - SELECT DISTINCT school FROM teachers;
-
-
 | school  |
 |---|
 | Myers Middle School  |
 | F.D. Roosevelt HS  |
+
+- SELECT DISTINCT school, salary FROM teachers;
+|       school        | salary |
+|---------------------|--------|
+| Myers Middle School |  36200 |
+| F.D. Roosevelt HS   |  65000 |
+| Myers Middle School |  43500 |
+| F.D. Roosevelt HS   |  38500 |
+| F.D. Roosevelt HS   |  36200 |
+
+	Ao fazer SELECT DISTINCT de multiplas colunas os valores únicos serão apresentados integralemnte, os repetidos (em ambas colunas) apenas uma vez. Notar que 36200 se repete porque é distinto em escolas diferentes.
+
+Para cada X na tabela quais são todos os valores de Y?
+Para cada fábrica quais produtos são produzidos?
+Para cada distrito eleitorarl, quais são os candidatos que concorrem?
+Para cada casa de shows, quais são os artistas que se apresentarão?
+
+#### ORDER BY
+- SELECT first_name, last_name, salary FROM teachers, ORDER BY salary DESC;
+
+| first_name | last_name | salary  |
+|------------|-----------|-------- |
+| Lee        | Reynolds  |  65000  |
+| Samuel     | Cole      |  43500  |
+| Betty      | Diaz      |  43500  |
+| Kathleen   | Roush     |  38500  |
+| Janet      | Smith     |  36200  |
+| Samantha   | Bush      |  36200  |
+
+	O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string podem ter ordenamento estranho devido ao charCode.
+
+- SELECT 
+
+
+
+
 
 
