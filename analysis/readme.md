@@ -28,7 +28,7 @@
 - SELECT first_name, last_name FROM teachers;
 
 #### SELECT DISTINCT
-- Distinct elimina dados duplicados e nos mostra apenas valores unicos.
+Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 
 - SELECT DISTINCT school FROM teachers;
 |        school        |
@@ -47,11 +47,11 @@
 | F.D. Roosevelt HS   |  38500 |
 | F.D. Roosevelt HS   |  36200 |
 
-	Ao fazer SELECT DISTINCT de multiplas colunas os valores únicos serão apresentados integralemnte, os repetidos (em ambas colunas) apenas uma vez. Notar que 36200 se repete porque é distinto em escolas diferentes.
+Ao fazer SELECT DISTINCT de multiplas colunas os valores únicos serão apresentados integralemnte, os repetidos (em ambas colunas) apenas uma vez. Notar que 36200 se repete porque é distinto em escolas diferentes.
 
 Para cada X na tabela quais são todos os valores de Y?
 Para cada fábrica quais produtos são produzidos?
-Para cada distrito eleitorarl, quais são os candidatos que concorrem?
+Para cada distrito eleitoral, quais são os candidatos que concorrem?
 Para cada casa de shows, quais são os artistas que se apresentarão?
 
 #### ORDER BY
@@ -66,7 +66,7 @@ Para cada casa de shows, quais são os artistas que se apresentarão?
 | Janet      | Smith     |  36200  |
 | Samantha   | Bush      |  36200  |
 
-	O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string podem ter ordenamento estranho devido ao charCode.
+O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string podem ter ordenamento estranho devido ao charCode.
 
 ##### Multiplos ORDER BY
 - SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
@@ -79,6 +79,60 @@ Para cada casa de shows, quais são os artistas que se apresentarão?
 | Bush      | Myers Middle School | 2011-10-30 |
 | Diaz      | Myers Middle School | 2005-08-30 |
 | Cole      | Myers Middle School | 2005-08-01 |
+
+#### WHERE
+Filtro de Linhas
+- SElECT last_name, school, hire_date FROM teachers WHERE school = 'Myers Middle School';
+
+| last_name |       school        | hire_date  |
+|-----------|---------------------|------------|
+| Cole      | Myers Middle School | 2005-08-01 |
+| Bush      | Myers Middle School | 2011-10-30 |
+| Diaz      | Myers Middle School | 2005-08-30 |
+
+- SELECT first_name, last_name, school, salary FROM teachers WHERE salary >= 38000;
+
+| first_name | last_name |       school        | salary |
+|------------|-----------|---------------------|--------|
+| Lee        | Reynolds  | F.D. Roosevelt HS   |  65000 |
+| Samuel     | Cole      | Myers Middle School |  43500 |
+| Betty      | Diaz      | Myers Middle School |  43500 |
+| Kathleen   | Roush     | F.D. Roosevelt HS   |  38500 |
+
+##### WHERE OPERATORS
+|    function    |   operator   |
+|----------------|--------------|
+|   equal to     |       =      |
+|  less than     |       <      |
+|  more than     |       >      |
+|  less or equal |      <=      |
+|  more or equal |      >=      |
+|       or       |      <>      |
+|    not equal   |      !=      |
+|     between    |    BETWEEN   |
+|       in       |      IN      |
+
+- SELECT first_name, last_name, salary FROM teachers WHERE salary BETWEEN 20000 AND 40000; 
+
+| first_name | last_name | salary |
+|------------|-----------|--------|
+| Janet      | Smith     |  36200 |
+| Samantha   | Bush      |  36200 |
+| Kathleen   | Roush     |  38500 |
+
+- SELECT first_name, last_name, salary FROM teachers WHERE last_name IN ('Bush', 'Roush'); 
+
+| first_name | last_name | salary | 
+|------------|-----------|--------|
+| Samantha   | Bush      |  36200 |
+| Kathleen   | Roush     |  38500 |
+
+
+
+
+
+
+
 
 
 
