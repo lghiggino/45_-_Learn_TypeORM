@@ -31,6 +31,7 @@
 Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 
 - SELECT DISTINCT school FROM teachers;
+
 |        school        |
 |----------------------|
 |  Myers Middle School |
@@ -39,6 +40,7 @@ Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 
 ##### SELECT DISTINCT de Multiplas Colunas
 - SELECT DISTINCT school, salary FROM teachers;
+
 |       school        | salary |
 |---------------------|--------|
 | Myers Middle School |  36200 |
