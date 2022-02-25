@@ -167,6 +167,14 @@ Permite que achemos um caractere
 
 É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
 
+####Combinando operadores com OR e AND
+- SELECT * FROM teachers WHERE school = 'Myers Middle School' AND salary < 44000;
+
+| id | first_name | last_name |       school        | hire_date  | salary |
+|----|------------|-----------|---------------------|------------+--------|
+|  3 | Samuel     | Cole      | Myers Middle School | 2005-08-01 |  43500 |
+|  4 | Samantha   | Bush      | Myers Middle School | 2011-10-30 |  36200 |
+|  5 | Betty      | Diaz      | Myers Middle School | 2005-08-30 |  43500 |
 
 
 
