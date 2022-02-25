@@ -24,7 +24,7 @@
 #### SELECT ALL
 - SELECT * FROM teachers;
 
-#### SELECT COLUMN
+#### SELECT COLUMN(s)
 - SELECT first_name, last_name FROM teachers;
 
 #### SELECT DISTINCT
@@ -128,6 +128,20 @@ Filtro de Linhas
 |------------|-----------|--------|
 | Samantha   | Bush      |  36200 |
 | Kathleen   | Roush     |  38500 |
+
+####LIKE (SQL) and ILIKE (PostgreSQL) with WHERE
+Operadores de comparação (>, <, != ...) são bastante diretos mas LIKE e ILIKE nos permitem achar padrões em strings ao usar caracteres especiais.
+A diferença entre eles é que LIKE é case sensitive; enquanto ILIKE é case insensitive.
+
+##### % (sinal de percentual)
+Permite que achemos um ou mais caracteres
+
+##### _ (underscore)
+Permite que achemos um caractere
+
+- LIKE 'b%' retornaria qualquer string iniciada com b minúsculo
+- LIKE '%ak%' retornaria qualquer string com 'ak' no meio
+- LIKE '_aker' retornaria uma string de lenght 5 terminada em 'aker'
 
 
 
