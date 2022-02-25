@@ -1,4 +1,4 @@
-#LEARN SQL Language
+# LEARN SQL Language
 ##### REMEMBER THE ; !!!
 
 ## RODANDO O PROJETO
@@ -129,11 +129,11 @@ Filtro de Linhas
 | Samantha   | Bush      |  36200 |
 | Kathleen   | Roush     |  38500 |
 
-####LIKE (SQL) and ILIKE (PostgreSQL) with WHERE
+#### LIKE (SQL) and ILIKE (PostgreSQL) with WHERE
 Operadores de comparação (>, <, != ...) são bastante diretos mas LIKE e ILIKE nos permitem achar padrões em strings ao usar caracteres especiais.
 A diferença entre eles é que LIKE é case sensitive; enquanto ILIKE é case insensitive.
 
-##### % (sinal de percentual)
+##### % (sinal de percentual) 
 Permite que achemos um ou mais caracteres
 
 ##### _ (underscore)
@@ -168,7 +168,7 @@ Permite que achemos um caractere
 É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
 
 ####Combinando operadores com OR e AND
-- SELECT * FROM teachers WHERE school = 'Myers Middle School' AND salary < 44000;
+- \SELECT * FROM teachers WHERE salary \< 44000 AND school = 'Myers Middle School';
 
 | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------------------|------------+--------|
