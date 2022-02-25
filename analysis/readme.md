@@ -168,7 +168,7 @@ Permite que achemos um caractere
 É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
 
 ####Combinando operadores com OR e AND
-- \SELECT * FROM teachers WHERE salary \< 44000 AND school = 'Myers Middle School';
+- SELECT * FROM teachers WHERE salary '<' 44000 AND school = 'Myers Middle School';
 
 | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------------------|------------+--------|
