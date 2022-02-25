@@ -171,7 +171,7 @@ Permite que achemos um caractere
 - SELECT * FROM teachers WHERE salary '<' 44000 AND school = 'Myers Middle School';
 
 | id | first_name | last_name |       school        | hire_date  | salary |
-|----|------------|-----------|---------------------|------------+--------|
+|----|------------|-----------|---------------------|------------|--------|
 |  3 | Samuel     | Cole      | Myers Middle School | 2005-08-01 |  43500 |
 |  4 | Samantha   | Bush      | Myers Middle School | 2011-10-30 |  36200 |
 |  5 | Betty      | Diaz      | Myers Middle School | 2005-08-30 |  43500 |
