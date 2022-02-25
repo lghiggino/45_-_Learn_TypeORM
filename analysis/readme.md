@@ -143,6 +143,32 @@ Permite que achemos um caractere
 - LIKE '%ak%' retornaria qualquer string com 'ak' no meio
 - LIKE '_aker' retornaria uma string de lenght 5 terminada em 'aker'
 
+- SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
+
+| first_name |
+|------------|
+|(0 rows)    |
+
+- SELECT first_name FROM teachers WHERE first_name LIKE 'Sam%';]
+
+| first_name |
+|------------|
+| Samuel     |
+| Samantha   |
+|(2 rows)    |
+
+- SELECT first_name FROM teachers WHERE first_name ILIKE 'sam%';
+
+| first_name |
+|------------|
+| Samuel     |
+| Samantha   |
+|(2 rows)    |
+
+É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
+
+
+
 
 
 
