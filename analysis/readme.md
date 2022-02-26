@@ -225,6 +225,10 @@ A variable length column with unlimited length
 ##### How to choose between char, varchar or text?
 The flexibility and potential space savings of carchar and text give them advantages, but in some specific cases a fixed length can be better. Say you would like to save a SHA-256 hash, so a char(64) column will be perfect and will help you detect errors when storing data.
 
+- CREATE TABLE char_data_types (varchar_column varchar(10), char_column char(10), text_column text);
+- INSERT INTO char_data_types VALUES ('abc', 'abc', 'abc'),('defghi', 'defghi', 'defghi'),('1234567890', '1234567890', '1234567890');
+
+
 
 
 
