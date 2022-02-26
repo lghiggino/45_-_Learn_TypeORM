@@ -1,14 +1,14 @@
 # LEARN SQL Language
 ##### REMEMBER THE ; !!!
 
-## RODANDO O PROJETO
+## RUNNING THE PROJECT
 - docker run --name analysisManual -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
 
 - docker start analysisManual
 
 - psql -h localhost -p 5433 -U postgres
 
-## COMANDOS DE SQL
+## SQL COMMANDS
 #### CREATE a new TABLE
 - CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
 
@@ -28,7 +28,7 @@
 - SELECT first_name, last_name FROM teachers;
 
 #### SELECT DISTINCT
-Distinct elimina dados duplicados e nos mostra apenas valores unicos.
+Distinct 'cleans up' duplicate date and will only show unique values.
 
 - SELECT DISTINCT school FROM teachers;
 
@@ -49,12 +49,13 @@ Distinct elimina dados duplicados e nos mostra apenas valores unicos.
 | F.D. Roosevelt HS   |  38500 |
 | F.D. Roosevelt HS   |  36200 |
 
-Ao fazer SELECT DISTINCT de multiplas colunas os valores únicos serão apresentados integralemnte, os repetidos (em ambas colunas) apenas uma vez. Notar que 36200 se repete porque é distinto em escolas diferentes.
+When performing multiple SELECT DISTINCT using multiple columns unique values whould be displayed in its entirety. Those that repeat themselves (in every column) will show up only once. Notice how salary equal to 36200 shows up twice, but once for each school.
 
-Para cada X na tabela quais são todos os valores de Y?
-Para cada fábrica quais produtos são produzidos?
-Para cada distrito eleitoral, quais são os candidatos que concorrem?
-Para cada casa de shows, quais são os artistas que se apresentarão?
+For each X on the table what are the values of Y?
+For each Factory what products are made?
+For each electoral district what candidates are running?
+For each hall which artists are performing?
+
 
 #### ORDER BY
 - SELECT first_name, last_name, salary FROM teachers, ORDER BY salary DESC;
@@ -68,7 +69,8 @@ Para cada casa de shows, quais são os artistas que se apresentarão?
 | Janet      | Smith     |  36200  |
 | Samantha   | Bush      |  36200  |
 
-O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string podem ter ordenamento estranho devido ao charCode.
+ORDER BY will show similar effects to ORDER in JavaScript. Strings might be returned in unexpected order due to charCode issues (lowerCase vs upperCase, symbols, numbers in strings, etc)
+
 
 ##### Multiplos ORDER BY
 - SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
@@ -83,7 +85,7 @@ O comando ORDER BY terá efeitos similares ao ORDER do Javascript em que string 
 | Cole      | Myers Middle School | 2005-08-01 |
 
 #### WHERE
-Filtro de Linhas
+Filtering our tables and returning specific lines
 - SElECT last_name, school, hire_date FROM teachers WHERE school = 'Myers Middle School';
 
 | last_name |       school        | hire_date  |
@@ -130,18 +132,18 @@ Filtro de Linhas
 | Kathleen   | Roush     |  38500 |
 
 #### LIKE (SQL) and ILIKE (PostgreSQL) with WHERE
-Operadores de comparação (>, <, != ...) são bastante diretos mas LIKE e ILIKE nos permitem achar padrões em strings ao usar caracteres especiais.
-A diferença entre eles é que LIKE é case sensitive; enquanto ILIKE é case insensitive.
+Comparison operators (>, <, != ...) are very straightforward, but LIKE and ILIKE allows us to find patterns in strings. We use special characters (% and _)
+The main difference between them is that LIKE is case sensitive, while ILIKE is case insensitive and PostgreSQL only.
 
 ##### % (sinal de percentual) 
-Permite que achemos um ou mais caracteres
+Allows us to find one or more characters in a string
 
 ##### _ (underscore)
-Permite que achemos um caractere
+Allows us to find one single character in a string
 
-- LIKE 'b%' retornaria qualquer string iniciada com b minúsculo
-- LIKE '%ak%' retornaria qualquer string com 'ak' no meio
-- LIKE '_aker' retornaria uma string de lenght 5 terminada em 'aker'
+- LIKE 'b%' returns any string starting with b;
+- LIKE '%ak%' returns any string with 'ak' in the middle:
+- LIKE '_aker' returns a string of lenght 5, ending with 'aker';
 
 - SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
 
@@ -165,7 +167,7 @@ Permite que achemos um caractere
 | Samantha   |
 |(2 rows)    |
 
-É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
+It is important to notice that when it comes to Names, Surnames, Places and Products many times the person entering data in the database will not Capitalize the words. Therefore it is important to remember to use ILIKE in such situation so we can get a wider array of results.
 
 #### Combinando operadores com OR e AND
 - SELECT * FROM teachers WHERE salary BETWEEN 20000 AND 44000 AND school = 'Myers Middle School';
@@ -185,8 +187,8 @@ Permite que achemos um caractere
 |  4 | Samantha   | Bush      | Myers Middle School | 2011-10-30 |  36200 |
 
 
-#### Juntando todos
-SQL é bastante definido em relação à ordem das keywords:
+#### Putting it all together
+SQL is very specific regarding the order of its KEYWORDS:
 
 - SELECT column_names FROM table_name WHERE criteria ORDER BY column_names;
 - SELECT first_name, last_name, school, hire_date, salary FROM teachers WHERE school ILIKE '%Roos%' ORDER BY hire_date DESC;
@@ -197,13 +199,14 @@ SQL é bastante definido em relação à ordem das keywords:
 | Kathleen   | Roush     | F.D. Roosevelt HS | 2010-10-22 |  38500 |
 | Lee        | Reynolds  | F.D. Roosevelt HS | 1993-05-22 |  65000 |
 
-###### Revisão
+###### Study time
 1. The school district superintendent asks for a list of teachers in each school. Write a query that lists the schools in alphabetical order along with teachers ordered by last name A-Z.
 2. Write a query that finds the one teacher whose first name starts with the letter S and who earns more than $40,000.
 3. Rank teachers hired since January 1, 2010, ordered by highest paid to lowest.
 
 ## UNDERSTANDING DATA TYPES
-
+Regarding documentation, one important document to create is a 'Data Dictionary': a document that lists each column, specifies the data types and explains the column values. 
+When a data dictionary is unavailable one way to start understandig the data is by understanding the data types in its columns.
 
 
 
