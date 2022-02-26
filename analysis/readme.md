@@ -71,8 +71,7 @@ For each hall which artists are performing?
 
 ORDER BY will show similar effects to ORDER in JavaScript. Strings might be returned in unexpected order due to charCode issues (lowerCase vs upperCase, symbols, numbers in strings, etc)
 
-
-##### Multiplos ORDER BY
+##### Multiple ORDER BY
 - SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
 
 | last_name |       school        | hire_date  |
@@ -169,7 +168,7 @@ Allows us to find one single character in a string
 
 It is important to notice that when it comes to Names, Surnames, Places and Products many times the person entering data in the database will not Capitalize the words. Therefore it is important to remember to use ILIKE in such situation so we can get a wider array of results.
 
-#### Combinando operadores com OR e AND
+#### Combining operators with OR and AND
 - SELECT * FROM teachers WHERE salary BETWEEN 20000 AND 44000 AND school = 'Myers Middle School';
 
 | id | first_name | last_name |       school        | hire_date  | salary |
@@ -207,6 +206,25 @@ SQL is very specific regarding the order of its KEYWORDS:
 ## UNDERSTANDING DATA TYPES
 Regarding documentation, one important document to create is a 'Data Dictionary': a document that lists each column, specifies the data types and explains the column values. 
 When a data dictionary is unavailable one way to start understandig the data is by understanding the data types in its columns.
+
+#### CHARACTERS
+Character string types are general-putpose types suitable for any combination of text, numbers and symbols
+
+##### char(n)
+A fixed length column, where the string is at a fixed length of n.
+If you create a char(20) column, and INSERT a string with VALUE 'banana', SQL will pad the rest of the string with white space to fill 20 characteres.
+Mainly a remnat of legacy systems as varchar is a better option.
+
+#### varchar(n)
+A variable length column where the string has a max-length of n.
+If you save 'banana' is the column, SQL won't pad and will save the 6 length string. That saves space on the DB while not story empty spaces.
+
+#### text (postgres only)
+A variable length column with unlimited length
+
+##### How to choose between char, varchar or text?
+The flexibility and potential space savings of carchar and text give them advantages, but in some specific cases a fixed length can be better. Say you would like to save a SHA-256 hash, so a char(64) column will be perfect and will help you detect errors when storing data.
+
 
 
 
