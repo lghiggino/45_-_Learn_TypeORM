@@ -167,14 +167,42 @@ Permite que achemos um caractere
 
 É importante lembrar que quando se trata de nomes próprios, sobrenomes, lugares, produtos muitas vezes as pessoas que digitam os dados não vão capitalizar as palavras. Então quando a busca é por coisas do gênero é interessante usar ILIKE e % e _ para termos resultados mais completos.
 
-####Combinando operadores com OR e AND
-- SELECT * FROM teachers WHERE salary '<' 44000 AND school = 'Myers Middle School';
+#### Combinando operadores com OR e AND
+- SELECT * FROM teachers WHERE salary BETWEEN 20000 AND 44000 AND school = 'Myers Middle School';
 
 | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------------------|------------|--------|
 |  3 | Samuel     | Cole      | Myers Middle School | 2005-08-01 |  43500 |
 |  4 | Samantha   | Bush      | Myers Middle School | 2011-10-30 |  36200 |
 |  5 | Betty      | Diaz      | Myers Middle School | 2005-08-30 |  43500 |
+
+
+- SELECT * FROM teachers WHERE last_name = 'Cole' OR last_name = 'Bush';
+
+| id | first_name | last_name |       school        | hire_date  | salary |
+|----|------------|-----------|---------------------|------------|--------|
+|  3 | Samuel     | Cole      | Myers Middle School | 2005-08-01 |  43500 |
+|  4 | Samantha   | Bush      | Myers Middle School | 2011-10-30 |  36200 |
+
+
+#### Juntando todos
+SQL é bastante definido em relação à ordem das keywords:
+
+- SELECT column_names FROM table_name WHERE criteria ORDER BY column_names;
+- SELECT first_name, last_name, school, hire_date, salary FROM teachers WHERE school ILIKE '%Roos%' ORDER BY hire_date DESC;
+
+| first_name | last_name |      school       | hire_date  | salary |
+|------------|-----------|-------------------|------------|--------|
+| Janet      | Smith     | F.D. Roosevelt HS | 2011-10-30 |  36200 |
+| Kathleen   | Roush     | F.D. Roosevelt HS | 2010-10-22 |  38500 |
+| Lee        | Reynolds  | F.D. Roosevelt HS | 1993-05-22 |  65000 |
+
+###### Revisão
+1. The school district superintendent asks for a list of teachers in each school. Write a query that lists the schools in alphabetical order along with teachers ordered by last name A-Z.
+2. Write a query that finds the one teacher whose first name starts with the letter S and who earns more than $40,000.
+3. Rank teachers hired since January 1, 2010, ordered by highest paid to lowest.
+
+## UNDERSTANDING DATA TYPES
 
 
 
