@@ -228,6 +228,18 @@ The flexibility and potential space savings of carchar and text give them advant
 - CREATE TABLE char_data_types (varchar_column varchar(10), char_column char(10), text_column text);
 - INSERT INTO char_data_types VALUES ('abc', 'abc', 'abc'),('defghi', 'defghi', 'defghi'),('1234567890', '1234567890', '1234567890');
 
+| varchar_column | char_column | text_column | 
+|----------------|-------------|-------------|
+| abc            | abc         | abc         |
+| defghi         | defghi      | defghi      |
+| 1234567890     | 1234567890  | 1234567890  |
+
+## COPY data from a table into files
+- \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+
+
+
 
 
 
