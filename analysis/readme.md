@@ -208,22 +208,22 @@ Regarding documentation, one important document to create is a 'Data Dictionary'
 When a data dictionary is unavailable one way to start understandig the data is by understanding the data types in its columns.
 
 #### CHARACTERS
-Character string types are general-putpose types suitable for any combination of text, numbers and symbols
+Character string types are general-purpose types suitable for any combination of text, numbers and symbols
 
 ##### char(n)
 A fixed length column, where the string is at a fixed length of n.
 If you create a char(20) column, and INSERT a string with VALUE 'banana', SQL will pad the rest of the string with white space to fill 20 characteres.
-Mainly a remnat of legacy systems as varchar is a better option.
+Mainly a remnant of legacy systems as varchar is a better option.
 
 #### varchar(n)
 A variable length column where the string has a max-length of n.
-If you save 'banana' is the column, SQL won't pad and will save the 6 length string. That saves space on the DB while not story empty spaces.
+If you save 'banana' is the column, SQL won't pad and will save the 6 length string. That saves space on the DB, not storing empty spaces.
 
 #### text (postgres only)
 A variable length column with unlimited length
 
 ##### How to choose between char, varchar or text?
-The flexibility and potential space savings of carchar and text give them advantages, but in some specific cases a fixed length can be better. Say you would like to save a SHA-256 hash, so a char(64) column will be perfect and will help you detect errors when storing data.
+The flexibility and potential space savings of varchar and text give them advantages, but in some specific cases a fixed length can be better. Say you would like to save a SHA-256 hash, so a char(64) column will be perfect and will help you detect errors when storing data.
 
 - CREATE TABLE char_data_types (varchar_column varchar(10), char_column char(10), text_column text);
 - INSERT INTO char_data_types VALUES ('abc', 'abc', 'abc'),('defghi', 'defghi', 'defghi'),('1234567890', '1234567890', '1234567890');
@@ -234,8 +234,12 @@ The flexibility and potential space savings of carchar and text give them advant
 | defghi         | defghi      | defghi      |
 | 1234567890     | 1234567890  | 1234567890  |
 
+Typically, using varchar(n) where n is sufficient to handle outliers is a good strategy.
+
 ## COPY data from a table into files
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+\COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/teachers.txt' WITH (FORMAT TXT, HEADER, DELIMITER '|');
 
 
 
