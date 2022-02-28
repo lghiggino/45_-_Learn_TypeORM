@@ -8,6 +8,23 @@
 
 - psql -h localhost -p 5433 -U postgres
 
+##### If you can solve these,CTRL+F them, and continue below
+###### Study time
+1. The school district superintendent asks for a list of teachers in each school. Write a query that lists the schools in alphabetical order along with teachers ordered by last name A-Z.
+2. Write a query that finds the one teacher whose first name starts with the letter S and who earns more than $40,000.
+3. Rank teachers hired since January 1, 2010, ordered by highest paid to lowest.
+
+###### Study time
+1. What are the three types of character types?
+2. what is the main difference between them?
+3. What are the three types of integer types?
+4. What is the main difference between them?
+5. What is a good way to create an id column with unique values? What are the three types that could be used?
+6. What are the two types of decimal numbers? What is their behavior?
+7. How does Float point type split?
+
+
+
 ## SQL COMMANDS
 #### CREATE a new TABLE
 - CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
@@ -235,6 +252,67 @@ The flexibility and potential space savings of varchar and text give them advant
 | 1234567890     | 1234567890  | 1234567890  |
 
 Typically, using varchar(n) where n is sufficient to handle outliers is a good strategy.
+
+#### NUMBERS
+Numbers columns allows us to perform calculations on those numbers. While numbers stored as characters will present sort problemns, number columns sort as expected. So if we're doing math or numeric order is important number types should be preferred.
+
+##### Integers
+Whole numbers, both positive or negative
+The SQL standard provides three integer types: smallint, integer and bigint. The difference between them is the maximum size of numbers they can hold. 
+
+|type|size|range|
+|----|----|-----|
+|smallint|2 bytes| -32768 to 32767 |
+|integer|4 bytes| -2147483648 to 2147483647 |
+|bigint|8 bytes| 09223372036854775808 to 9223372036854775807 |
+
+Bigint will cover just about any requirement we should ever have, and could be made your default integer type column. 
+But if you are sure your numbers should remain within the integer limit that would be a better choice as it will not consume as much space.
+When data values remain constrained, smallint makes sense: days of the month or year number is a good example.
+
+###### Auto incrementing Integers
+- bigserial, serial, smallserial: special implementation of corresponding integer types that will auto increment each time a new row is inserted into the table. It will always generate a unique value.
+
+
+##### Decimal Numbers
+- represent whole numbers plus a fraction.
+- could be handled by fixe-point or floating-point.
+
+###### Fixed-point Type
+We inform the precision: the maximun number of digits to the left of the comma, and the scale: a fixed amount of digits to the right of the comma. A fixed-point number with 5 digits of precision and two digits of scale would work as such:
+- 1,2 is 00001,20
+- 190,7 is 00190,70
+- 12345,67 is 12345,67
+
+###### Float-point Type
+
+####### real precision
+Allows precision up to 6 digits
+
+####### double precision
+Allows precision up to 15 digits
+
+- CREATE TABLE number_data_types (numeric_column numeric(20,5), real_column real, double_column double precision);
+- INSERT INTO number_data_types VALUES (.7,.7,.7),(2.13579, 2.13579, 2.13579),(2.1347987654, 2.1347987654, 2.1347987654);
+
+| numeric_column | real_column  |  double_column  |
+|----------------|--------------|-----------------|
+|        0.70000 |         0.7  |            0.7  |
+|        2.13579 |     2.13579  |        2.13579  |
+|        2.13480 |   2.1347988  |   2.1347987654  |
+| pads or rounds | max 6 digits | up to 15 digits |
+
+###### Study time
+1. What are the three types of character types?
+2. what is the main difference between them?
+3. What are the three types of integer types?
+4. What is the main difference between them?
+5. What is a good way to create an id column with unique values? What are the three types that could be used?
+6. What are the two types of decimal numbers? What is their behavior?
+7. How does Float point type split?
+
+
+
 
 ## COPY data from a table into files
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
