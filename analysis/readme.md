@@ -20,11 +20,7 @@
 3. What are the three types of integer types?
 4. What is the main difference between them?
 5. What is a good way to create an id column with unique values? What are the three types that could be used?
-6. What are the two types of decimal numbers? What is their behavior?
-7. How does Float point type split?
-
-
-
+6. What are the two types of decimal numbers? What i
 ## SQL COMMANDS
 #### CREATE a new TABLE
 - CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
@@ -287,9 +283,11 @@ We inform the precision: the maximun number of digits to the left of the comma, 
 ###### Float-point Type
 
 ####### real precision
+
 Allows precision up to 6 digits
 
 ####### double precision
+
 Allows precision up to 15 digits
 
 - CREATE TABLE number_data_types (numeric_column numeric(20,5), real_column real, double_column double precision);
@@ -302,6 +300,20 @@ Allows precision up to 15 digits
 |        2.13480 |   2.1347988  |   2.1347987654  |
 | pads or rounds | max 6 digits | up to 15 digits |
 
+###### Important
+- If you require exact storage and calculations (such as for monetary amounts), use the numeric type instead.
+
+- Comparing two floating-point values for equality might not always work as expected.
+
+- If you want to do complicated calculations with these types for anything important, especially if you rely on certain behavior in boundary cases (infinity, underflow), you should evaluate the implementation carefully.
+
+- Use integers when possible
+
+-choose a big enough number type, when using numeric or decimal set the precision large enough
+
+
+
+
 ###### Study time
 1. What are the three types of character types?
 2. what is the main difference between them?
@@ -310,7 +322,7 @@ Allows precision up to 15 digits
 5. What is a good way to create an id column with unique values? What are the three types that could be used?
 6. What are the two types of decimal numbers? What is their behavior?
 7. How does Float point type split?
-
+8. What is the safest bet regarading float data types? (use numeric and specify the number of decimal digits)
 
 
 
