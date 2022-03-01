@@ -288,15 +288,18 @@ Allows precision up to 6 digits
 - double precision
 Allows precision up to 15 digits
 
-- CREATE TABLE number_data_types (numeric_column numeric(20,5), real_column real, double_column double precision);
-- INSERT INTO number_data_types VALUES (.7,.7,.7),(2.13579, 2.13579, 2.13579),(2.1347987654, 2.1347987654, 2.1347987654);
 
-| numeric_column | real_column  |  double_column  |
-|----------------|--------------|-----------------|
-|        0.70000 |         0.7  |            0.7  |
-|        2.13579 |     2.13579  |        2.13579  |
-|        2.13480 |   2.1347988  |   2.1347987654  |
-| pads or rounds | max 6 digits | up to 15 digits |
+##### Example
+- CREATE TABLE number_data_types (numeric_column numeric(20,5), decimal_column decimal(20,5), real_column real, double_column double precision);
+- INSERT INTO number_data_types VALUES (.7,.7,.7,.7),(2.13579, 2.13579, 2.13579, 2.13579),(2.1347987654, 2.1347987654, 2.1347987654, 2.1347987654);
+
+| numeric_column | decimal_column | real_column | double_column |
+|----------------|----------------|-------------|---------------|
+|        0.70000 |        0.70000 |         0.7 |           0.7 |
+|        2.13579 |        2.13579 |     2.13579 |       2.13579 |
+|        2.13480 |        2.13480 |   2.1347988 |  2.1347987654 |
+|        0.12346 |        0.12346 |  0.12345679 |   0.123456789 | 
+| pads or rounds |                | max 7 digits|up to 15 digits|
 
 ###### Important
 - If you require exact storage and calculations (such as for monetary amounts), use the numeric type instead.
@@ -309,6 +312,91 @@ Allows precision up to 15 digits
 
 -choose a big enough number type, when using numeric or decimal set the precision large enough
 
+#### DATES and TIMES
+
+##### Timestamp
+- Records date and time
+- Needs to be complemented with a timezone: SQL standard is timestamp with time zone, PSQL is timestamptz
+
+##### Date
+##### Time
+
+##### Interval
+- Records the lenght of a time period, not its starting and ending point in time
+- Example: 12 days, 8 hours, 18 seconds...
+- Would be typically used for calculations or filtering other date and time columns
+
+##### Example
+- CREATE TABLE date_time_types (timestamp_column timestamp with time zone, interval_column interval);
+- INSERT INTO date_time_types VALUES ('2018-12-31 01:00 EST', '2 days'), ('2018-12-31 01:00 -8', '1 month), ('2018-12-31 01:00 Australia/Melbourne', '1 century'), (now(), '1 week');
+
+|       timestamp_column        | interval_column |
+|-------------------------------|-----------------|
+| 2018-12-31 06:00:00+00        | 2 days          |
+| 2018-12-31 09:00:00+00        | 1 mon           |
+| 2018-12-30 14:00:00+00        | 100 years       |
+| 2022-03-01 11:46:40.121774+00 | 7 days          |
+
+We could use timestamps and intervals to calculate previous or future dates.
+
+- SELECT timestamp_column, interval_column, timestamp_column + interval_column AS due_date FROM date_time_types;
+
+|       timestamp_column        | interval_column |         due_date              |
+|-------------------------------|-----------------|-------------------------------|
+| 2018-12-31 06:00:00+00        | 2 days          | 2019-01-02 06:00:00+00        |
+| 2018-12-31 09:00:00+00        | 1 mon           | 2019-01-31 09:00:00+00        |
+| 2018-12-30 14:00:00+00        | 100 years       | 2118-12-30 14:00:00+00        |
+| 2022-03-01 11:46:40.121774+00 | 7 days          | 2022-03-08 11:46:40.121774+00 |
+
+#### BOOLEAN
+Stores true or false
+
+#### GEOMETRIC
+includes points, lines, circles and other two dimensional objects
+
+#### NETWORK ADDRESS TYPES
+includes IP or MAC addresses
+
+#### UUID
+Universally Unique Identifier type, sometimes used as unique key value in tables
+
+#### XML and JSON
+Stores data in these specific formats
+
+#### Transforming data using CAST()
+- Will only succeed when the target data type can accomodate the original value
+- SELECT timestamp_column, CAST(timestamp_column AS varchar(10)) FROM date_time_types;
+
+|       timestamp_column        | timestamp_column |
+|-------------------------------|------------------|
+| 2018-12-31 06:00:00+00        |    2018-12-31    |
+| 2018-12-31 09:00:00+00        |    2018-12-31    |
+| 2018-12-30 14:00:00+00        |    2018-12-30    |
+| 2022-03-01 11:46:40.121774+00 |    2022-03-01    |
+|        timestamp type         |  character type  |
+
+- SELECT numeric_column, CAST(numeric_column AS integer), CAST(numeric_column AS varchar(6)) FROM number_data_types;
+
+| numeric_column | numeric_column | numeric_column |
+|----------------|----------------|----------------|
+|        0.70000 |              1 | 0.7000         |
+|        2.13579 |              2 | 2.1357         |
+|        2.13480 |              2 | 2.1348         |
+|        0.12346 |              0 | 0.1234         |
+|  numeric type  |     integer    |   varchar(6)   |
+
+##### PostgreSQL CAST() shortand ::
+- SELECT timestamp_column::varchar(10) FROM date_time_types;
+
+| timestamp_column |
+|------------------|
+|    2018-12-31    |
+|    2018-12-31    |
+|    2018-12-30    |
+|    2022-03-01    |
+
+
+
 
 
 
@@ -319,8 +407,10 @@ Allows precision up to 15 digits
 4. What is the main difference between them?
 5. What is a good way to create an id column with unique values? What are the three types that could be used?
 6. What are the two types of decimal numbers? What is their behavior?
-7. How does Float point type split?
-8. What is the safest bet regarading float data types? (use numeric and specify the number of decimal digits)
+7. How does Float point type split? (real and double precision)
+8. How does Fixed point type split? (numeric and decimal)
+9. What is the safest bet regarading float data types? (use numeric and specify the number of decimal digits)
+10. 
 
 
 
