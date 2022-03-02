@@ -418,6 +418,18 @@ Stores data in these specific formats
 
 ## IMPORTING AND EXPORTING DATA
 
+### COPY
+- PostgreSQL specific implementation with options for including or excluding columns and handling various delimites text types.
+- It is able to import and export data from tables or from the result of a query.
+
+
+#### Preparing data for imports
+1. prep the source data in the form of a delimited text file
+2. create a table to store the data
+3. write a COPY script to perform the import
+
+#### 
+
 
 ### COPY data from a table into files
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
