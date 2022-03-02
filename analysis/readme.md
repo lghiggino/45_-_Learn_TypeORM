@@ -15,13 +15,12 @@
 3. Rank teachers hired since January 1, 2010, ordered by highest paid to lowest.
 
 ###### Study time
-1. What are the three types of character types?
-2. what is the main difference between them?
-3. What are the three types of integer types?
-4. What is the main difference between them?
-5. What is a good way to create an id column with unique values? What are the three types that could be used?
-6. What are the two types of decimal numbers? What i
-## SQL COMMANDS
+1. Your company delivers fruit and vegetables to local grocery stores, and you need to track the mileage driven by each driver each day to a tenth of a mile. Assuming no driver would ever travel more than 999 miles in a day, what would be an appropriate data type for the mileage column in your table? Why?
+2. In the table listing each driver in your company, what are appropriate data types for the drivers’ first and last names? Why is it a good idea to separate first and last names into two columns rather than having one larger name column?
+3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type?
+
+
+## SQL COMMANDS - Exploring Data With SELECT
 #### CREATE a new TABLE
 - CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
 
@@ -395,11 +394,6 @@ Stores data in these specific formats
 |    2018-12-30    |
 |    2022-03-01    |
 
-
-
-
-
-
 ###### Study time
 1. What are the three types of character types?
 2. what is the main difference between them?
@@ -410,11 +404,21 @@ Stores data in these specific formats
 7. How does Float point type split? (real and double precision)
 8. How does Fixed point type split? (numeric and decimal)
 9. What is the safest bet regarading float data types? (use numeric and specify the number of decimal digits)
-10. 
+10. What are the 4 date time types?
+11. What is a concern regarding timestamp type?
+12. How to perform calculations using timestamp and interval?
+13. What are other miscelaneous types? (boolean, geometric, network, UUID, XML and JSON)
+14. How to perform data type transformation? What are some concerns with that operation? (CAST(), type overlap)
+
+###### Study time
+1. Your company delivers fruit and vegetables to local grocery stores, and you need to track the mileage driven by each driver each day to a tenth of a mile. Assuming no driver would ever travel more than 999 miles in a day, what would be an appropriate data type for the mileage column in your table? Why?
+2. In the table listing each driver in your company, what are appropriate data types for the drivers’ first and last names? Why is it a good idea to separate first and last names into two columns rather than having one larger name column?
+3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type?
+
+## IMPORTING AND EXPORTING DATA
 
 
-
-## COPY data from a table into files
+### COPY data from a table into files
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/teachers.txt' WITH (FORMAT TXT, HEADER, DELIMITER '|');
