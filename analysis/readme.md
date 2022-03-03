@@ -422,19 +422,33 @@ Stores data in these specific formats
 - PostgreSQL specific implementation with options for including or excluding columns and handling various delimites text types.
 - It is able to import and export data from tables or from the result of a query.
 
-
 #### Preparing data for imports
 1. prep the source data in the form of a delimited text file
 2. create a table to store the data
 3. write a COPY script to perform the import
 
-#### 
+#### Delimited Text Files
+Contains rows of data and each roe represents one row in a table. A character separates each row.
+CSV is a typical example, where the comma separates each piece of data without any spaces. The comma tells the software to treat each item as a column upon import or export.
+- John, Doe, "123 Main Street, apartment 504", New York, NY, 555-1234 
+
+##### Import Example
+- COPY fruit_company_drivers FROM '/pwd/drivers.csv' WITH(FORMAT CSV, HEADER);
+- Copy to tableName from filePath with format csv, exclude the header from the csv
+
+| id | first_name | last_name | mileage |           hire_date           |
+|----|------------|-----------|---------|-------------------------------|
+|  3 | abc        | def       |  123.22 | 2002-02-03 00:00:00+00        |
+|  4 | def        | ghi       |  234.45 | 2003-03-04 00:00:00+00        |
+|  5 | ghi        | jkl       |  345.67 | 2004-04-05 00:00:00+00        |
+|  6 | jkl        | mno       |  456.78 | 2005-05-06 00:00:00+00        |
+|  7 | mno        | pqr       |  567.89 | 2006-07-08 00:00:00+00        |
+|  8 | pqr        | stu       |  678.90 | 2007-08-09 00:00:00+00        |
 
 
-### COPY data from a table into files
+##### Export Example
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
-
-\COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/teachers.txt' WITH (FORMAT TXT, HEADER, DELIMITER '|');
+- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/teachers.txt' WITH (FORMAT TXT, HEADER, DELIMITER '|');
 
 
 
