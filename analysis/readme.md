@@ -418,6 +418,9 @@ Stores data in these specific formats
 2. In the table listing each driver in your company, what are appropriate data types for the drivers’ first and last names? Why is it a good idea to separate first and last names into two columns rather than having one larger name column?
 3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type?
 4. Using the fruit_company_drivers table change the type of hire_date from timestamp to varchar(10).
+extra:
+5. Create a new column at fruit_company_drivers of interval type, UPDATE the existing rows SETting new date and perform calculations
+6. Insert new rows at fruit_company_drivers using the COPY command and the drivers.csv file.
 
 ## IMPORTING AND EXPORTING DATA
 
@@ -435,9 +438,10 @@ Contains rows of data and each roe represents one row in a table. A character se
 CSV is a typical example, where the comma separates each piece of data without any spaces. The comma tells the software to treat each item as a column upon import or export.
 - John, Doe, "123 Main Street, apartment 504", New York, NY, 555-1234 
 
-##### Import Example
+##### Import Example (COPY FROM)
 - COPY fruit_company_drivers FROM '/pwd/drivers.csv' WITH(FORMAT CSV, HEADER);
 - Copy to tableName from filePath with format csv, exclude the header from the csv
+
 
 | id | first_name | last_name | mileage |           hire_date           |
 |----|------------|-----------|---------|-------------------------------|
@@ -449,9 +453,9 @@ CSV is a typical example, where the comma separates each piece of data without a
 |  8 | pqr        | stu       |  678.90 | 2007-08-09 00:00:00+00        |
 
 
-##### Export Example
+##### Export Example (COPY TO)
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
-- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/teachers.txt' WITH (FORMAT TXT, HEADER, DELIMITER '|');
+- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 
 
