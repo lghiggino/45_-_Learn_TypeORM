@@ -452,10 +452,30 @@ CSV is a typical example, where the comma separates each piece of data without a
 |  7 | mno        | pqr       |  567.89 | 2006-07-08 00:00:00+00        |
 |  8 | pqr        | stu       |  678.90 | 2007-08-09 00:00:00+00        |
 
+#### LIMITING the number of results
+- SELECT geo_name, state_us_abbreviation, internal_point_lon FROM us_counties_2010 ORDER BY internal_point_lon DESC LIMIT 5;
 
-##### Export Example (COPY TO)
+##### Importing a DEFINED subset of Columns with COPY
+- CREATE TABLE supervisor_salaries (town varchar(30), county varchar(30), supervisor varchar(30), start_date date, salary money, benefits money);
+- \COPY supervisor_salaries (town, supervisor, salary) FROM '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/chapter04/supervisor_salaries.csv' WITH (FORMAT CSV, HEADER);
+- SELECT * FROM supervisor_salaries;
+
+|    town     | county | supervisor | start_date |   salary   | benefits |
+|-------------|--------|------------|------------|------------|----------|
+| Anytown     |        | Jones      |            | $27,000.00 |          |
+| Bumblyburg  |        | Baker      |            | $24,999.00 |          |
+| Moetown     |        | Smith      |            | $32,100.00 |          |
+| Bigville    |        | Kao        |            | $31,500.00 |          |
+| New Brillig |        | Carroll    |            | $72,690.00 |          |
+
+ 
+#### Exportind Data
+##### Export All Example (COPY TO)
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
-- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+- \COPY teachers TO '/PWD/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+ 
+##### Export Particular Columns
+- \COPY us_counties_2010 (geo_name, internal_point_lat, internal_point_lon) TO '/PWD/us_counties_latlon.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 
 

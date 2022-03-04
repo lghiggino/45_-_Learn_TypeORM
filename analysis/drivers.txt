@@ -1,9 +1,0 @@
-id|first_name|last_name|mileage|hire_date|contract_expiry
-1|Leonardo|Ghiggino|999.99|2022-03-04 09:32:06.650564|14 days
-2|Fabio|Oshiro|111.22|2017-05-19 00:00:00|3 mons
-3|abc|def|123.22|2002-02-03 00:00:00|21 days
-4|def|ghi|234.45|2003-03-04 00:00:00|126 days
-5|ghi|jkl|345.67|2004-04-05 00:00:00|1 year
-6|jkl|mno|456.78|2005-05-06 00:00:00|1 year
-7|mno|pqr|567.89|2006-07-08 00:00:00|1 mon
-8|pqr|stu|678.90|2007-08-09 00:00:00|90 days
