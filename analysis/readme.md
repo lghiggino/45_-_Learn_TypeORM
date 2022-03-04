@@ -17,8 +17,11 @@
 ###### Study time
 1. Your company delivers fruit and vegetables to local grocery stores, and you need to track the mileage driven by each driver each day to a tenth of a mile. Assuming no driver would ever travel more than 999 miles in a day, what would be an appropriate data type for the mileage column in your table? Why? Create this table.
 2. In the table listing each driver in your company, what are appropriate data types for the drivers’ first and last names? Why is it a good idea to separate first and last names into two columns rather than having one larger name column?
-3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type?
+3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type
 4. Using the fruit_company_drivers table change the type of hire_date from timestamp to varchar(10).
+extra:
+5. Create a new column at fruit_company_drivers of interval type, UPDATE the existing rows SETting new date and perform calculations
+6. Insert new rows at fruit_company_drivers using the COPY command and the drivers.csv file.
 
 ## SQL COMMANDS - Exploring Data With SELECT
 #### CREATE a new TABLE
