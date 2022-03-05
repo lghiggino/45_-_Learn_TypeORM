@@ -472,11 +472,13 @@ CSV is a typical example, where the comma separates each piece of data without a
 #### Exportind Data
 ##### Export All Example (COPY TO)
 - \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
-- \COPY teachers TO '/PWD/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
  
 ##### Export Particular Columns
 - \COPY us_counties_2010 (geo_name, internal_point_lat, internal_point_lon) TO '/PWD/us_counties_latlon.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
+##### Export Query Results
+- \COPY (SELECT geo_name, state_us_abbreviation FROM us_counties_2010 WHERE geo_name ILIKE '%mill%') TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/us_counties_mill_export_selected.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 
 
