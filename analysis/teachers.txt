@@ -1,7 +1,7 @@
 school|last_name
-F.D. Roosevelt HS|Smith
-F.D. Roosevelt HS|Reynolds
+Myers Middle School|Diaz
 Myers Middle School|Cole
 Myers Middle School|Bush
-Myers Middle School|Diaz
+F.D. Roosevelt HS|Smith
 F.D. Roosevelt HS|Roush
+F.D. Roosevelt HS|Reynolds

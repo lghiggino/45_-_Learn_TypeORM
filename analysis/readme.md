@@ -24,14 +24,11 @@ extra:
 
 ###### Study time
 1. Insert new rows at fruit_company_drivers using the COPY command and the drivers.csv file.
-2. Export fruit_company_drivers to a txt file with header
-Continue your exploration of data import and export with these exercises.
-Remember to consult the PostgreSQL documentation at https://www.post​gresql​
-.org/docs/current/static/sql-copy.html for hints:
+2. Export fruit_company_drivers to a txt file with header, and delimiter.
 3. Write a WITH statement to include with COPY to handle the import of an imaginary text file whose first couple of rows look like this:
 id:movie:actor
 50:#Mission: Impossible#:Tom Cruise
-4. Using the table us_counties_2010 you created and filled in this chapter, export to a CSV file the 20 counties in the United States that have the most housing units. Make sure you export only each county’s name, state, and number of housing units. (Hint: Housing units are totaled for each countyin the column housing_unit_count_100_percent .)
+4. Using the table us_counties_2010 you created and filled in this chapter, export to a CSV file the 20 counties in the United States that have the most housing units. Make sure you export only each county’s name, state, and number of housing units. (Hint: Housing units are totaled for each county in the column housing_unit_count_100_percent .)
 5. Imagine you’re importing a file that contains a column with these values:
 17519.668
 20084.461
@@ -494,7 +491,7 @@ CSV is a typical example, where the comma separates each piece of data without a
 ##### Export Particular Columns
 - \COPY us_counties_2010 (geo_name, internal_point_lat, internal_point_lon) TO '/PWD/us_counties_latlon.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
-##### Export Qu ery Results
+##### Export Query Results
 - \COPY (SELECT geo_name, state_us_abbreviation FROM us_counties_2010 WHERE geo_name ILIKE '%mill%') TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/us_counties_mill_export_selected.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
 
 ###### Study time
@@ -514,3 +511,18 @@ id:movie:actor
 Will a column in your target table with data type numeric(3,8) work for these values? Why or why not?]
 
 ## Basic Math And Stats With SQL
+
+### Math Operators
+
+|  Operator |  Description  |
+|-----------|---------------|
+| +, -, *, /|    you know   |
+|    %      |    modulo     |
+|    ^      | exponentiation|
+|    \|/    |      sqrt     |
+|    \||/   |    cuberoot   |
+|     !     |   factorial   |
+
+
+
+
