@@ -521,8 +521,8 @@ Will a column in your target table with data type numeric(3,8) work for these va
 | +, -, *, /|    you know   |
 |    %      |    modulo     |
 |    ^      | exponentiation|
-|  \"|/"    |      sqrt     |
-|  \"||/"   |    cuberoot   |
+|    \|\/    |      sqrt     |
+|    \|\|\/   |    cuberoot   |
 |     !     |   factorial   |
 
 #### Math and Data Types
