@@ -35,7 +35,9 @@ id:movie:actor
 18976.335
 Will a column in your target table with data type numeric(3,8) work for these values? Why or why not?
 
-
+###### Study time
+1. how will 11/6 differ from 11.0 / 6 and 11 cast as numeric(3,1) / 6?
+2. 
 
 ## SQL COMMANDS - Exploring Data With SELECT
 #### CREATE a new TABLE
@@ -519,9 +521,44 @@ Will a column in your target table with data type numeric(3,8) work for these va
 | +, -, *, /|    you know   |
 |    %      |    modulo     |
 |    ^      | exponentiation|
-|    \|/    |      sqrt     |
-|    \||/   |    cuberoot   |
+|  \"|/"    |      sqrt     |
+|  \"||/"   |    cuberoot   |
 |     !     |   factorial   |
+
+#### Math and Data Types
+- When using the 4 basic operators expect the results to be similar to the inputs:
+
+-- numeric + numeric = numeric
+-- integer + integer = integer
+-- any + floating-point = double precision
+
+- Exponentiation, root and factorial returns numeric and floating-point types, event if the input is an integer.
+
+##### Adding, Subtracting and Multiplying
+- SELECT 2 + 2;
+- SELECT 9 - 3 AS result;
+
+| result |
+|--------|
+|   6    |
+
+- select 2 * 8;
+
+##### Division and Modulo
+- SELECT 9 / 3;
+- SELECT 9 % 2;
+- SELECT 11 / 6;    vs    SELECT 11.0 / 6      vs    SELECT CAST (11 AS numeric(3,1)) / 6;
+
+| ?column? |        ?column?      |        ?column?      |
+|----------|----------------------|----------------------|
+|        1 |  1.8333333333333333  |  1.8333333333333333  |
+
+
+##### Exponents, Roots and Factorial
+
+
+
+
 
 
 
