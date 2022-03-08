@@ -526,13 +526,12 @@ Will a column in your target table with data type numeric(3,8) work for these va
 |     !     |   factorial   |
 
 #### Math and Data Types
-- When using the 4 basic operators expect the results to be similar to the inputs:
+When using the 4 basic operators expect the results to be similar to the inputs:
+- numeric + numeric = numeric
+- integer + integer = integer
+- any + floating-point = double precision
 
--- numeric + numeric = numeric
--- integer + integer = integer
--- any + floating-point = double precision
-
-- Exponentiation, root and factorial returns numeric and floating-point types, event if the input is an integer.
+Exponentiation, root and factorial returns numeric and floating-point types, event if the input is an integer.
 
 ##### Adding, Subtracting and Multiplying
 - SELECT 2 + 2;
