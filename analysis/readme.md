@@ -595,6 +595,23 @@ Select doing math
 | Blount County                     | AL |       53068 |         761 |                 53829 |
 
 
+- SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "total", p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009 AS "All races", (p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009) - p0010001 AS "Difference" FROM us_counties_2010 ORDER BY "total" DESC; 
+
+|             geo_name              | st |  total  | All races | Difference |
+|-----------------------------------|----|---------|-----------|------------|
+| Los Angeles County                | CA | 9818605 |   9818605 |          0 |
+| Cook County                       | IL | 5194675 |   5194675 |          0 |
+| Harris County                     | TX | 4092459 |   4092459 |          0 |
+| Maricopa County                   | AZ | 3817117 |   3817117 |          0 |
+
+With the difference column showing zeros only we can be confident that our import was clean. This is little this is good practice to figure out any discrepancies on the imported data.
+
+##### Finding Percentages 
+
+
+
+
+
 
 
 
