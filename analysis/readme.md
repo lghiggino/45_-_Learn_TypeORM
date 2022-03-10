@@ -554,6 +554,25 @@ Exponentiation, root and factorial returns numeric and floating-point types, eve
 
 
 ##### Exponents, Roots and Factorial
+- SELECT 3 ^ 4;
+- SELECT |/ 10;
+
+|      ?column?      |
+|--------------------|
+| 3.1622776601683795 |
+
+- SELECT sqrt(10);
+- SELECT ||/ 10:
+
+|      ?column?      |
+|--------------------|
+| 2.1544346900318834 |
+
+- SELECT 4 !;
+
+| ?column? |
+|----------|
+|       24 |
 
 
 
