@@ -37,7 +37,10 @@ Will a column in your target table with data type numeric(3,8) work for these va
 
 ###### Study time
 1. how will 11/6 differ from 11.0 / 6 and 11 cast as numeric(3,1) / 6?
-2. 
+2. perform exponential, square root, cubic root, and factorial operations
+3. perform simple operations across multiple columns
+
+
 
 ## SQL COMMANDS - Exploring Data With SELECT
 #### CREATE a new TABLE
