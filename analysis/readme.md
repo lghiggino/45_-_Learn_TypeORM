@@ -572,9 +572,27 @@ Exponentiation, root and factorial returns numeric and floating-point types, eve
 
 | ?column? |
 |----------|
-|       24 |
+|       24 | 
 
+##### Remember PEMDAS - order of operations
+1. Exponents and roots
+2. Multiplication, division, modulo
+3. Addition and subtraction
 
+##### Doing math across Table Columns
+Selecting 'all'
+- SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "Total Population", p0010003 AS "White Alone", p0010004 AS "Black or African American Alone", p0010005 AS "Am Indian/Alaska Native Alone", p0010006 AS "Asian Alone", p0010007 AS "Native Hawaiian and Other Pacific Islander Alone", p0010008 AS "Some Other Race Alone", p0010009 As "Two or More Races" FROM us_counties_2010;
+
+Select doing math
+- SELECT geo_name, state_us_abbreviation AS "st", p0010003 AS "White Alone", p0010004 AS "Black Alone", p0010003 + p0010004 AS "Total White and Black" FROM us_counties_2010;
+
+|             geo_name              | st | White Alone | Black Alone | Total White and Black |
+|-----------------------------------|----|-------------|-------------|-----------------------|
+| Autauga County                    | AL |       42855 |        9643 |                 52498 |
+| Baldwin County                    | AL |      156153 |       17105 |                173258 |
+| Barbour County                    | AL |       13180 |       12875 |                 26055 |
+| Bibb County                       | AL |       17381 |        5047 |                 22428 |
+| Blount County                     | AL |       53068 |         761 |                 53829 |
 
 
 
