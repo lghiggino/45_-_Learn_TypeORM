@@ -501,6 +501,8 @@ CSV is a typical example, where the comma separates each piece of data without a
 
 ###### Study time
 1. Insert new rows at fruit_company_drivers using the COPY command and the drivers.csv file.
+\COPY fruit_company_drivers (id, first_name, last_name, mileage, hire_date, due_date) FROM '/PWD/drivers.csv' WITH (FORMAT CSV, HEADER);
+
 2. Export fruit_company_drivers to a txt file with header
 Continue your exploration of data import and export with these exercises.
 Remember to consult the PostgreSQL documentation at https://www.post​gresql​
@@ -519,14 +521,13 @@ Will a column in your target table with data type numeric(3,8) work for these va
 
 ### Math Operators
 
-|  Operator |  Description  |
-|-----------|---------------|
-| +, -, *, /|    you know   |
-|    %      |    modulo     |
-|    ^      | exponentiation|
-|    \|\/    |      sqrt     |
-|    \|\|\/   |    cuberoot   |
-|     !     |   factorial   |
+|    Operator |  Description   |
+|-------------|----------------|
+|   +, -, *, /|    you know    |
+|      %      |    modulo      |
+|      ^      | exponentiation | 
+|    \|\|\/   |    cuberoot    |
+|       !     |   factorial    |
 
 #### Math and Data Types
 When using the 4 basic operators expect the results to be similar to the inputs:
