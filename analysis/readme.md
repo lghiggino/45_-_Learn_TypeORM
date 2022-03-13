@@ -625,9 +625,18 @@ With the difference column showing zeros only we can be confident that our impor
 | Kauai County           | HI | 31.32461880132953749400 |
 
 ##### Tracking Percentage Change
-- 
+- CREATE TABLE percentage_change (department varchar(20), spend_2014 numeric(10,2), spend_2017 numeric(10,2));
+- INSERT INTO percentage_change VALUES ('Building', 250000, 289000), ('Assessor', 178556, 179500), ('Library', 87777, 90001), ('Clerk', 451980, 650000), ('Police', 250000, 223000), ('Recreation', 1999000, 195000);
+- SELECT department, spend_2014, spend_2017, (spend_2017 - spend_2014) / spend_2014 * 100 AS "pct_change" FROM percentage_change ;
 
-
+| department | spend_2014 | spend_2017 |        pct_change        |
+|------------|------------|------------|--------------------------|
+| Building   |  250000.00 |  289000.00 |  15.60000000000000000000 |
+| Assessor   |  178556.00 |  179500.00 |   0.52868567844261744200 |
+| Library    |   87777.00 |   90001.00 |   2.53369333652323501600 |
+| Clerk      |  451980.00 |  650000.00 |  43.81167308287977344100 |
+| Police     |  250000.00 |  223000.00 | -10.80000000000000000000 |
+| Recreation | 1999000.00 |  195000.00 | -90.24512256128064032000 |
 
 
 
