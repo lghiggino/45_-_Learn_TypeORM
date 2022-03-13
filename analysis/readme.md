@@ -612,6 +612,16 @@ With the difference column showing zeros only we can be confident that our impor
 
 ##### Finding Percentages 
 
+-  SELECT geo_name, state_us_abbreviation as "st", (CAST(p0010006 AS numeric(8,1)) / p0010001) * 100 AS "pct_asian" FROM us_counties_2010 ORDER BY "pct_asian" DESC LIMIT 5;
+
+|        geo_name        | st |        pct_asian        |
+|------------------------|----|-------------------------|
+| Honolulu County        | HI | 43.89497769109962474000 |
+| Aleutians East Borough | AK | 35.97580388411333970100 |
+| San Francisco County   | CA | 33.27165361664607226500 |
+| Santa Clara County     | CA | 32.02237037519322063600 |
+| Kauai County           | HI | 31.32461880132953749400 |
+
 
 
 
