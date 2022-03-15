@@ -40,6 +40,11 @@ Will a column in your target table with data type numeric(3,8) work for these va
 2. perform exponential, square root, cubic root, and factorial operations
 3. perform simple operations across multiple columns
 
+###### Study time
+1. Write a SQL statement for calculating the area of a circle whose radius is 5 inches. (If you don’t remember the formula, it’s an easy web search.) Do you need parentheses in your calculation? Why or why not?
+2. Using the 2010 Census county data, find out which New York state county has the highest percentage of the population that identified as “American Indian/Alaska Native Alone.” What can you learn about that county from online research that explains the relatively large proportion of American Indian population compared with other New York counties?
+3. Was the 2010 median county population higher in California or New York?
+
 
 
 ## SQL COMMANDS - Exploring Data With SELECT
@@ -637,6 +642,27 @@ With the difference column showing zeros only we can be confident that our impor
 | Clerk      |  451980.00 |  650000.00 |  43.81167308287977344100 |
 | Police     |  250000.00 |  223000.00 | -10.80000000000000000000 |
 | Recreation | 1999000.00 |  195000.00 | -90.24512256128064032000 |
+
+##### Aggregate Functions for Averages and Sums
+
+##### Finding the Median
+
+##### Finding the Median with Percentile Functions
+
+##### Median and Percentiles with Census Data
+
+##### Finding Other Quantiles with Percentile Functions
+
+##### Creating Median() Function
+
+##### Finding the Mode
+
+###### Study time
+1. Write a SQL statement for calculating the area of a circle whose radius is 5 inches. (If you don’t remember the formula, it’s an easy web search.) Do you need parentheses in your calculation? Why or why not?
+2. Using the 2010 Census county data, find out which New York state county has the highest percentage of the population that identified as “American Indian/Alaska Native Alone.” What can you learn about that county from online research that explains the relatively large proportion of American Indian population compared with other New York counties?
+3. Was the 2010 median county population higher in California or New York?
+
+### Joining Tables in a Relational Database
 
 
 
