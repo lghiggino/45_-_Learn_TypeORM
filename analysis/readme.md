@@ -657,6 +657,16 @@ With the difference column showing zeros only we can be confident that our impor
 
 ##### Finding the Mode
 
+
+
+##### MAX(value)
+- SELECT * FROM teachers WHERE salary = (SELECT MAX (salary) FROM teachers);
+
+| id | first_name | last_name |      school       | hire_date  | salary |
+|----|------------|-----------|-------------------|------------|--------|
+|  2 | Lee        | Reynolds  | F.D. Roosevelt HS | 1993-05-22 |  65000 |
+
+
 ###### Study time
 1. Write a SQL statement for calculating the area of a circle whose radius is 5 inches. (If you don’t remember the formula, it’s an easy web search.) Do you need parentheses in your calculation? Why or why not?
 2. Using the 2010 Census county data, find out which New York state county has the highest percentage of the population that identified as “American Indian/Alaska Native Alone.” What can you learn about that county from online research that explains the relatively large proportion of American Indian population compared with other New York counties?
