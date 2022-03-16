@@ -674,6 +674,29 @@ With the difference column showing zeros only we can be confident that our impor
 
 ### Joining Tables in a Relational Database
 
+#### Linking Tables Using Join
+Follows this structure:
+```
+SELECT * FROM table_a JOIN table_b ON table_a.key_column = table_b.foreign_column;
+```
+- INSERT INTO teachers (first_name, last_name, school, hire_date, salary) VALUES ('Leonardo', 'Ghiggino', 'Myers Middle School', now(), 47000);
+- SELECT * FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+
+| id | first_name | last_name | mileage |           hire_date           | due_date | id | first_name | last_name |       school        | hire_date  | salary |
+|----|------------|-----------|---------|-------------------------------|----------|----|------------|-----------|---------------------|------------|--------|
+|  1 | Leonardo   | Ghiggino  |  123.45 | 2022-03-07 12:00:14.173131+00 | 1 mon    |  7 | Leonardo   | Ghiggino  | Myers Middle School | 2022-03-16 |  47000 |
+
+!ERROR
+- SELECT first_name, last_name, mileage FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+ERROR:  column reference "first_name" is ambiguous
+LINE 1: SELECT first_name, last_name, mileage FROM fruit_company_dri...
+
+But this works
+- SELECT  mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+
+| mileage |       school        |
+|---------|---------------------|
+|  123.45 | Myers Middle School |
 
 
 
