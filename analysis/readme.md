@@ -691,13 +691,26 @@ SELECT * FROM table_a JOIN table_b ON table_a.key_column = table_b.foreign_colum
 ERROR:  column reference "first_name" is ambiguous
 LINE 1: SELECT first_name, last_name, mileage FROM fruit_company_dri...
 
-But this works
+But this works:
 - SELECT  mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
 
 | mileage |       school        |
 |---------|---------------------|
 |  123.45 | Myers Middle School |
 
+
+This would also work:
+-  SELECT fruit_company_drivers.first_name, mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+
+| first_name | mileage |       school        |
+|------------|---------|---------------------|
+| Leonardo   |  123.45 | Myers Middle School |
+
+###### Tables with CONSTRAINT, REFERENCES, and PRIMARY KEY 
+- CREATE TABLE departments(dept_id bigserial, dept varchar(100), city varchar(100), CONSTRAINT dept_key PRIMARY KEY(dept_id), CONSTRAINT dept_city_unique UNIQUE (dept, city));
+- CREATE TABLE employees (emp_id bigserial, first_name varchar(100), last_name varchar(100), salary integer, dept_id integer REFERENCES departments (dept_id), CONSTRAINT emp_key PRIMARY KEY (emp_id), CONSTRAINT emp_dept_unique UNIQUE (emp_id, dept_id));
+- INSERT INTO departments (dept, city) VALUES ('tax', 'Atlanta'), ('IT', 'Boston');
+- INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', 'Jones', 62500, 1), ('Lee', 'Smith', 59300, 1), ('Soo', 'Nguyen', 83000, 2), ('Janet', 'King', 95000, 2);
 
 
 
