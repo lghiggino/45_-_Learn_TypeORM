@@ -711,6 +711,23 @@ This would also work:
 - CREATE TABLE employees (emp_id bigserial, first_name varchar(100), last_name varchar(100), salary integer, dept_id integer REFERENCES departments (dept_id), CONSTRAINT emp_key PRIMARY KEY (emp_id), CONSTRAINT emp_dept_unique UNIQUE (emp_id, dept_id));
 - INSERT INTO departments (dept, city) VALUES ('tax', 'Atlanta'), ('IT', 'Boston');
 - INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', 'Jones', 62500, 1), ('Lee', 'Smith', 59300, 1), ('Soo', 'Nguyen', 83000, 2), ('Janet', 'King', 95000, 2);
+- SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id;
+
+| emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
+|--------|------------|-----------|--------|---------|---------|------|---------|
+|      2 | Nancy      | Jones     |  62500 |       1 |       1 | tax  | Atlanta |
+|      3 | Lee        | Smith     |  59300 |       1 |       1 | tax  | Atlanta |
+|      5 | Janet      | King      |  95000 |       2 |       2 | IT   | Boston  |
+|      6 | Peter      | Schräder  |  72500 |       2 |       2 | IT   | Boston  |
+|      1 | John       | Overray   |  81000 |       2 |       2 | IT   | Boston  |
+|      4 | Soo        | Nguyen    |  83000 |       2 |       2 | IT   | Boston  |
+
+- SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id WHERE city = 'Atlanta';
+
+| emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
+|--------|------------|-----------|--------|---------|---------|------|---------|
+|      2 | Nancy      | Jones     |  62500 |       1 |       1 | tax  | Atlanta |
+|      3 | Lee        | Smith     |  59300 |       1 |       1 | tax  | Atlanta |
 
 
 
