@@ -1,0 +1,9 @@
+id,mileage,first_name,last_name,state_code,hire_date,contract_duration
+1,999.99,Leonardo,Ghiggino,NY,2022-03-31 12:01:45.814696,3 mons
+3,123.22,abc,def,AK,2002-02-03 00:00:00,21 days
+4,234.45,def,ghi,BC,2003-03-04 00:00:00,126 days
+5,345.67,ghi,jkl,CT,2004-04-05 00:00:00,1 year
+6,456.78,jkl,mno,DC,2005-05-06 00:00:00,1 year
+7,567.89,mno,pqr,FL,2006-07-08 00:00:00,1 mon
+8,678.90,pqr,stu,GE,2007-08-09 00:00:00,90 days
+2,123.45,Fabio,Oshiro,NY,2018-07-29 00:00:00,1 year
