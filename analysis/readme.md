@@ -559,8 +559,7 @@ SELECT geo_name, state_us_abbreviation, internal_point_lon FROM us_counties_2010
 CREATE TABLE supervisor_salaries (town varchar(30), county varchar(30), supervisor varchar(30), start_date date, salary money, benefits money);
 ```
 ```
-\COPY supervisor_salaries (town, supervisor, salary) FROM '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/chapter04/
-supervisor_salaries.csv' WITH (FORMAT CSV, HEADER);
+\COPY supervisor_salaries (town, supervisor, salary) FROM '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/chapter04/supervisor_salaries.csv' WITH (FORMAT CSV, HEADER);
 ```
 ```
 SELECT * FROM supervisor_salaries;
@@ -887,7 +886,7 @@ A primary key is a column or collection of columns whose values uniquely identif
 - The column or collection of columns must have a unique value for each row;
 - THe column or collection of columns can't have missing values.
 
-We defined the primary key for departments and employees using the CONSTRAINT keyword.
+We defined the primary key for departments and employees using the CONSTRAINT keyword. 
 In employees the emp_id column uniquely identifies each row in the table. For us to know which department each employee works in that table includes the dept_id column. The values in that column refer to the department table's primary key (unique). 
 employees.dept_id is a foreign key to departments.dept_id which means that the values entered in employees.dept_id must exist on department.dept_id
 
@@ -897,6 +896,7 @@ INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', '
 returns ERROR:  insert or update on table "employees" violates foreign key constraint "employees_dept_id_fkey"
 DETAIL:  Key (dept_id)=(3) is not present in table "departments".
 
+##### Querying Multiple Tables Using JOIN
 
 
 
