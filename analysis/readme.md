@@ -2,11 +2,17 @@
 ##### REMEMBER THE ; !!!
 
 ## RUNNING THE PROJECT
-- docker run --name analysisManual -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
+```
+docker run --name analysisManual -e POSTGRES_PASSWORD=docker -p 5433:5432 -d postgres
+```
 
-- docker start analysisManual 
+```
+docker start analysisManual 
+```
 
-- psql -h localhost -p 5433 -U postgres
+```
+psql -h localhost -p 5433 -U postgres
+```
 
 ##### If you can solve these,CTRL+F them, and continue below
 ###### Study time
@@ -49,27 +55,41 @@ Will a column in your target table with data type numeric(3,8) work for these va
 
 ## SQL COMMANDS - Exploring Data With SELECT
 #### CREATE a new TABLE
-- CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
+```
+CREATE TABLE "teachers" (id bigserial, first_name varchar(25), last_name varchar(50), school varchar(50), hire_date date, salary numeric);
+```
 
 #### Single INSERT
-- INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Janet', 'Smith', 'F.D. Roosevelt HS', '2011-10-30', 36200);
+```
+INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Janet', 'Smith', 'F.D. Roosevelt HS', '2011-10-30', 36200);
+```
 
 #### Multiple Inserts
-- INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Lee', 'Reynolds', 'F.D. Roosevelt HS', '1993-05-22', 65000), ('Samuel', 'Cole', 'Myers Middle School', '2005-08-01', 43500), ('Samantha', 'Bush', 'Myers Middle School', '2011-10-30', 36200), ('Betty', 'Diaz', 'Myers Middle School', '2005-08-30', 43500), ('Kathleen', 'Roush', 'F.D. Roosevelt HS', '2010-10-22', 38500);
+```
+INSERT INTO "teachers" (first_name, last_name, school, hire_date, salary) VALUES ('Lee', 'Reynolds', 'F.D. Roosevelt HS', '1993-05-22', 65000), ('Samuel', 
+```'Cole', 'Myers Middle School', '2005-08-01', 43500), ('Samantha', 'Bush', 'Myers Middle School', '2011-10-30', 36200), ('Betty', 'Diaz', 'Myers Middle School', '2005-08-30', 43500), ('Kathleen', 'Roush', 'F.D. Roosevelt HS', '2010-10-22', 38500);
 
 #### ALTER TABLE Rename Column Name
-- ALTER TABLE species RENAME COLUMN common_species_name TO common_name;
+```
+ALTER TABLE species RENAME COLUMN common_species_name TO common_name;
+```
 
 #### SELECT ALL
-- SELECT * FROM teachers;
+```
+SELECT * FROM teachers;
+```
 
 #### SELECT COLUMN(s)
-- SELECT first_name, last_name FROM teachers;
+```
+SELECT first_name, last_name FROM teachers;
+```
 
 #### SELECT DISTINCT
 Distinct 'cleans up' duplicate date and will only show unique values.
 
-- SELECT DISTINCT school FROM teachers;
+```
+SELECT DISTINCT school FROM teachers;
+```
 
 |        school        |
 |----------------------|
@@ -97,10 +117,12 @@ For each hall which artists are performing?
 
 
 #### ORDER BY
-- SELECT first_name, last_name, salary FROM teachers, ORDER BY salary DESC;
+```
+SELECT first_name, last_name, salary FROM teachers, ORDER BY salary DESC;
+```
 
 | first_name | last_name | salary  |
-|------------|-----------|-------- |
+|------------|-----------|---------|
 | Lee        | Reynolds  |  65000  |
 | Samuel     | Cole      |  43500  |
 | Betty      | Diaz      |  43500  |
@@ -111,7 +133,9 @@ For each hall which artists are performing?
 ORDER BY will show similar effects to ORDER in JavaScript. Strings might be returned in unexpected order due to charCode issues (lowerCase vs upperCase, symbols, numbers in strings, etc)
 
 ##### Multiple ORDER BY
-- SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
+```
+SELECT last_name, school, hire_date FROM teachers ORDER BY school ASC, hire_date DESC;
+```
 
 | last_name |       school        | hire_date  |
 |-----------|---------------------|------------|
@@ -124,7 +148,9 @@ ORDER BY will show similar effects to ORDER in JavaScript. Strings might be retu
 
 #### WHERE
 Filtering our tables and returning specific lines
-- SElECT last_name, school, hire_date FROM teachers WHERE school = 'Myers Middle School';
+```
+SELECT last_name, school, hire_date FROM teachers WHERE school = 'Myers Middle School';
+```
 
 | last_name |       school        | hire_date  |
 |-----------|---------------------|------------|
@@ -132,7 +158,9 @@ Filtering our tables and returning specific lines
 | Bush      | Myers Middle School | 2011-10-30 |
 | Diaz      | Myers Middle School | 2005-08-30 |
 
-- SELECT first_name, last_name, school, salary FROM teachers WHERE salary >= 38000;
+```
+SELECT first_name, last_name, school, salary FROM teachers WHERE salary >= 38000;
+```
 
 | first_name | last_name |       school        | salary |
 |------------|-----------|---------------------|--------|
@@ -154,7 +182,9 @@ Filtering our tables and returning specific lines
 |     between    |    BETWEEN   |
 |       in       |      IN      |
 
-- SELECT first_name, last_name, salary FROM teachers WHERE salary BETWEEN 20000 AND 40000; 
+```
+SELECT first_name, last_name, salary FROM teachers WHERE salary BETWEEN 20000 AND 40000; 
+```
 
 | first_name | last_name | salary |
 |------------|-----------|--------|
@@ -162,7 +192,9 @@ Filtering our tables and returning specific lines
 | Samantha   | Bush      |  36200 |
 | Kathleen   | Roush     |  38500 |
 
-- SELECT first_name, last_name, salary FROM teachers WHERE last_name IN ('Bush', 'Roush'); 
+```
+SELECT first_name, last_name, salary FROM teachers WHERE last_name IN ('Bush', 'Roush'); 
+```
 
 | first_name | last_name | salary | 
 |------------|-----------|--------|
@@ -179,17 +211,27 @@ Allows us to find one or more characters in a string
 ##### _ (underscore)
 Allows us to find one single character in a string
 
-- LIKE 'b%' returns any string starting with b;
-- LIKE '%ak%' returns any string with 'ak' in the middle:
-- LIKE '_aker' returns a string of lenght 5, ending with 'aker';
+```
+LIKE 'b%' returns any string starting with b;
+```
+```
+LIKE '%ak%' returns any string with 'ak' in the middle:
+```
+```
+LIKE '_aker' returns a string of lenght 5, ending with 'aker';
+```
 
-- SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
+```
+SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
+```
 
 | first_name |
 |------------|
 |(0 rows)    |
 
-- SELECT first_name FROM teachers WHERE first_name LIKE 'Sam%';]
+```
+SELECT first_name FROM teachers WHERE first_name LIKE 'Sam%';]
+```
 
 | first_name |
 |------------|
@@ -197,7 +239,9 @@ Allows us to find one single character in a string
 | Samantha   |
 |(2 rows)    |
 
-- SELECT first_name FROM teachers WHERE first_name ILIKE 'sam%';
+```
+SELECT first_name FROM teachers WHERE first_name ILIKE 'sam%';
+```
 
 | first_name |
 |------------|
@@ -208,7 +252,9 @@ Allows us to find one single character in a string
 It is important to notice that when it comes to Names, Surnames, Places and Products many times the person entering data in the database will not Capitalize the words. Therefore it is important to remember to use ILIKE in such situation so we can get a wider array of results.
 
 #### Combining operators with OR and AND
-- SELECT * FROM teachers WHERE salary BETWEEN 20000 AND 44000 AND school = 'Myers Middle School';
+```
+SELECT * FROM teachers WHERE salary BETWEEN 20000 AND 44000 AND school = 'Myers Middle School';
+```
 
 | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------------------|------------|--------|
@@ -217,7 +263,9 @@ It is important to notice that when it comes to Names, Surnames, Places and Prod
 |  5 | Betty      | Diaz      | Myers Middle School | 2005-08-30 |  43500 |
 
 
-- SELECT * FROM teachers WHERE last_name = 'Cole' OR last_name = 'Bush';
+```
+SELECT * FROM teachers WHERE last_name = 'Cole' OR last_name = 'Bush';
+```
 
 | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------------------|------------|--------|
@@ -228,8 +276,12 @@ It is important to notice that when it comes to Names, Surnames, Places and Prod
 #### Putting it all together
 SQL is very specific regarding the order of its KEYWORDS:
 
-- SELECT column_names FROM table_name WHERE criteria ORDER BY column_names;
-- SELECT first_name, last_name, school, hire_date, salary FROM teachers WHERE school ILIKE '%Roos%' ORDER BY hire_date DESC;
+```
+SELECT column_names FROM table_name WHERE criteria ORDER BY column_names;
+```
+```
+SELECT first_name, last_name, school, hire_date, salary FROM teachers WHERE school ILIKE '%Roos%' ORDER BY hire_date DESC;
+```
 
 | first_name | last_name |      school       | hire_date  | salary |
 |------------|-----------|-------------------|------------|--------|
@@ -264,8 +316,12 @@ A variable length column with unlimited length
 ##### How to choose between char, varchar or text?
 The flexibility and potential space savings of varchar and text give them advantages, but in some specific cases a fixed length can be better. Say you would like to save a SHA-256 hash, so a char(64) column will be perfect and will help you detect errors when storing data.
 
-- CREATE TABLE char_data_types (varchar_column varchar(10), char_column char(10), text_column text);
-- INSERT INTO char_data_types VALUES ('abc', 'abc', 'abc'),('defghi', 'defghi', 'defghi'),('1234567890', '1234567890', '1234567890');
+```
+CREATE TABLE char_data_types (varchar_column varchar(10), char_column char(10), text_column text);
+```
+```
+INSERT INTO char_data_types VALUES ('abc', 'abc', 'abc'),('defghi', 'defghi', 'defghi'),('1234567890', '1234567890', '1234567890');
+```
 
 | varchar_column | char_column | text_column | 
 |----------------|-------------|-------------|
@@ -293,12 +349,13 @@ But if you are sure your numbers should remain within the integer limit that wou
 When data values remain constrained, smallint makes sense: days of the month or year number is a good example.
 
 ###### Auto incrementing Integers
-- bigserial, serial, smallserial: special implementation of corresponding integer types that will auto increment each time a new row is inserted into the table. It will always generate a unique value.
+-bigserial, serial, smallserial: special implementation of corresponding integer types that will auto increment each time a new row is inserted into the table. It will always generate a unique value.
 
 
 ##### Decimal Numbers
-- represent whole numbers plus a fraction.
-- could be handled by fixe-point or floating-point.
+-represent whole numbers plus a fraction.
+-could be handled by fixe-point or floating-point.
+
 
 ###### Fixed-point Type
 We inform the precision: the maximun number of digits to the left of the comma, and the scale: a fixed amount of digits to the right of the comma. A fixed-point number with 5 digits of precision and two digits of scale would work as such:
@@ -316,8 +373,12 @@ Allows precision up to 15 digits
 
 
 ##### Example
-- CREATE TABLE number_data_types (numeric_column numeric(20,5), decimal_column decimal(20,5), real_column real, double_column double precision);
-- INSERT INTO number_data_types VALUES (.7,.7,.7,.7),(2.13579, 2.13579, 2.13579, 2.13579),(2.1347987654, 2.1347987654, 2.1347987654, 2.1347987654);
+```
+CREATE TABLE number_data_types (numeric_column numeric(20,5), decimal_column decimal(20,5), real_column real, double_column double precision);
+```
+```
+INSERT INTO number_data_types VALUES (.7,.7,.7,.7),(2.13579, 2.13579, 2.13579, 2.13579),(2.1347987654, 2.1347987654, 2.1347987654, 2.1347987654);
+```
 
 | numeric_column | decimal_column | real_column | double_column |
 |----------------|----------------|-------------|---------------|
@@ -353,8 +414,12 @@ Allows precision up to 15 digits
 - Would be typically used for calculations or filtering other date and time columns
 
 ##### Example
-- CREATE TABLE date_time_types (timestamp_column timestamp with time zone, interval_column interval);
-- INSERT INTO date_time_types VALUES ('2018-12-31 01:00 EST', '2 days'), ('2018-12-31 01:00 -8', '1 month), ('2018-12-31 01:00 Australia/Melbourne', '1 century'), (now(), '1 week');
+```
+CREATE TABLE date_time_types (timestamp_column timestamp with time zone, interval_column interval);
+```
+```
+INSERT INTO date_time_types VALUES ('2018-12-31 01:00 EST', '2 days'), ('2018-12-31 01:00 -8', '1 month), ('2018-12-31 01:00 Australia/Melbourne', '1 century'), 
+```(now(), '1 week');
 
 |       timestamp_column        | interval_column |
 |-------------------------------|-----------------|
@@ -365,7 +430,9 @@ Allows precision up to 15 digits
 
 We could use timestamps and intervals to calculate previous or future dates.
 
-- SELECT timestamp_column, interval_column, timestamp_column + interval_column AS due_date FROM date_time_types;
+```
+SELECT timestamp_column, interval_column, timestamp_column + interval_column AS due_date FROM date_time_types;
+```
 
 |       timestamp_column        | interval_column |         due_date              |
 |-------------------------------|-----------------|-------------------------------|
@@ -391,7 +458,9 @@ Stores data in these specific formats
 
 #### Transforming data using CAST()
 - Will only succeed when the target data type can accomodate the original value
-- SELECT timestamp_column, CAST(timestamp_column AS varchar(10)) FROM date_time_types;
+```
+SELECT timestamp_column, CAST(timestamp_column AS varchar(10)) FROM date_time_types;
+```
 
 |       timestamp_column        | timestamp_column |
 |-------------------------------|------------------|
@@ -401,7 +470,9 @@ Stores data in these specific formats
 | 2022-03-01 11:46:40.121774+00 |    2022-03-01    |
 |        timestamp type         |  character type  |
 
-- SELECT numeric_column, CAST(numeric_column AS integer), CAST(numeric_column AS varchar(6)) FROM number_data_types;
+```
+SELECT numeric_column, CAST(numeric_column AS integer), CAST(numeric_column AS varchar(6)) FROM number_data_types;
+```
 
 | numeric_column | numeric_column | numeric_column |
 |----------------|----------------|----------------|
@@ -412,7 +483,9 @@ Stores data in these specific formats
 |  numeric type  |     integer    |   varchar(6)   |
 
 ##### PostgreSQL CAST() shortand ::
-- SELECT timestamp_column::varchar(10) FROM date_time_types;
+```
+SELECT timestamp_column::varchar(10) FROM date_time_types;
+```
 
 | timestamp_column |
 |------------------|
@@ -438,7 +511,7 @@ Stores data in these specific formats
 14. How to perform data type transformation? What are some concerns with that operation? (CAST(), type overlap)
 
 ###### Study time
-1. Your company delivers fruit and vegetables to local grocery stores, and you need to track the mileage driven by each driver each day to a tenth of a mile. Assuming no driver would ever travel more than 999 miles in a day, what would be an appropriate data type for the mileage column in your table? Why? Create this table.
+1. Your company delivers fruit and vegetables to local grocery stores, and you need to track the mileage driven by each driver each day to a tenth of a mile. Assuming no driver would ever travel more than 999 miles in a day, what would be an appropriate data type for the mileage column in your table? Why? Create this table. (id, mileage, first_name, last_name, state_code, hire_date, contract_duration)z
 2. In the table listing each driver in your company, what are appropriate data types for the drivers’ first and last names? Why is it a good idea to separate first and last names into two columns rather than having one larger name column?
 3. Assume you have a text column that includes strings formatted as dates. One of the strings is written as '4//2017' . What will happen when you try to convert that string to the timestamp data type?
 4. Using the fruit_company_drivers table change the type of hire_date from timestamp to varchar(10).
@@ -463,7 +536,9 @@ CSV is a typical example, where the comma separates each piece of data without a
 - John, Doe, "123 Main Street, apartment 504", New York, NY, 555-1234 
 
 ##### Import Example (COPY FROM)
-- COPY fruit_company_drivers FROM '/pwd/drivers.csv' WITH(FORMAT CSV, HEADER);
+```
+COPY fruit_company_drivers FROM '/pwd/drivers.csv' WITH(FORMAT CSV, HEADER);
+```
 - Copy to tableName from filePath with format csv, exclude the header from the csv
 
 
@@ -477,12 +552,21 @@ CSV is a typical example, where the comma separates each piece of data without a
 |  8 | pqr        | stu       |  678.90 | 2007-08-09 00:00:00+00        |
 
 #### LIMITING the number of results
-- SELECT geo_name, state_us_abbreviation, internal_point_lon FROM us_counties_2010 ORDER BY internal_point_lon DESC LIMIT 5;
+```
+SELECT geo_name, state_us_abbreviation, internal_point_lon FROM us_counties_2010 ORDER BY internal_point_lon DESC LIMIT 5;
+```
 
 ##### Importing a DEFINED subset of Columns with COPY
-- CREATE TABLE supervisor_salaries (town varchar(30), county varchar(30), supervisor varchar(30), start_date date, salary money, benefits money);
-- \COPY supervisor_salaries (town, supervisor, salary) FROM '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/chapter04/supervisor_salaries.csv' WITH (FORMAT CSV, HEADER);
-- SELECT * FROM supervisor_salaries;
+```
+CREATE TABLE supervisor_salaries (town varchar(30), county varchar(30), supervisor varchar(30), start_date date, salary money, benefits money);
+```
+```
+\COPY supervisor_salaries (town, supervisor, salary) FROM '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/chapter04/
+supervisor_salaries.csv' WITH (FORMAT CSV, HEADER);
+```
+```
+SELECT * FROM supervisor_salaries;
+```
 
 |    town     | county | supervisor | start_date |   salary   | benefits |
 |-------------|--------|------------|------------|------------|----------|
@@ -495,14 +579,24 @@ CSV is a typical example, where the comma separates each piece of data without a
  
 #### Exportind Data
 ##### Export All Example (COPY TO)
-- \COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
-- \COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
+\COPY char_data_types TO 'PWD/typetest.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
+```
+\COPY teachers TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/drivers.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
  
 ##### Export Particular Columns
-- \COPY us_counties_2010 (geo_name, internal_point_lat, internal_point_lon) TO '/PWD/us_counties_latlon.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
+\COPY us_counties_2010 (geo_name, internal_point_lat, internal_point_lon) TO '/PWD/us_counties_latlon.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
 
 ##### Export Query Results
-- \COPY (SELECT geo_name, state_us_abbreviation FROM us_counties_2010 WHERE geo_name ILIKE '%mill%') TO '/home/lghiggino/Development/03-ProjetosPessoais/45_-_Learn_TypeORM/analysis/us_counties_mill_export_selected.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
+\COPY (SELECT geo_name, state_us_abbreviation FROM us_counties_2010 WHERE geo_name ILIKE '%mill%') TO '/home/lghiggino/Development/03-ProjetosPessoais/
+45_-_Learn_TypeORM/analysis/us_counties_mill_export_selected.txt' WITH (FORMAT CSV, HEADER, DELIMITER '|');
+```
+
 
 ###### Study time
 1. Insert new rows at fruit_company_drivers using the COPY command and the drivers.csv file.
@@ -543,19 +637,31 @@ When using the 4 basic operators expect the results to be similar to the inputs:
 Exponentiation, root and factorial returns numeric and floating-point types, event if the input is an integer.
 
 ##### Adding, Subtracting and Multiplying
-- SELECT 2 + 2;
-- SELECT 9 - 3 AS result;
+```
+SELECT 2 + 2;
+```
+```
+SELECT 9 - 3 AS result;
+```
 
 | result |
 |--------|
 |   6    |
 
-- select 2 * 8;
+```
+SELECT 2 * 8;
+```
 
 ##### Division and Modulo
-- SELECT 9 / 3;
-- SELECT 9 % 2;
-- SELECT 11 / 6;    vs    SELECT 11.0 / 6      vs    SELECT CAST (11 AS numeric(3,1)) / 6;
+```
+SELECT 9 / 3;
+```
+```
+SELECT 9 % 2;
+```
+```
+SELECT 11 / 6;    vs    SELECT 11.0 / 6      vs    SELECT CAST (11 AS numeric(3,1)) / 6;
+```
 
 | ?column? |        ?column?      |        ?column?      |
 |----------|----------------------|----------------------|
@@ -563,21 +669,31 @@ Exponentiation, root and factorial returns numeric and floating-point types, eve
 
 
 ##### Exponents, Roots and Factorial
-- SELECT 3 ^ 4;
-- SELECT |/ 10;
+```
+SELECT 3 ^ 4;
+```
+```
+SELECT |/ 10;
+```
 
 |      ?column?      |
 |--------------------|
 | 3.1622776601683795 |
 
-- SELECT sqrt(10);
-- SELECT ||/ 10:
+```
+SELECT sqrt(10);
+```
+```
+SELECT ||/ 10:
+```
 
 |      ?column?      |
 |--------------------|
 | 2.1544346900318834 |
 
-- SELECT 4 !;
+```
+SELECT 4 !;
+```
 
 | ?column? |
 |----------|
@@ -590,10 +706,14 @@ Exponentiation, root and factorial returns numeric and floating-point types, eve
 
 ##### Doing math across Table Columns
 Selecting 'all'
-- SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "Total Population", p0010003 AS "White Alone", p0010004 AS "Black or African American Alone", p0010005 AS "Am Indian/Alaska Native Alone", p0010006 AS "Asian Alone", p0010007 AS "Native Hawaiian and Other Pacific Islander Alone", p0010008 AS "Some Other Race Alone", p0010009 As "Two or More Races" FROM us_counties_2010;
+```
+SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "Total Population", p0010003 AS "White Alone", p0010004 AS "Black or African American Alone", p0010005 AS "Am Indian/Alaska Native Alone", p0010006 AS "Asian Alone", p0010007 AS "Native Hawaiian and Other Pacific Islander Alone", p0010008 AS "Some Other Race Alone", p0010009 As "Two or More Races" FROM us_counties_2010;
+```
 
 Select doing math
-- SELECT geo_name, state_us_abbreviation AS "st", p0010003 AS "White Alone", p0010004 AS "Black Alone", p0010003 + p0010004 AS "Total White and Black" FROM us_counties_2010;
+```
+SELECT geo_name, state_us_abbreviation AS "st", p0010003 AS "White Alone", p0010004 AS "Black Alone", p0010003 + p0010004 AS "Total White and Black" FROM us_counties_2010;
+```
 
 |             geo_name              | st | White Alone | Black Alone | Total White and Black |
 |-----------------------------------|----|-------------|-------------|-----------------------|
@@ -604,7 +724,9 @@ Select doing math
 | Blount County                     | AL |       53068 |         761 |                 53829 |
 
 
-- SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "total", p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009 AS "All races", (p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009) - p0010001 AS "Difference" FROM us_counties_2010 ORDER BY "total" DESC; 
+```
+SELECT geo_name, state_us_abbreviation AS "st", p0010001 AS "total", p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009 AS "All races", (p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009) - p0010001 AS "Difference" FROM us_counties_2010 ORDER BY "total" DESC; 
+```
 
 |             geo_name              | st |  total  | All races | Difference |
 |-----------------------------------|----|---------|-----------|------------|
@@ -617,7 +739,9 @@ With the difference column showing zeros only we can be confident that our impor
 
 ##### Finding Percentages 
 
--  SELECT geo_name, state_us_abbreviation as "st", (CAST(p0010006 AS numeric(8,1)) / p0010001) * 100 AS "pct_asian" FROM us_counties_2010 ORDER BY "pct_asian" DESC LIMIT 5;
+```
+SELECT geo_name, state_us_abbreviation as "st", (CAST(p0010006 AS numeric(8,1)) / p0010001) * 100 AS "pct_asian" FROM us_counties_2010 ORDER BY "pct_asian" DESC LIMIT 5;
+```
 
 -- The key point here is the CAST as numeric. If we used the original integer types, we would not get the fractional data. And every row would return 0, the quotient.
 
@@ -630,9 +754,16 @@ With the difference column showing zeros only we can be confident that our impor
 | Kauai County           | HI | 31.32461880132953749400 |
 
 ##### Tracking Percentage Change
-- CREATE TABLE percentage_change (department varchar(20), spend_2014 numeric(10,2), spend_2017 numeric(10,2));
-- INSERT INTO percentage_change VALUES ('Building', 250000, 289000), ('Assessor', 178556, 179500), ('Library', 87777, 90001), ('Clerk', 451980, 650000), ('Police', 250000, 223000), ('Recreation', 1999000, 195000);
-- SELECT department, spend_2014, spend_2017, (spend_2017 - spend_2014) / spend_2014 * 100 AS "pct_change" FROM percentage_change ;
+```
+CREATE TABLE percentage_change (department varchar(20), spend_2014 numeric(10,2), spend_2017 numeric(10,2));
+```
+```
+INSERT INTO percentage_change VALUES ('Building', 250000, 289000), ('Assessor', 178556, 179500), ('Library', 87777, 90001), ('Clerk', 451980, 650000), ('Police', 
+250000, 223000), ('Recreation', 1999000, 195000);
+```
+```
+SELECT department, spend_2014, spend_2017, (spend_2017 - spend_2014) / spend_2014 * 100 AS "pct_change" FROM percentage_change ;
+```
 
 | department | spend_2014 | spend_2017 |        pct_change        |
 |------------|------------|------------|--------------------------|
@@ -660,7 +791,9 @@ With the difference column showing zeros only we can be confident that our impor
 
 
 ##### MAX(value)
-- SELECT * FROM teachers WHERE salary = (SELECT MAX (salary) FROM teachers);
+```
+SELECT * FROM teachers WHERE salary = (SELECT MAX (salary) FROM teachers);
+```
 
 | id | first_name | last_name |      school       | hire_date  | salary |
 |----|------------|-----------|-------------------|------------|--------|
@@ -679,20 +812,28 @@ Follows this structure:
 ```
 SELECT * FROM table_a JOIN table_b ON table_a.key_column = table_b.foreign_column;
 ```
-- INSERT INTO teachers (first_name, last_name, school, hire_date, salary) VALUES ('Leonardo', 'Ghiggino', 'Myers Middle School', now(), 47000);
-- SELECT * FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
+INSERT INTO teachers (first_name, last_name, school, hire_date, salary) VALUES ('Leonardo', 'Ghiggino', 'Myers Middle School', now(), 47000);
+```
+```
+SELECT * FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
 
 | id | first_name | last_name | mileage |           hire_date           | due_date | id | first_name | last_name |       school        | hire_date  | salary |
 |----|------------|-----------|---------|-------------------------------|----------|----|------------|-----------|---------------------|------------|--------|
 |  1 | Leonardo   | Ghiggino  |  123.45 | 2022-03-07 12:00:14.173131+00 | 1 mon    |  7 | Leonardo   | Ghiggino  | Myers Middle School | 2022-03-16 |  47000 |
 
 !ERROR
-- SELECT first_name, last_name, mileage FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
+SELECT first_name, last_name, mileage FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
 ERROR:  column reference "first_name" is ambiguous
 LINE 1: SELECT first_name, last_name, mileage FROM fruit_company_dri...
 
 But this works:
-- SELECT  mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
+SELECT  mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
 
 | mileage |       school        |
 |---------|---------------------|
@@ -700,18 +841,31 @@ But this works:
 
 
 This would also work:
--  SELECT fruit_company_drivers.first_name, mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
+SELECT fruit_company_drivers.first_name, mileage, school FROM fruit_company_drivers JOIN teachers ON fruit_company_drivers.first_name = teachers.first_name;
+```
 
 | first_name | mileage |       school        |
 |------------|---------|---------------------|
 | Leonardo   |  123.45 | Myers Middle School |
 
 ###### Tables with CONSTRAINT, REFERENCES, and PRIMARY KEY 
-- CREATE TABLE departments(dept_id bigserial, dept varchar(100), city varchar(100), CONSTRAINT dept_key PRIMARY KEY(dept_id), CONSTRAINT dept_city_unique UNIQUE (dept, city));
-- CREATE TABLE employees (emp_id bigserial, first_name varchar(100), last_name varchar(100), salary integer, dept_id integer REFERENCES departments (dept_id), CONSTRAINT emp_key PRIMARY KEY (emp_id), CONSTRAINT emp_dept_unique UNIQUE (emp_id, dept_id));
-- INSERT INTO departments (dept, city) VALUES ('tax', 'Atlanta'), ('IT', 'Boston');
-- INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', 'Jones', 62500, 1), ('Lee', 'Smith', 59300, 1), ('Soo', 'Nguyen', 83000, 2), ('Janet', 'King', 95000, 2);
-- SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id;
+```
+CREATE TABLE departments(dept_id bigserial, dept varchar(100), city varchar(100), CONSTRAINT dept_key PRIMARY KEY(dept_id), CONSTRAINT dept_city_unique UNIQUE (dept, city));
+```
+```
+CREATE TABLE employees (emp_id bigserial, first_name varchar(100), last_name varchar(100), salary integer, dept_id integer REFERENCES departments (dept_id), CONSTRAINT emp_key PRIMARY KEY (emp_id), CONSTRAINT emp_dept_unique UNIQUE (emp_id, dept_id));
+```
+```
+INSERT INTO departments (dept, city) VALUES ('tax', 'Atlanta'), ('IT', 'Boston');
+```
+```
+INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', 'Jones', 62500, 1), ('Lee', 'Smith', 59300, 1), ('Soo', 'Nguyen', 83000, 2), 
+('Janet', 'King', 95000, 2);
+```
+```
+SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id;
+```
 
 | emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
 |--------|------------|-----------|--------|---------|---------|------|---------|
@@ -722,15 +876,28 @@ This would also work:
 |      1 | John       | Overray   |  81000 |       2 |       2 | IT   | Boston  |
 |      4 | Soo        | Nguyen    |  83000 |       2 |       2 | IT   | Boston  |
 
-- SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id WHERE city = 'Atlanta';
+```
+SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id WHERE city = 'Atlanta';
+```
 
 | emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
 |--------|------------|-----------|--------|---------|---------|------|---------|
 |      2 | Nancy      | Jones     |  62500 |       1 |       1 | tax  | Atlanta |
 |      3 | Lee        | Smith     |  59300 |       1 |       1 | tax  | Atlanta |
 
+A primary key is a column or collection of columns whose values uniquely identify each row in a table. It enforces:
+- The column or collection of columns must have a unique value for each row;
+- THe column or collection of columns can't have missing values.
 
+We defined the primary key for departments and employees using the CONSTRAINT keyword.
+In employees the emp_id column uniquely identifies each row in the table. For us to know which department each employee works in that table includes the dept_id column. The values in that column refer to the department table's primary key (unique). 
+employees.dept_id is a foreign key to departments.dept_id which means that the values entered in employees.dept_id must exist on department.dept_id
 
+```
+INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', 'Jones', 62500, 1), ('Peter', 'Parker', 69300, 3);
+```
+returns ERROR:  insert or update on table "employees" violates foreign key constraint "employees_dept_id_fkey"
+DETAIL:  Key (dept_id)=(3) is not present in table "departments".
 
 
 
