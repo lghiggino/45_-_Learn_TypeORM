@@ -211,15 +211,11 @@ Allows us to find one or more characters in a string
 ##### _ (underscore)
 Allows us to find one single character in a string
 
-```
-LIKE 'b%' returns any string starting with b;
-```
-```
-LIKE '%ak%' returns any string with 'ak' in the middle:
-```
-```
-LIKE '_aker' returns a string of lenght 5, ending with 'aker';
-```
+-LIKE 'b%' returns any string starting with b;
+
+-LIKE '%ak%' returns any string with 'ak' in the middle:
+
+-LIKE '_aker' returns a string of lenght 5, ending with 'aker';
 
 ```
 SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
@@ -230,7 +226,7 @@ SELECT first_name FROM teachers WHERE first_name LIKE 'sam%';
 |(0 rows)    |
 
 ```
-SELECT first_name FROM teachers WHERE first_name LIKE 'Sam%';]
+SELECT first_name FROM teachers WHERE first_name LIKE 'Sam%';
 ```
 
 | first_name |
@@ -417,9 +413,11 @@ INSERT INTO number_data_types VALUES (.7,.7,.7,.7),(2.13579, 2.13579, 2.13579, 2
 ```
 CREATE TABLE date_time_types (timestamp_column timestamp with time zone, interval_column interval);
 ```
+
 ```
 INSERT INTO date_time_types VALUES ('2018-12-31 01:00 EST', '2 days'), ('2018-12-31 01:00 -8', '1 month), ('2018-12-31 01:00 Australia/Melbourne', '1 century'), 
-```(now(), '1 week');
+(now(), '1 week');
+```
 
 |       timestamp_column        | interval_column |
 |-------------------------------|-----------------|
