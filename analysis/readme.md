@@ -901,7 +901,6 @@ SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept
 
 #### Join Types
 - JOIN: returns rows from both tables where matching values are found in the joined columns of both tables.
-- LEFT JOIN: return rows from the left table plus rows that match values in the joined column from the right table. If nothing matches no values return
 
 ```
 CREATE TABLE schools_left(id integer CONSTRAINT left_id_key PRIMARY KEY, left_school varchar(30));
@@ -913,10 +912,42 @@ INSERT INTO schools_right (id, right_school) VALUES (1, 'Oak Street School'), (2
 SELECT * FROM schools_left JOIN schools_right ON schools_left.id = schools_right.id;
 ```
 
+| id |      left_school      | id |     right_school      |
+|----|-----------------------|----|-----------------------|
+|  1 | Oak Street School     |  1 | Oak Street School     |
+|  2 | Roosevelt High School |  2 | Roosevelt High School |
+|  6 | Jefferson High School |  6 | Jefferson High School |
+
+- LEFT JOIN: return rows from the left table plus rows that match values in the joined column from the right table. If nothing matches no values return
+```
+SELECT * FROM schools_left LEFT JOIN schools_right ON schools_left.id = schools_right.id;
+
+```
+
+| id |       left_school        | id |     right_school      |
+|----|--------------------------|----|-----------------------|
+|  1 | Oak Street School        |  1 | Oak Street School     |
+|  2 | Roosevelt High School    |  2 | Roosevelt High School |
+|  5 | Washington Middle School |    |                       |
+|  6 | Jefferson High School    |  6 | Jefferson High School |
+
+Everything from left, plus matching values on right
+
 - RIGHT JOIN: return every row from the right table plus rows that match the key values in the key column from the left table.
 ```
-EX 2
+ SELECT * FROM schools_left RIGHT JOIN schools_right ON schools_left.id = schools_right.id;
 ```
+
+| id |      left_school      | id |     right_school      |
+|----|-----------------------|----|-----------------------|
+|  1 | Oak Street School     |  1 | Oak Street School     |
+|  2 | Roosevelt High School |  2 | Roosevelt High School |
+|    |                       |  3 | Morrison Elementary   |
+|    |                       |  4 | Chase Magnet Academy  |
+|  6 | Jefferson High School |  6 | Jefferson High School |
+
+Everything from right, plus matching values on left
+
 - FULL OUTER JOIN: returns every from from both tables and matches rows, and then joins the rows where values in the joined columns match
 ```
 EX 3
