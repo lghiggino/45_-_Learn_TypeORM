@@ -873,14 +873,6 @@ SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept
 |      1 | John       | Overray   |  81000 |       2 |       2 | IT   | Boston  |
 |      4 | Soo        | Nguyen    |  83000 |       2 |       2 | IT   | Boston  |
 
-```
-SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id WHERE city = 'Atlanta';
-```
-
-| emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
-|--------|------------|-----------|--------|---------|---------|------|---------|
-|      2 | Nancy      | Jones     |  62500 |       1 |       1 | tax  | Atlanta |
-|      3 | Lee        | Smith     |  59300 |       1 |       1 | tax  | Atlanta |
 
 A primary key is a column or collection of columns whose values uniquely identify each row in a table. It enforces:
 - The column or collection of columns must have a unique value for each row;
@@ -896,7 +888,17 @@ INSERT INTO employees (first_name, last_name, salary, dept_id) VALUES('Nancy', '
 returns ERROR:  insert or update on table "employees" violates foreign key constraint "employees_dept_id_fkey"
 DETAIL:  Key (dept_id)=(3) is not present in table "departments".
 
-##### Querying Multiple Tables Using JOIN
+##### Querying Multiple Tables Using JOIN + WHERE
+```
+SELECT * FROM employees JOIN departments ON employees.dept_id = departments.dept_id WHERE city = 'Atlanta';
+```
 
+| emp_id | first_name | last_name | salary | dept_id | dept_id | dept |  city   |
+|--------|------------|-----------|--------|---------|---------|------|---------|
+|      2 | Nancy      | Jones     |  62500 |       1 |       1 | tax  | Atlanta |
+|      3 | Lee        | Smith     |  59300 |       1 |       1 | tax  | Atlanta |
+
+
+#### Join Types
 
 
