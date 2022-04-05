@@ -992,6 +992,25 @@ SELECT * FROM schools_left CROSS JOIN schools_right;
 |  6 | Jefferson High School    |  4 | Chase Magnet Academy  |
 |  6 | Jefferson High School    |  6 | Jefferson High School |
 
+##### Using Null to Find Rows with Missing Values
+```
+SELECT * FROM schools_left LEFT JOIN schools_right ON schools_left.id = schools_right.id WHERE schools_right.id IS NULL;
+```
+| id |       left_school        | id | right_school |
+|----|--------------------------|----|--------------|
+|  5 | Washington Middle School |    |              |
+
+It will find the rows where the one row from the left table didn’t have a match on the right side.
+
+```
+SELECT * FROM schools_left RIGHT JOIN schools_right ON schools_left.id = schools_right.id WHERE schools_left.id IS NULL;
+```
+| id | left_school | id |     right_school     |
+|----|-------------|----|----------------------|
+|    |             |  3 | Morrison Elementary  |
+|    |             |  4 | Chase Magnet Academy |
+
+
 
 
 
