@@ -1011,6 +1011,23 @@ SELECT * FROM schools_left RIGHT JOIN schools_right ON schools_left.id = schools
 |    |             |  4 | Chase Magnet Academy |
 
 
+##### Selecting Specific Columns in a Join
+We must remember to be specific about which duplicated columns we should select:
+```
+SELECT schools_left.id, schools_left.left_school, schools_right.right_school FROM schools_left LEFT JOIN schools_right ON schools_left.id = schools_right.id;
+```
+
+| id |       left_school        |     right_school      |
+|----|--------------------------|-----------------------|
+|  1 | Oak Street School        | Oak Street School     |
+|  2 | Roosevelt High School    | Roosevelt High School |
+|  5 | Washington Middle School |                       |
+|  6 | Jefferson High School    | Jefferson High School |
+
+
+
+
+
 
 
 
