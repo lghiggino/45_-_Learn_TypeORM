@@ -949,6 +949,10 @@ Everything from left, plus matching values on right
 
 Everything from right, plus matching values on left
 
+-- You should use LEFT or RIGHT JOIN in situation where you wnat to query results to contain ALL the rows from one of the tables;
+-- You want to look for missing values in one of the tables;
+-- When you know some rows in a joined table won't have matching values.
+
 - FULL OUTER JOIN: returns every from from both tables and matches rows, and then joins the rows where values in the joined columns match
 ```
  SELECT * FROM schools_left FULL OUTER JOIN schools_right ON schools_left.id = schools_right.id;
@@ -964,6 +968,8 @@ Everything from right, plus matching values on left
 |    |                          |  3 | Morrison Elementary   |
 
 Everything from every table
+
+-- Less used and less usable but could be helpful in identifying the degree to which tables share matching values.
 
 - CROSS JOIN: returns every possible combination of rows from both tables
 ```
@@ -991,6 +997,9 @@ SELECT * FROM schools_left CROSS JOIN schools_right;
 |  6 | Jefferson High School    |  3 | Morrison Elementary|  |
 |  6 | Jefferson High School    |  4 | Chase Magnet Academy  |
 |  6 | Jefferson High School    |  6 | Jefferson High School |
+
+-- avoid this one. Please.
+-- If you'd like to create a full combinational database. Shirts Sizes vs. Colors S, M, L, XL vs. Red, Orange, Yellow, Green, Blue, Navy Blue, Purple, Black, White. And now you have 36 rows (4 x 9)
 
 ##### Using Null to Find Rows with Missing Values
 ```
@@ -1023,6 +1032,8 @@ SELECT schools_left.id, schools_left.left_school, schools_right.right_school FRO
 |  2 | Roosevelt High School    | Roosevelt High School |
 |  5 | Washington Middle School |                       |
 |  6 | Jefferson High School    | Jefferson High School |
+
+
 
 
 
