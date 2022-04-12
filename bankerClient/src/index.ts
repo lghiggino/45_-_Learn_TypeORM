@@ -3,6 +3,7 @@ import { createConnection } from "typeorm"
 import express, { application } from "express"
 require("dotenv").config()
 
+//models
 import { Client } from "./entities/Client"
 import { Banker } from "./entities/Banker"
 import { Transaction } from "./entities/Transaction"
