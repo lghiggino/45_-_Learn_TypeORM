@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
+const Class = require('./src/models/Class')
+
 console.log('process.env.DATABASE_URL >> ', process.env.DATABASE_URL);
 console.log("DATABASE_URL ", process.env.DATABASE_URL)
 console.log("PORT", process.env.PORT)
@@ -11,19 +13,19 @@ console.log("ENTITIES_DIR", process.env.ENTITIES_DIR)
 
 const ormconfig = {
   "type": "postgres",
-  "url": process.env.DATABASE_URL,
+  "url": "postgres://postgres:docker@localhost:5433/postgres",
   "entities": [
-    process.env.ENTITIES
+    Class
   ],
-  "migrations": [
-    "dist/database/migrations/**/*.js"
-  ],
-  "cli": {
-    "migrationsDir": [
-      "src/database/migrations/"
-    ],
-    "entitiesDir": "src/models"
-  },
+  // "migrations": [
+  //   "dist/database/migrations/**/*.js"
+  // ],
+  // "cli": {
+  //   "migrationsDir": [
+  //     "src/database/migrations/"
+  //   ],
+  //   "entitiesDir": "src/models"
+  // },
   // "ssl": true,
   // "extra": { "ssl": { "rejectUnauthorized": false } },
   synchronyze: true,
