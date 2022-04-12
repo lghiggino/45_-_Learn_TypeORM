@@ -14,6 +14,7 @@ coursesRouter.get('/', async (req, res) => {
         return res.json(findAll);
     } catch (error) {
         console.error(error);
+        return res.json(`${error.message}`)
     }
 })
 
@@ -25,6 +26,7 @@ coursesRouter.get('/:name', async (req, res) => {
         return res.json(find);
     } catch (error) {
         console.error(error);
+        return res.json(`${error.message}`)
     }
 })
 
@@ -36,6 +38,7 @@ coursesRouter.post('/', async (req, res) => {
         return res.status(200).json(savedCourse)
     } catch (error) {
         console.error(error)
+        return res.json(`${error.message}`)
     }
 })
 
