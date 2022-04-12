@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-console.log('process.env.DATABASE_URL :>> ', process.env.DATABASE_URL);
+console.log('process.env.DATABASE_URL >> ', process.env.DATABASE_URL);
 console.log("DATABASE_URL ", process.env.DATABASE_URL)
 console.log("PORT", process.env.PORT)
 console.log("ENTITIES ", process.env.ENTITIES)
@@ -13,7 +13,7 @@ const ormconfig = {
   "type": "postgres",
   "url": process.env.DATABASE_URL,
   "entities": [
-    "dist/models/**/*.js"
+    process.env.ENTITIES
   ],
   "migrations": [
     "dist/database/migrations/**/*.js"
@@ -26,7 +26,7 @@ const ormconfig = {
   },
   // "ssl": true,
   // "extra": { "ssl": { "rejectUnauthorized": false } },
-  // synchronyze: true,
+  synchronyze: true,
   // logging: false
 }
 
