@@ -1,0 +1,37 @@
+POST http://localhost:3000/class HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Algorithms II",
+    "duration": "200"
+}
+        
+###
+POST http://localhost:3000/class HTTP/1.1
+content-type: application/json
+
+{
+    "discipline": "TypeOrm Migrations and Models",
+    "duration": "60",
+    "credits": 12,
+    "description": "course foo bar"
+}
+
+###
+GET http://localhost:3000/class/byId/2 HTTP/1.1
+
+###
+GET http://localhost:3000/class/byName/ALGorIthms HTTP/1.1
+
+###
+GET http://localhost:3000/class/listAll HTTP/1.1
+
+
+###
+DELETE http://localhost:8080/api/client/1/delete HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:8080/api/banker/2/client/1/transaction HTTP/1.1
+content-type: application/json
+        

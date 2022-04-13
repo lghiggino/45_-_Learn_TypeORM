@@ -1,24 +1,29 @@
+
+
 module.exports = {
    "type": "postgres",
-   "host": "localhost",
-   "port": 5433,
-   "username": "postgres",
-   "password": "docker",
-   "database": "postgres",
+   "url": process.env.DATABASE_URL,
    "synchronize": true,
    "logging": false,
+   "autoLoadEntities": true,
    "entities": [
-      "src/models/**/*.ts"
+      process.env.ENTITIES
    ],
    "migrations": [
-      "src/migrations/**/*.ts"
+      process.env.MIGRATIONS,
    ],
-   // "subscribers": [
-   //    "src/subscriber/**/*.ts"
-   // ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
    "cli": {
       "entitiesDir": "src/models",
-      // "migrationsDir": "src/migrations",
-      // "subscribersDir": "src/subscriber"
+      "migrationsDir": "src/migrations",
+      "subscribersDir": "src/subscriber"
+   },
+   "ssl": true,
+   "extra": {
+      "ssl": {
+         "rejectUnauthorized": false
+      }
    }
 }

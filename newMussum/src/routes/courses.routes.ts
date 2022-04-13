@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getCustomRepository, getRepository } from 'typeorm';
-import { Courses } from '../models/Courses';
+import { Courses } from '../models/Courses.entity';
 import CoursesRepository from '../repositories/CoursesRepository';
 
 const coursesRouter = Router()

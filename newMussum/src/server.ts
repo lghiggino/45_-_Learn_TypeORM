@@ -1,6 +1,11 @@
-import app from "./app";
+import dotenv from 'dotenv';
+import app from './app';
 import 'reflect-metadata';
+import './database';
 
-app.listen(3000, () => {
-    console.log(`Server running on port ${3000}`)
+dotenv.config();
+
+app.listen(process.env.PORT, () => {
+  console.log(`🏃 Running Server on port ${process.env.PORT}`);
+  console.log(process.env.ENTITIES);
 });

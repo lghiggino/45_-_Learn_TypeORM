@@ -20,7 +20,7 @@ module.exports = {
     ],
     "entitiesDir": process.env.ENTITIES_DIR
   },
-  extra: {
-    ssl: true
-  }
+  // extra: {
+  //   ssl: true
+  // }
 }
