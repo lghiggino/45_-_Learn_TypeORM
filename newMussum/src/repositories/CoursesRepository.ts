@@ -6,6 +6,10 @@ export default class CoursesRepository extends Repository<Courses> {
     public async findByName(name: string): Promise<Courses[]> {
         return await this.find({
             where: { name } 
-        })
+        });
+    }
+
+    public async findAll(): Promise<Courses[]> {
+        return await this.findAll();
     }
 }

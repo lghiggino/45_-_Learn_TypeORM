@@ -1,10 +1,11 @@
-POST http://localhost:3000/class HTTP/1.1
+POST  https://localhost:3000/courses HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Algorithms II",
-    "duration": "200"
+    "name":"test", 
+    "duration":120
 }
+
         
 ###
 POST http://localhost:3000/class HTTP/1.1
