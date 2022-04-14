@@ -18,10 +18,10 @@ module.exports = {
       "migrationsDir": "src/migrations",
       "subscribersDir": "src/subscriber"
    },
-   "ssl": true,
-   "extra": {
-      "ssl": {
-         "rejectUnauthorized": false
-      }
-   }
+   // "ssl": true,
+   // "extra": {
+   //    "ssl": {
+   //       "rejectUnauthorized": false
+   //    }
+   // }
 }

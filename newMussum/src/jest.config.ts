@@ -2,9 +2,10 @@ import type { Config } from '@jest/types';
 // Sync object
 const config: Config.InitialOptions = {
     verbose: true,
+    preset: 'ts-jest',
     transform: {
-        '^.+\\.ts?$': 'ts-jest',
-        '^.+\\.(js|jsx)$': 'babel-jest',
+        '^.+\\.(ts|tsx)?$': 'ts-jest',
+        "^.+\\.(js|jsx)$": "babel-jest",
     },
     transformIgnorePatterns: ['node_modules/(?!react-markdown/)'],
     testPathIgnorePatterns: [

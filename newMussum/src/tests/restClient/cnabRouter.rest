@@ -1,0 +1,17 @@
+POST  http://localhost:3000/cnab HTTP/1.1
+content-type: application/json
+
+{
+    "transactionTypeCode":  "",
+    "date": "string",
+    "value": "number",
+    "cpf": "string",
+    "cardNumber": "string",
+    "hour": "string",
+    "storeOwnerName": "string",
+    "storeName": "string",
+}
+
+###
+GET  http://localhost:3000/cnab HTTP/1.1
+content-type: application/json

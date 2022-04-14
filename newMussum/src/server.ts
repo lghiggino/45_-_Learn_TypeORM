@@ -7,5 +7,5 @@ dotenv.config();
 
 app.listen(process.env.PORT, () => {
   console.log(`🏃 Running Server on port ${process.env.PORT}`);
-  console.log(process.env.ENTITIES);
+  console.log(`connected to: ${process.env.DATABASE_URL}`);
 });
