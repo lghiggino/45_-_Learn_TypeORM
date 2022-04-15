@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes';
-import * as fileUpload from "express-fileupload";
+import fileUpload from 'express-fileupload';
 const fs = require('fs');
 
 const app = express();

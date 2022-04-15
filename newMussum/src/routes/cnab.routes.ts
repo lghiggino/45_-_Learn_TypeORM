@@ -1,5 +1,6 @@
 import { Request, Router } from 'express';
 import { createReadStream } from 'fs';
+import fileUpload from 'express-fileupload';
 import { getConnection, getCustomRepository, getRepository } from 'typeorm';
 import Cnab from '../models/Cnab.entity';
 import { MYFile } from '../models/File.entity';
@@ -32,20 +33,20 @@ cnabRouter.get("/upload", (req, res) => {
 })
 
 cnabRouter.post('/upload', async (req, res) => {
-    let fileData = req.files.datein
+    let fileData = req.files?.datein
 
-    console.log(fileData);
+    console.log("fileData >>>>", fileData);
 
 
     if (Array.isArray(fileData)) {
         console.log("TODO: Array")
     } else {
 
-        var newFile = new MYFile()
-        newFile.name = fileData.name
-        // newFile.data = fileData.data.toString('base64')
-        newFile.data = fileData.data
-        newFile.mimeType = fileData.mimetype
+        const newFile = new MYFile()
+        newFile.name = fileData?.name as string
+        newFile.data = fileData?.data.toString('base64') as any
+        newFile.data = fileData?.data as Buffer
+        newFile.mimeType = fileData?.mimetype as string
 
         try {
             const repo = getConnection().getRepository(MYFile)
@@ -55,17 +56,17 @@ cnabRouter.post('/upload', async (req, res) => {
             console.log(error)
             res.send("ERROR")
         }
-    }
 
-    // try {
-    //     const cnabRepo = getRepository(Cnab);
-    //     const savedCourse = await cnabRepo.save(req.body);
-    //     console.log(savedCourse)
-    //     return res.status(200).json(savedCourse)
-    // } catch (error) {
-    //     console.error(error)
-    //     return res.json(`${error}`)
-    // }
-})
+        // try {
+        //     const cnabRepo = getRepository(Cnab);
+        //     const savedCourse = await cnabRepo.save(req.body);
+        //     console.log(savedCourse)
+        //     return res.status(200).json(savedCourse)
+        // } catch (error) {
+        //     console.error(error)
+        //     return res.json(`${error}`)
+        // }
+    }
+});
 
 export default cnabRouter;
