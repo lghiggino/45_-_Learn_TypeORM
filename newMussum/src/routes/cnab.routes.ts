@@ -1,13 +1,16 @@
 import { Request, Router } from 'express';
-import { getCustomRepository, getRepository } from 'typeorm';
+import { createReadStream } from 'fs';
+import { getConnection, getCustomRepository, getRepository } from 'typeorm';
 import Cnab from '../models/Cnab.entity';
-
+import { MYFile } from '../models/File.entity';
+const fs = require('fs');
 
 
 const cnabRouter = Router()
 
 cnabRouter.get('/', async (req, res) => {
     try {
+        console.log("entrou aqui")
         const cnabRepo = getRepository(Cnab);
         const findAll = await cnabRepo.find();
         return res.json(findAll);
@@ -17,28 +20,52 @@ cnabRouter.get('/', async (req, res) => {
     }
 })
 
-// cnabRouter.get('/:name', async (req, res) => {
-//     const courseName = req.params.name;
-//     try {
-//         const cnabRepo = getCustomRepository(cnabRepository);
-//         const find = await cnabRepo.findByName(courseName);
-//         return res.json(find);
-//     } catch (error) {
-//         console.error(error);
-//         return res.json(`${error}`)
-//     }
-// })
+cnabRouter.get("/upload", (req, res) => {
+    res.send(`
+    <form action="http://localhost:3000/cnab/upload" method="post" enctype="multipart/form-data">
+        <label>Wählen Sie die hochzuladenden Dateien von Ihrem Rechner aus:
+            <input name="datein" type="file" multiple> 
+        </label>  
+        <button>hochladen</button>
+    </form>
+  `)
+})
 
-cnabRouter.post('/', async (req, res) => {
-    try {
-        const cnabRepo = getRepository(Cnab);
-        const savedCourse = await cnabRepo.save(req.body);
-        console.log(savedCourse)
-        return res.status(200).json(savedCourse)
-    } catch (error) {
-        console.error(error)
-        return res.json(`${error}`)
+cnabRouter.post('/upload', async (req, res) => {
+    let fileData = req.files.datein
+
+    console.log(fileData);
+
+
+    if (Array.isArray(fileData)) {
+        console.log("TODO: Array")
+    } else {
+
+        var newFile = new MYFile()
+        newFile.name = fileData.name
+        // newFile.data = fileData.data.toString('base64')
+        newFile.data = fileData.data
+        newFile.mimeType = fileData.mimetype
+
+        try {
+            const repo = getConnection().getRepository(MYFile)
+            const result_File = await repo.save(newFile)
+            res.send("Upload complete")
+        } catch (error) {
+            console.log(error)
+            res.send("ERROR")
+        }
     }
+
+    // try {
+    //     const cnabRepo = getRepository(Cnab);
+    //     const savedCourse = await cnabRepo.save(req.body);
+    //     console.log(savedCourse)
+    //     return res.status(200).json(savedCourse)
+    // } catch (error) {
+    //     console.error(error)
+    //     return res.json(`${error}`)
+    // }
 })
 
 export default cnabRouter;

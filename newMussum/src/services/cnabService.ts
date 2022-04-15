@@ -1,4 +1,5 @@
 import Cnab from '../models/Cnab.entity';
+import { MYFile } from '../models/File.entity';
 import CnabRepository from '../repositories/CnabRepository';
 
 const cnabRepository = new CnabRepository();
@@ -17,8 +18,8 @@ type cnapParserType = {
 export default class CnabService {
     public rowSplit(cnabTextBlock: string): string[] {
         const array = cnabTextBlock.split('\n');
-        const filteredEmpties = array.filter(item => item.length !== 0);
-        return filteredEmpties;
+        const textRows = array.filter(item => item.length !== 0);
+        return textRows;
     }
 
     public parse(string: string): cnapParserType {
