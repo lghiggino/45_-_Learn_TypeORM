@@ -19,10 +19,11 @@ export default class FileRepository extends Repository<MYFile> {
         newFile.data = file?.data as Buffer
         newFile.mimeType = file?.mimetype as string
 
-        const saveOne = await getRepository(MYFile)
+        const saveOne = getRepository(MYFile)
             .createQueryBuilder('myfile')
             .insert()
-            return saveOne;
+            
+        return saveOne;
     }
 
     // public async createOne(file: any) {

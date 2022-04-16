@@ -1,8 +1,11 @@
-import * as express from "express"
+import dotenv from 'dotenv';
+import 'reflect-metadata';
+import express from "express"
 import { Request, Response } from "express"
 import { User } from "./entity/user.entity"
 import myDataSource from "./app-data-source"
 
+dotenv.config();
 
 myDataSource
     .initialize()
@@ -40,6 +43,9 @@ app.put("/users/:id", async function (req: Request, res: Response) {
     const user = await myDataSource.getRepository(User).findOneBy({
         id: +req.params.id,
     })
+    if (!user){
+        return res.json("user can not be null")
+    }
     myDataSource.getRepository(User).merge(user, req.body)
     const results = await myDataSource.getRepository(User).save(user)
     return res.send(results)
