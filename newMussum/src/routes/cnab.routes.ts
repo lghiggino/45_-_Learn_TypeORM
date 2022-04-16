@@ -24,10 +24,10 @@ cnabRouter.get('/', async (req, res) => {
 cnabRouter.get("/upload", (req, res) => {
     res.send(`
     <form action="http://localhost:3000/cnab/upload" method="post" enctype="multipart/form-data">
-        <label>Wählen Sie die hochzuladenden Dateien von Ihrem Rechner aus:
+        <label>Choose a file to upload:
             <input name="datein" type="file" multiple> 
         </label>  
-        <button>hochladen</button>
+        <button>upload</button>
     </form>
   `)
 })
@@ -41,7 +41,6 @@ cnabRouter.post('/upload', async (req, res) => {
     if (Array.isArray(fileData)) {
         console.log("TODO: Array")
     } else {
-
         const newFile = new MYFile()
         newFile.name = fileData?.name as string
         newFile.data = fileData?.data.toString('base64') as any
