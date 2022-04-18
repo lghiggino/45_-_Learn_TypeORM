@@ -8,14 +8,15 @@ import routes from "./routes"
 
 dotenv.config();
 
-myDataSource
-    .initialize()
-    .then(() => {
-        console.log("Data Source has been initialized")
-    })
-    .catch((err) => {
-        console.error("Error during Data Source initialization", err)
-    })
+// myDataSource
+//     .initialize()
+//     .then(() => {
+//         console.log("Data Source has been initialized")
+//     })
+//     .catch((err) => {
+//         console.error("Error during Data Source initialization", err)
+//     })
+
 
 // create and setup express app
 const app = express()
@@ -25,6 +26,7 @@ app.use(routes)
 
 // register routes
 // app.get("/users", async function (req: Request, res: Response) {
+//     console.log("entrou aqui 1")
 //     const users = await myDataSource.getRepository(User).find()
 //     res.json(users)
 // })

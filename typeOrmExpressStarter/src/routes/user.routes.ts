@@ -4,9 +4,21 @@ import { getCustomRepository, getRepository } from 'typeorm';
 import { User } from '../entity/user.entity';
 import myDataSource from '../app-data-source';
 
+console.log("entrou aqui na user.routes 2")
+
+myDataSource
+    .initialize()
+    .then(() => {
+        console.log("Data Source has been initialized 2")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization 2", err)
+    })
+
 const userRouter = Router();
 
 userRouter.get("/users", async function (req: Request, res: Response) {
+    console.log("entrou aqui 2")
     const users = await myDataSource.getRepository(User).find()
     res.json(users)
 })
@@ -28,7 +40,7 @@ userRouter.put("/users/:id", async function (req: Request, res: Response) {
     const user = await myDataSource.getRepository(User).findOneBy({
         id: +req.params.id,
     })
-    if (!user){
+    if (!user) {
         return res.json("user can not be null")
     }
     myDataSource.getRepository(User).merge(user, req.body)
