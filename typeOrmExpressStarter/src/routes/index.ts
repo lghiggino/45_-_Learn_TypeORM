@@ -1,12 +1,13 @@
 import { Router } from 'express';
+import homeRouter from './home.routes';
 import userRouter from './user.routes';
 
 const routes = Router();
 
-// routes.use('/', homeRouter);
+
 // routes.use('/health/', healthRouter);
 
-console.log("puxou as rotas")
+routes.use('/', homeRouter);
 routes.use('/users', userRouter);
 
 

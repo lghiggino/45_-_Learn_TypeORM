@@ -25,6 +25,13 @@ const myDataSource = new DataSource({
     // }
 })
 
-//dist/**/*.entity.js
+myDataSource
+    .initialize()
+    .then(() => {
+        console.log("Data Source has been initialized [1]")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization [1]", err)
+    })
 
 export default myDataSource
