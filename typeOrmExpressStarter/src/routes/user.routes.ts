@@ -31,7 +31,7 @@ userRouter.post("/", async function (req: Request, res: Response) {
     try {
         const user = await myDataSource.getRepository(User).create(req.body)
         const results = await myDataSource.getRepository(User).save(user)
-        return res.send(results)
+        return res.json(results)
     } catch (error) {
         res.json(error)
     }
@@ -48,7 +48,7 @@ userRouter.put("/:id", async function (req: Request, res: Response) {
         }
         myDataSource.getRepository(User).merge(user, req.body)
         const results = await myDataSource.getRepository(User).save(user)
-        return res.send(results)
+        return res.json(results)
     } catch (error) {
         res.json(error)
     }

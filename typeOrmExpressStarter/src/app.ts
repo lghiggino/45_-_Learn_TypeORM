@@ -1,9 +1,6 @@
 import dotenv from 'dotenv';
 import 'reflect-metadata';
 import express from "express"
-import { Request, Response } from "express"
-import { User } from "./entity/user.entity"
-import myDataSource from "./app-data-source"
 import routes from "./routes"
 
 dotenv.config();

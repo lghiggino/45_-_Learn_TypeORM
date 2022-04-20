@@ -7,7 +7,7 @@ const myDataSource = new DataSource({
     host: "localhost",
     port: 5433,
     username: "postgres",
-    password: "docker",
+    password: process.env.PASSWORD,
     database: "postgres",
     entities: [
         process.env.NODE_ENV = "dev" ?

@@ -5,7 +5,12 @@ import myDataSource from '../app-data-source';
 const homeRouter = Router();
 
 homeRouter.get("/", (req: Request, res: Response) => {
-    res.json("Hello from home")
+    try {
+        res.json("Hello from home")
+    } catch (error) {
+        res.json(error)
+    }
+    
 })
 
 export default homeRouter;
