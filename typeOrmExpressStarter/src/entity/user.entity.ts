@@ -11,3 +11,9 @@ export class User {
     @Column()
     lastName: string
 }
+
+
+export type UserCreationParams = {
+    firstName: string
+    lastName: string
+}
