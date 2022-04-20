@@ -1,6 +1,9 @@
+import dotenv from 'dotenv';
 import { DataSource } from "typeorm"
 
-console.log(process.env.NODE_ENV)
+dotenv.config()
+
+console.log(`current env is: ${process.env.NODE_ENV}`)
 
 const myDataSource = new DataSource({
     type: "postgres",
