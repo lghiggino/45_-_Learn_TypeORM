@@ -1,0 +1,23 @@
+###
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "credits": 12,
+    "description": "course foo bar"
+}
+
+###
+GET http://localhost:3000/users/2 HTTP/1.1
+
+
+###
+DELETE http://localhost:3000/users/3 HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:8080/api/banker/2/client/1/transaction HTTP/1.1
+content-type: application/json
+        
