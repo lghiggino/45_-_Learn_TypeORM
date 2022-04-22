@@ -8,7 +8,7 @@
     "dev": "nodemon --watch 'src/' --exec 'NODE_ENV=dev ts-node src/app.ts' -e ts",
     "start": "NODE_ENV=prod node dist/app.js",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
-    "test": "NODE_ENV=test jest --logHeapUsage --transformIgnorePatterns 'node_modules/' --watchAll --detectOpenHandles "
+    "test": "NODE_ENV=test jest --logHeapUsage --transformIgnorePatterns 'node_modules/' --watchAll --detectOpenHandles"
   },
   "keywords": [],
   "author": "",

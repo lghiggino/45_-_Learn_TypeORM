@@ -5,28 +5,58 @@ dotenv.config()
 
 console.log(`current env is: ${process.env.NODE_ENV}`)
 
-const myDataSource = new DataSource({
+const devDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5433,
     username: "postgres",
     password: process.env.PASSWORD,
     database: "postgres",
-    entities: [
-        process.env.NODE_ENV = "dev" ?
-            "src/entity/*.entity.ts"
-            :
-            "entity/*.entity.js"
-    ],
+    entities: ["src/entity/*.entity.ts"],
     logging: true,
     synchronize: true,
-    // ssl: true,
-    // extra: {
-    //    ssl: {
-    //       rejectUnauthorized: false
-    //    }
-    // }
 })
+
+//docker run --name postgresMussumTest -e POSTGRES_PASSWORD=docker POSTGRES_USER=postgresMussumTest -p 5433:5432 -d postgres       
+//docker start postgresMussumTest 
+
+const testDataSource = new DataSource({
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    username: "postgresMussumTest",
+    password: process.env.PASSWORD,
+    database: "postgresMussumTest",
+    entities: ["src/entity/*.entity.ts"],
+    logging: true,
+    synchronize: true,
+})
+
+const prodDataSource = new DataSource({
+    type: "postgres",
+    host: "localhost",
+    port: 5455,
+    username: "postgres",
+    password: process.env.PASSWORD,
+    database: "postgres",
+    entities: ["entity/*.entity.js"],
+    logging: true,
+    synchronize: true,
+    ssl: true,
+    extra: {
+        ssl: {
+            rejectUnauthorized: false
+        }
+    }
+})
+
+const currentEnv = process.env.NODE_ENV
+
+const myDataSource = currentEnv === "test" ? testDataSource :
+    currentEnv === "dev" ? devDataSource :
+        prodDataSource
+
+console.log(currentEnv, myDataSource.options)
 
 myDataSource
     .initialize()
