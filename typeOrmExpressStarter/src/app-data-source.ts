@@ -17,16 +17,13 @@ const devDataSource = new DataSource({
     synchronize: true,
 })
 
-//docker run --name postgresMussumTest -e POSTGRES_PASSWORD=docker POSTGRES_USER=postgresMussumTest -p 5433:5432 -d postgres       
-//docker start postgresMussumTest 
-
 const testDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
-    port: 5432,
-    username: "postgresMussumTest",
+    port: 5433,
+    username: "postgres",
     password: process.env.PASSWORD,
-    database: "postgresMussumTest",
+    database: "test",
     entities: ["src/entity/*.entity.ts"],
     logging: true,
     synchronize: true,
