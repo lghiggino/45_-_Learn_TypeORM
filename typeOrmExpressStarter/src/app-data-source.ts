@@ -49,9 +49,7 @@ const prodDataSource = new DataSource({
 
 const currentEnv = process.env.NODE_ENV
 
-const myDataSource = currentEnv === "test" ? testDataSource :
-    currentEnv === "dev" ? devDataSource :
-        prodDataSource
+const myDataSource = currentEnv === "test" ? testDataSource : currentEnv === "dev" ? devDataSource : prodDataSource
 
 console.log(currentEnv, myDataSource.options)
 

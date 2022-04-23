@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { Request, Response } from "express"
+import { User } from '../entity/user.entity';
 import UserService from '../services/user.service';
 
 const userRouter = Router();
@@ -7,7 +8,7 @@ const userService = new UserService;
 
 userRouter.get("/", async function (req: Request, res: Response) {
     try {
-        const users = await userService.getAll()
+        const users: User[] | undefined = await userService.getAll()
         res.json(users)
     } catch (error) {
         res.json(error)
@@ -17,7 +18,7 @@ userRouter.get("/", async function (req: Request, res: Response) {
 
 userRouter.get("/:id", async function (req: Request, res: Response) {
     try {
-        const results = await userService.getById(req.params.id)
+        const results: User | null | undefined = await userService.getById(req.params.id)
         if (!results) {
             return res.status(404).json(`User by id ${req.params.id} not found`)
         }

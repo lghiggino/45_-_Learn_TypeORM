@@ -7,7 +7,12 @@ export default class UserService {
 
     public async getAll() {
         try {
-            return await myDataSource.getRepository(User).find()
+            const allUsers: User[] | undefined = await myDataSource.getRepository(User).find()
+            if (!allUsers) {
+                return []
+            } else {
+                return allUsers
+            }
         } catch (error) {
             console.error("UserRespository Error @getAllUsers", error)
         }
