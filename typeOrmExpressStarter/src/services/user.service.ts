@@ -1,33 +1,34 @@
 import { json } from "stream/consumers";
 import myDataSource from "../app-data-source";
 import { User, UserCreationParams } from "../entity/user.entity";
+import UserRepository from "../repository/user.repository";
 
+const userRepository = new UserRepository()
 
 export default class UserService {
 
     public async getAll() {
         try {
-            const allUsers: User[] | undefined = await myDataSource.getRepository(User).find()
+            const allUsers: User[] | undefined = await userRepository.getAll()
             if (!allUsers) {
                 return []
             } else {
                 return allUsers
             }
         } catch (error) {
-            console.error("UserRespository Error @getAllUsers", error)
+            console.error("UserService Error @getAllUsers", error)
         }
     }
 
     public async getById(id: string) {
         if (Number.isNaN(Number(id))) {
+            console.error("id is not a number")
             return
         }
         try {
-            return await myDataSource.getRepository(User).findOneBy({
-                id: Number(id),
-            })
+            return await userRepository.getById(id)
         } catch (error) {
-            console.error("UserRespository Error @getById", error)
+            console.error("UserService Error @getById", error)
         }
     }
 
@@ -37,7 +38,7 @@ export default class UserService {
             const results = await myDataSource.getRepository(User).save(user)
             return results
         } catch (error) {
-            console.error("UserRespository Error @createUser", error)
+            console.error("UserService Error @createUser", error)
         }
     }
 
@@ -55,7 +56,7 @@ export default class UserService {
             myDataSource.getRepository(User).merge(user, body)
             return await myDataSource.getRepository(User).save(user)
         } catch (error) {
-            console.error("UserRespository Error @updateOne", error)
+            console.error("UserService Error @updateOne", error)
         }
     }
 
@@ -68,7 +69,7 @@ export default class UserService {
         try {
             await myDataSource.getRepository(User).delete(id)
         } catch (error) {
-            console.error("UserRespository Error @deleteOne", error)
+            console.error("UserService Error @deleteOne", error)
         }
     }
 
