@@ -34,9 +34,7 @@ export default class UserService {
 
     public async createOne(userParams: UserCreationParams) {
         try {
-            const user = await myDataSource.getRepository(User).create(userParams)
-            const results = await myDataSource.getRepository(User).save(user)
-            return results
+            return await userRepository.createOne(userParams)
         } catch (error) {
             console.error("UserService Error @createUser", error)
         }
@@ -44,17 +42,11 @@ export default class UserService {
 
     public async updateOne(id: string, body: any) {
         if (Number.isNaN(Number(id))) {
+            console.error("id is not a number")
             return
         }
         try {
-            const user = await myDataSource.getRepository(User).findOneBy({
-                id: +id,
-            })
-            if (!user) {
-                return "user can not be null"
-            }
-            myDataSource.getRepository(User).merge(user, body)
-            return await myDataSource.getRepository(User).save(user)
+            return await userRepository.updateOne(id, body)
         } catch (error) {
             console.error("UserService Error @updateOne", error)
         }
@@ -63,15 +55,13 @@ export default class UserService {
     public async deleteOne(id: string) {
         console.log(id, typeof id)
         if (Number.isNaN(Number(id))) {
-            console.log("entrou no if")
-            throw new Error("Invalid id")
+            console.error("id is not a number")
+            return
         }
         try {
-            await myDataSource.getRepository(User).delete(id)
+            await userRepository.deleteOne(id)
         } catch (error) {
             console.error("UserService Error @deleteOne", error)
         }
     }
-
-
 }
