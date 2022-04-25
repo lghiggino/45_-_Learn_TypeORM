@@ -17,7 +17,7 @@ afterAll(async () => {
 describe("userService test", () => {
     it("should be able to create a new user in the DataBase", async () => {
         let currentUsersCountBefore: User[] | undefined = await userService.getAll()
-        if (!currentUsersCountBefore){
+        if (!currentUsersCountBefore) {
             currentUsersCountBefore = []
         }
         const newUser = {
@@ -32,5 +32,13 @@ describe("userService test", () => {
     it("should be able to receive a user by Id from the DataBase", async () => {
         const userById: User | null | undefined = await userService.getById("7")
         expect(userById?.id).toBe(7)
+    })
+
+    it("should get all users", async () => {
+        let currentUsersCountBefore: User[] | undefined = await userService.getAll()
+        const allUsers: User[] | undefined = await userService.getAll()
+        if (currentUsersCountBefore && allUsers){
+            expect(currentUsersCountBefore.length).toBe(allUsers.length)
+        }
     })
 })
