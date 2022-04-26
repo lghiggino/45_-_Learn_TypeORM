@@ -5,7 +5,7 @@ import { User, UserCreationParams } from "../entity/user.entity";
 export default class UserRepository {
     public async getAll() { 
         try {
-            const allUsers: User[] | undefined = await myDataSource.getRepository(User).find()
+            const allUsers: User[] = await myDataSource.getRepository(User).find()
             if (!allUsers) {
                 return []
             } else {
