@@ -18,7 +18,7 @@ export default class UserRepository {
 
     public async getById(id: string){
         try {
-            return await myDataSource.getRepository(User).findOneBy({
+            return await myDataSource.getRepository(User).findOneByOrFail({
                 id: Number(id),
             })
         } catch (error) {
@@ -38,12 +38,9 @@ export default class UserRepository {
 
     public async updateOne(id: string, body: any) {
         try {
-            const user = await myDataSource.getRepository(User).findOneBy({
+            const user = await myDataSource.getRepository(User).findOneByOrFail({
                 id: +id,
             })
-            if (!user) {
-                return "user can not be null"
-            }
             myDataSource.getRepository(User).merge(user, body)
             return await myDataSource.getRepository(User).save(user)
         } catch (error) {
