@@ -73,6 +73,12 @@ describe("userService test", () => {
     })
 
     it("should delete a user", async () => {
-        const userBefore = await userService.getById("8")
+        const user = {
+            firstName: 'Joe',
+            lastName: 'Doe'
+        }
+        const createdNewUser = await userService.createOne(user)
+        const deletedUser = await userService.deleteOne(`${createdNewUser!.id}`)
+        console.log(deletedUser)
     })
 })

@@ -50,10 +50,9 @@ export default class UserRepository {
 
     public async deleteOne(id: string) {
         try {
-            await myDataSource.getRepository(User).delete(id)
+            return await myDataSource.getRepository(User).delete(id)
         } catch (error) {
             console.error("UserRepository Error @deleteOne", error)
         }
     }
-
 }
