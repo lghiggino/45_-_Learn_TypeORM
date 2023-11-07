@@ -1,0 +1,29 @@
+import { EntityRepository, Repository } from "typeorm";
+import Product from "../entities/Product.entity";
+
+@EntityRepository(Product)
+export class ProductRepository extends Repository<Product> {
+  public async findByName(name: string): Promise<Product | undefined> {
+    const product = await this.findOne({
+      where: { name },
+    });
+
+    return product;
+  }
+
+  public async findByPriceRange(minPrice: number, maxPrice: number): Promise<Product[] | undefined> {
+    const products = await this.find({
+      where: { price: { gte: minPrice, lte: maxPrice } }
+    })
+
+    return products;
+  }
+
+  public async findByMinQuantity(minQuantity: number): Promise<Product[] | undefined> {
+    const products = await this.find({
+      where: { quantity: { gte: minQuantity } }
+    })
+
+    return products;
+  }
+}
