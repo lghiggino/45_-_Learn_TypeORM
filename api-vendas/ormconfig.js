@@ -1,9 +1,9 @@
 require('dotenv/config');
 
 const database = {
-  development: 'apivendas-dev',
-  production: 'apivendas-prod',
-  test: 'apivendas-test',
+  development: 'api-vendas-dev',
+  production: 'api-vendas-prod',
+  test: 'api-vendas-test',
 };
 
 // exemplo de config dinamica para testes

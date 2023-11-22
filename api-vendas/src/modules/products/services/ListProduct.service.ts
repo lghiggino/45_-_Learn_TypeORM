@@ -9,6 +9,12 @@ interface FindByPriceRangeDTO {
 }
 
 export class ListProductService {
+  public async execute(): Promise<Product[] | undefined> {
+    const productsRepository = getCustomRepository(ProductRepository);
+    const products = productsRepository.find();
+    return products;
+  }
+
   public async byId(id: string): Promise<Product | undefined> {
     const productsRepository = getCustomRepository(ProductRepository);
     const product = productsRepository.findById(id);

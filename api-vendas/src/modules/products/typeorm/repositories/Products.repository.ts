@@ -16,19 +16,11 @@ export class ProductRepository extends Repository<Product> {
     return product;
   }
 
-  // public async findByPriceRange(minPrice: number, maxPrice: number): Promise<Product[] | undefined> {
-  //   const products = await this.find({
-  //     where: { price: { gte: minPrice, lte: maxPrice } }
-  //   })
+  public async findByPriceRange(minPrice: number, maxPrice: number): Promise<Product[] | undefined> {
+    const products = await this.find({
+      where: { price: { gte: minPrice, lte: maxPrice } }
+    })
 
-  //   return products;
-  // }
-
-  // public async findByMinQuantity(minQuantity: number): Promise<Product[] | undefined> {
-  //   const products = await this.find({
-  //     where: { quantity: { gte: minQuantity } }
-  //   })
-
-  //   return products;
-  // }
+    return products;
+  }
 }
