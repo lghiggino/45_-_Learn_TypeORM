@@ -1,12 +1,18 @@
-export class RenavamService {
-  public execute(renavam: string): boolean {
-    const normalizedRenavam = this.normalizeOlderRenavam(renavam);
-
-    if (normalizedRenavam.length !== 11) {
+export class DetranService {
+  public analyzeRenavam(renavam: string | number): boolean {
+    if (!renavam) {
       return false;
     }
 
-    const renavamSemDigito = normalizedRenavam.substring(0, 10);
+    const renavamParaString = renavam.toString();
+
+    const renavamNormalizado = this.normalizeOlderRenavam(renavamParaString);
+
+    if (renavamNormalizado.length !== 11) {
+      return false;
+    }
+
+    const renavamSemDigito = renavamNormalizado.substring(0, 10);
 
     const renavamReversoSemDigito = renavamSemDigito.split('').reverse().join('');
 
@@ -27,7 +33,9 @@ export class RenavamService {
 
     ultimoDigitoCalculado = ultimoDigitoCalculado >= 10 ? 0 : ultimoDigitoCalculado;
 
-    const digitoRealInformado = Number(renavam.substring(renavam.length - 1, renavam.length));
+    const digitoRealInformado = Number(
+      renavamParaString.substring(renavamParaString.length - 1, renavamParaString.length),
+    );
 
     if (ultimoDigitoCalculado == digitoRealInformado) {
       return true;
@@ -41,5 +49,15 @@ export class RenavamService {
     }
 
     return renavam;
+  }
+
+  public analyzeLicensePlate(licensePlate: string) {
+    if (!licensePlate || licensePlate.length !== 7) {
+      return false;
+    }
+
+    const regex = new RegExp('[A-Z]{3}[0-9][0-9A-Z][0-9]{2}');
+
+    return regex.test(licensePlate);
   }
 }
