@@ -15,6 +15,9 @@ describe('renavam', function () {
   it('should return true for older ranavam (9 digits)', () => {
     const renavamValidation = detranService.analyzeRenavam('639884962');
     expect(renavamValidation).toBe(true);
+
+    const renavamValidation2 = detranService.analyzeRenavam('123456789');
+    expect(renavamValidation2).toBe(true);
   });
 
   it('should return false if last digit is not valid', () => {
